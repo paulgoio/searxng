@@ -1,0 +1,3 @@
+include:
+  - project: images/ci
+    file: images.gitlab-ci.yml
