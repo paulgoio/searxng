@@ -1,0 +1,99 @@
+version: '3.7'
+
+services:
+  morty:
+    image: dalf/morty:latest
+    restart: always
+    command: -timeout 6
+    read_only: true
+    cap_drop:
+      - ALL
+    depends_on:
+      - filtron
+    networks:
+      - proxy
+      - default
+    logging:
+      driver: none
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.morty.rule=Host(`${SERVICE}`)&&PathPrefix(`/morty`)&&Method(`GET`,`HEAD`)
+      - traefik.http.routers.morty.entrypoints=https
+      - traefik.http.routers.morty.tls.certresolver=le
+      - traefik.http.routers.morty.middlewares=external-secure,morty-csp,searx-fp,searx-dynamic
+      # CSP for morty
+      - traefik.http.middlewares.morty-csp.headers.contentSecurityPolicy=default-src 'none'; style-src 'self' 'unsafe-inline'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'
+    environment:
+      - MORTY_KEY=${MORTY_PASSWD}
+      - MORTY_ADDRESS=0.0.0.0:3000
+      - DEBUG=false
+
+  filtron:
+    image: dalf/filtron
+    restart: always
+    command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8080
+    volumes:
+      - ./rules.json:/etc/filtron/rules.json:rw
+    read_only: true
+    cap_drop:
+      - ALL
+    depends_on:
+      - searx
+      - tor
+    networks:
+      - default
+      - proxy
+    logging:
+      driver: loki
+      options:
+        loki-url: "${LOKI_URL}"
+        loki-external-labels: env=${ENV}
+        loki-relabel-config: |
+          - action: labeldrop
+            regex: filename
+    labels:
+      - traefik.enable=true
+      # router for static files
+      - traefik.http.routers.searx-static.rule=Host(`${SERVICE}`)&&PathPrefix(`/static`)&&Method(`GET`,`HEAD`)
+      - traefik.http.routers.searx-static.entrypoints=https
+      - traefik.http.routers.searx-static.tls.certresolver=le
+      - traefik.http.routers.searx-static.middlewares=external-secure,searx-csp@file,searx-fp,searx-static
+      # router for dynamic files
+      - traefik.http.routers.searx.rule=Host(`${SERVICE}`)&&Method(`GET`,`POST`,`HEAD`)
+      - traefik.http.routers.searx.entrypoints=https
+      - traefik.http.routers.searx.tls.certresolver=le
+      - traefik.http.routers.searx.middlewares=external-secure,searx-csp@file,searx-fp,searx-dynamic
+      # CSP for searx in dynamic config
+      # feature policy for searx and morty
+      - traefik.http.middlewares.searx-fp.headers.featurePolicy=accelerometer 'none';ambient-light-sensor 'none'; autoplay 'none';camera 'none';encrypted-media 'none';focus-without-user-activation 'none'; geolocation 'none';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'none';picture-in-picture 'none'; speaker 'none';sync-xhr 'none';usb 'none';vr 'none'
+      # cache control dynamic and static
+      - traefik.http.middlewares.searx-static.headers.customResponseHeaders.Cache-Control=public, max-age=31536000
+      - traefik.http.middlewares.searx-dynamic.headers.customResponseHeaders.Cache-Control=no-cache
+
+  searx:
+    image: mrpaulblack/searx:latest
+    restart: always
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    logging:
+      driver: loki
+      options:
+        loki-url: "${LOKI_URL}"
+        loki-external-labels: env=${ENV}
+        loki-relabel-config: |
+          - action: labeldrop
+            regex: filename
+    environment:
+      - BIND_ADDRESS=0.0.0.0:8080
+      - BASE_URL=https://${SERVICE}/
+      - MORTY_URL=https://${SERVICE}/morty/
+      - MORTY_KEY=${MORTY_PASSWD}
+
+networks:
+  proxy:
+    external: true

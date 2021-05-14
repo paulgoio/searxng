@@ -72,9 +72,9 @@ outgoing: # communication with search engines
 # uncomment below section if you want to use a proxy
 # see https://2.python-requests.org/en/latest/user/advanced/#proxies
 # SOCKS proxies are also supported: see https://2.python-requests.org/en/latest/user/advanced/#socks
-    proxies:
-        http: socks5://tor:9050
-        https: socks5://tor:9050
+#    proxies:
+#        http: socks5://tor:9050
+#        https: socks5://tor:9050
 #        http:
 #            - http://proxy1:8080
 #            - http://proxy2:8080
