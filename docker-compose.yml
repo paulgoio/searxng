@@ -17,7 +17,7 @@ services:
       driver: none
     labels:
       - traefik.enable=true
-      - traefik.http.routers.morty.rule=Host(`${SERVICE}`)&&PathPrefix(`/morty`)&&Method(`GET`,`HEAD`)
+      - traefik.http.routers.morty.rule=Host(`{SERVICE}`)&&PathPrefix(`/morty`)&&Method(`GET`,`HEAD`)
       - traefik.http.routers.morty.entrypoints=https
       - traefik.http.routers.morty.tls=true
       - traefik.http.routers.morty.middlewares=external-secure,morty-csp,searx-fp,searx-dynamic
@@ -53,12 +53,12 @@ services:
     labels:
       - traefik.enable=true
       # router for static files
-      - traefik.http.routers.searx-static.rule=Host(`${SERVICE}`)&&PathPrefix(`/static`)&&Method(`GET`,`HEAD`)
+      - traefik.http.routers.searx-static.rule=Host(`{SERVICE}`)&&PathPrefix(`/static`)&&Method(`GET`,`HEAD`)
       - traefik.http.routers.searx-static.entrypoints=https
       - traefik.http.routers.searx-static.tls=true
       - traefik.http.routers.searx-static.middlewares=external-secure,searx-csp@file,searx-fp,searx-static
       # router for dynamic files
-      - traefik.http.routers.searx.rule=Host(`${SERVICE}`)&&Method(`GET`,`POST`,`HEAD`)
+      - traefik.http.routers.searx.rule=Host(`{SERVICE}`)&&Method(`GET`,`POST`,`HEAD`)
       - traefik.http.routers.searx.entrypoints=https
       - traefik.http.routers.searx.tls=true
       - traefik.http.routers.searx.middlewares=external-secure,searx-csp@file,searx-fp,searx-dynamic
@@ -89,8 +89,8 @@ services:
             regex: filename
     environment:
       - BIND_ADDRESS=0.0.0.0:8080
-      - BASE_URL=https://${SERVICE}/
-      - MORTY_URL=https://${SERVICE}/morty/
+      - BASE_URL=https://{SERVICE}/
+      - MORTY_URL=https://{SERVICE}/morty/
       - MORTY_KEY=${MORTY_PASSWD}
 
 networks:
