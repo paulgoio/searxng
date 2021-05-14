@@ -39,7 +39,6 @@ services:
       - ALL
     depends_on:
       - searx
-      - tor
     networks:
       - default
       - proxy
