@@ -87,11 +87,6 @@ services:
         loki-relabel-config: |
           - action: labeldrop
             regex: filename
-    environment:
-      - BIND_ADDRESS=0.0.0.0:8080
-      - BASE_URL=https://{DOMAIN}/
-      - MORTY_URL=https://{DOMAIN}/morty/
-      - MORTY_KEY=${MORTY_PASSWD}
 
 networks:
   proxy:
