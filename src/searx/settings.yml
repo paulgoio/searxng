@@ -4,13 +4,13 @@ general:
     contact_url: False # mailto:contact@example.com
 
 brand:
-    git_url: https://github.com/searx/searx
+    git_url: https://github.com/MrPaulBlack/searx
     git_branch: master
-    issue_url: https://github.com/searx/searx/issues
+    issue_url: https://github.com/MrPaulBlack/searx/issues
     docs_url: https://searx.github.io/searx
     public_instances: https://searx.space
     wiki_url: https://github.com/searx/searx/wiki
-    twitter_url: https://twitter.com/Searx_engine
+    twitter_url: https://twitter.com/paul_braeuning
 
 search:
     safe_search : 1 # Filter results. 0: None, 1: Moderate, 2: Strict
@@ -23,7 +23,7 @@ server:
     port : 8080
     bind_address : "0.0.0.0" # address to listen on
     secret_key : "49d6698e58cd4e5034213a2ddecc9fbed367d17df40930da4dddbc33e8d55f42" # change this!
-    base_url : https://start.paulgo.io/ # Set custom base_url. Possible values: False or "https://your.custom.host/location/"
+    base_url : False # Set custom base_url. Possible values: False or "https://your.custom.host/location/"
     image_proxy : True # Proxying image results through searx
     http_protocol_version : "1.1"  # 1.0 and 1.1 are supported
     method: "POST" # POST queries are more secure as they don't show up in history but may cause problems when using Firefox containers
@@ -56,16 +56,13 @@ preferences:
       - method
 
 # searx supports result proxification using an external service: https://github.com/asciimoo/morty
-# uncomment below section if you have running morty proxy
-# the key is base64 encoded (keep the !!binary notation)
-# Note: since commit af77ec3, morty accepts a base64 encoded key.
-#result_proxy:
-#    url : http://127.0.0.1:3000/
-#    key : !!binary "your_morty_proxy_key"
+result_proxy:
+   url : https://start.paulgo.io/morty/
+   key : !!binary "tdGrePjX5DDia7QGXBkoRFE588CZqQM24zzclYzLG5qG"
 
 outgoing: # communication with search engines
     request_timeout : 3.0 # default timeout in seconds, can be override by engine
-    # max_request_timeout: 10.0 # the maximum timeout in seconds
+    max_request_timeout: 10.0 # the maximum timeout in seconds
     useragent_suffix : "" # suffix of searx_useragent, could contain informations like an email address to the administrator
     pool_connections : 100 # Number of different hosts
     pool_maxsize : 10 # Number of simultaneous requests by host
@@ -86,20 +83,6 @@ outgoing: # communication with search engines
 #    source_ips:
 #        - 1.1.1.1
 #        - 1.1.1.2
-
-# External plugin configuration
-# See http://searx.github.io/searx/dev/plugins.html for more details
-#
-# plugins:
-#   - plugin1
-#   - plugin2
-#   - ...
-
-# uncomment below section if you want to configure which plugin is enabled by default
-#
-# enabled_plugins:
-#   - "HTTPS rewrite"
-#   - ...
 
 checker:
     # disable checker when in debug mode
@@ -134,6 +117,7 @@ checker:
                   query: ["linux", "new york", "bbc"]
               result_container:
                   - has_infobox
+
 
 engines:
   - name: apk mirror
@@ -1414,8 +1398,3 @@ doi_resolvers :
   sci-hub.tw : 'https://sci-hub.tw/'
 
 default_doi_resolver : 'sci-hub.tw'
-
-# Morty configuration
-result_proxy:
-   url : https://start.paulgo.io/morty/
-   key : !!binary "tdGrePjX5DDia7QGXBkoRFE588CZqQM24zzclYzLG5qG"
