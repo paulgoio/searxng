@@ -87,6 +87,8 @@ services:
         loki-relabel-config: |
           - action: labeldrop
             regex: filename
+    environment:
+      - MORTY_KEY = ${MORTY_PASSWD}
 
 networks:
   proxy:
