@@ -20,6 +20,7 @@ services:
       - traefik.http.routers.morty.rule=Host(`{DOMAIN}`)&&PathPrefix(`/morty`)&&Method(`GET`,`HEAD`)
       - traefik.http.routers.morty.entrypoints=https
       - traefik.http.routers.morty.tls=true
+      - traefik.http.routers.morty.tls.options=tls12@file
       - traefik.http.routers.morty.middlewares=external-secure,morty-csp,searx-fp,searx-dynamic
       # CSP for morty
       - traefik.http.middlewares.morty-csp.headers.contentSecurityPolicy=default-src 'none'; style-src 'self' 'unsafe-inline'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'
@@ -56,11 +57,13 @@ services:
       - traefik.http.routers.searx-static.rule=Host(`{DOMAIN}`)&&PathPrefix(`/static`)&&Method(`GET`,`HEAD`)
       - traefik.http.routers.searx-static.entrypoints=https
       - traefik.http.routers.searx-static.tls=true
+      - traefik.http.routers.searx-static.tls.options=tls12@file
       - traefik.http.routers.searx-static.middlewares=external-secure,searx-csp@file,searx-fp,searx-static
       # router for dynamic files
       - traefik.http.routers.searx.rule=Host(`{DOMAIN}`)&&Method(`GET`,`POST`,`HEAD`)
       - traefik.http.routers.searx.entrypoints=https
       - traefik.http.routers.searx.tls=true
+      - traefik.http.routers.searx.tls.options=tls12@file
       - traefik.http.routers.searx.middlewares=external-secure,searx-csp@file,searx-fp,searx-dynamic
       # CSP for searx in dynamic config
       # feature policy for searx and morty
