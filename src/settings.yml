@@ -2,6 +2,7 @@ general:
     debug : False # Debug mode, only for development
     instance_name : "start.paulgo.io" # displayed name
     contact_url: mailto:paul+searx@paulgo.io
+    enable_stats: False # activate /stats page - note: it may leak usage data
 
 brand:
     git_url: https://github.com/MrPaulBlack/searx
@@ -22,7 +23,7 @@ search:
 server:
     port : 8080
     bind_address : "0.0.0.0" # address to listen on
-    secret_key : "49d6698e58cd4e5034213a2ddecc9fbed367d17df40930da4dddbc33e8d55f42" # change this!
+    secret_key : "ultrasecretkey" # change this!
     base_url : False # Set custom base_url. Possible values: False or "https://your.custom.host/location/"
     image_proxy : True # Proxying image results through searx
     http_protocol_version : "1.1"  # 1.0 and 1.1 are supported
@@ -58,7 +59,7 @@ preferences:
 # searx supports result proxification using an external service: https://github.com/asciimoo/morty
 result_proxy:
    url : https://start.paulgo.io/morty/
-   key : !!binary "tdGrePjX5DDia7QGXBkoRFE588CZqQM24zzclYzLG5qG"
+   key : !!binary "{MORTY_KEY}"
 
 outgoing: # communication with search engines
     request_timeout : 3.0 # default timeout in seconds, can be override by engine
@@ -738,12 +739,6 @@ engines:
     shortcut : nt
     disabled : True
 
-  - name : acgsou
-    engine : acgsou
-    shortcut : acg
-    disabled : True
-    timeout: 5.0
-
   - name : openairedatasets
     engine : json_engine
     paging : True
@@ -1000,11 +995,6 @@ engines:
   - name : yahoo
     engine : yahoo
     shortcut : yh
-    disabled : True
-
-  - name : yandex
-    engine : yandex
-    shortcut : yn
     disabled : True
 
   - name : yahoo news
