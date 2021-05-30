@@ -17,13 +17,12 @@ services:
       driver: none
     labels:
       - traefik.enable=true
-      - traefik.http.routers.morty.rule=Host(`{DOMAIN}`)&&PathPrefix(`/morty`)&&Method(`GET`,`HEAD`)
-      - traefik.http.routers.morty.entrypoints=https
-      - traefik.http.routers.morty.tls=true
-      - traefik.http.routers.morty.tls.options=tls12@file
-      - traefik.http.routers.morty.middlewares=external-secure,morty-csp,searx-fp,searx-dynamic
+      - traefik.http.routers.{REPO}-morty.rule=Host(`{DOMAIN}`)&&PathPrefix(`/morty`)&&Method(`GET`,`HEAD`)
+      - traefik.http.routers.{REPO}-morty.entrypoints=https
+      - traefik.http.routers.{REPO}-morty.tls=true
+      - traefik.http.routers.{REPO}-morty.middlewares=external-secure,{REPO}-morty-csp,{REPO}-fp,{REPO}-dynamic
       # CSP for morty
-      - traefik.http.middlewares.morty-csp.headers.contentSecurityPolicy=default-src 'none'; style-src 'self' 'unsafe-inline'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'
+      - traefik.http.middlewares.{REPO}-morty-csp.headers.contentSecurityPolicy=default-src 'none'; style-src 'self' 'unsafe-inline'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'
     environment:
       - MORTY_KEY=${MORTY_PASSWD}
       - MORTY_ADDRESS=0.0.0.0:3000
@@ -54,23 +53,21 @@ services:
     labels:
       - traefik.enable=true
       # router for static files
-      - traefik.http.routers.searx-static.rule=Host(`{DOMAIN}`)&&PathPrefix(`/static`)&&Method(`GET`,`HEAD`)
-      - traefik.http.routers.searx-static.entrypoints=https
-      - traefik.http.routers.searx-static.tls=true
-      - traefik.http.routers.searx-static.tls.options=tls12@file
-      - traefik.http.routers.searx-static.middlewares=external-secure,searx-csp@file,searx-fp,searx-static
+      - traefik.http.routers.{REPO}-static.rule=Host(`{DOMAIN}`)&&PathPrefix(`/static`)&&Method(`GET`,`HEAD`)
+      - traefik.http.routers.{REPO}-static.entrypoints=https
+      - traefik.http.routers.{REPO}-static.tls=true
+      - traefik.http.routers.{REPO}-static.middlewares=external-secure,searx-csp@file,{REPO}-fp,{REPO}-static
       # router for dynamic files
-      - traefik.http.routers.searx.rule=Host(`{DOMAIN}`)&&Method(`GET`,`POST`,`HEAD`)
-      - traefik.http.routers.searx.entrypoints=https
-      - traefik.http.routers.searx.tls=true
-      - traefik.http.routers.searx.tls.options=tls12@file
-      - traefik.http.routers.searx.middlewares=external-secure,searx-csp@file,searx-fp,searx-dynamic
+      - traefik.http.routers.{REPO}.rule=Host(`{DOMAIN}`)&&Method(`GET`,`POST`,`HEAD`)
+      - traefik.http.routers.{REPO}.entrypoints=https
+      - traefik.http.routers.{REPO}.tls=true
+      - traefik.http.routers.{REPO}.middlewares=external-secure,searx-csp@file,{REPO}-fp,{REPO}-dynamic
       # CSP for searx in dynamic config
       # feature policy for searx and morty
-      - traefik.http.middlewares.searx-fp.headers.featurePolicy=accelerometer 'none';ambient-light-sensor 'none'; autoplay 'none';camera 'none';encrypted-media 'none';focus-without-user-activation 'none'; geolocation 'none';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'none';picture-in-picture 'none'; speaker 'none';sync-xhr 'none';usb 'none';vr 'none'
+      - traefik.http.middlewares.{REPO}-fp.headers.featurePolicy=accelerometer 'none';ambient-light-sensor 'none'; autoplay 'none';camera 'none';encrypted-media 'none';focus-without-user-activation 'none'; geolocation 'none';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'none';picture-in-picture 'none'; speaker 'none';sync-xhr 'none';usb 'none';vr 'none'
       # cache control dynamic and static
-      - traefik.http.middlewares.searx-static.headers.customResponseHeaders.Cache-Control=public, max-age=31536000
-      - traefik.http.middlewares.searx-dynamic.headers.customResponseHeaders.Cache-Control=no-cache
+      - traefik.http.middlewares.{REPO}-static.headers.customResponseHeaders.Cache-Control=public, max-age=31536000
+      - traefik.http.middlewares.{REPO}-dynamic.headers.customResponseHeaders.Cache-Control=no-cache
 
   searx:
     image: mrpaulblack/searx:latest
