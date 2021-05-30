@@ -41,13 +41,7 @@ services:
       - default
       - proxy
     logging:
-      driver: loki
-      options:
-        loki-url: "${LOKI_URL}"
-        loki-external-labels: env=${ENV}
-        loki-relabel-config: |
-          - action: labeldrop
-            regex: filename
+      driver: none
     labels:
       - traefik.enable=true
       # router for static files
