@@ -24,7 +24,7 @@ services:
       # CSP for morty
       - traefik.http.middlewares.{REPO}-morty-csp.headers.contentSecurityPolicy=default-src 'none'; style-src 'self' 'unsafe-inline'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'
     environment:
-      - MORTY_KEY=${MORTY_PASSWD}
+      - MORTY_KEY={KEY1}
       - MORTY_ADDRESS=0.0.0.0:3000
       - DEBUG=false
 
@@ -88,7 +88,7 @@ services:
           - action: labeldrop
             regex: filename
     environment:
-      - MORTY_KEY=${MORTY_PASSWD}
+      - MORTY_KEY={KEY1}
 
 networks:
   proxy:
