@@ -62,7 +62,7 @@ services:
       - traefik.http.middlewares.{REPO}-dynamic.headers.customResponseHeaders.Cache-Control=no-cache
 
   searx:
-    image: mrpaulblack/searx:latest
+    image: paulgoio/searx:latest
     restart: always
     cap_drop:
       - ALL
