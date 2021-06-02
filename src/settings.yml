@@ -5,9 +5,9 @@ general:
     enable_stats: False # activate /stats page - note: it may leak usage data
 
 brand:
-    git_url: https://github.com/MrPaulBlack/searx
+    git_url: https://github.com/paulgoio/searx
     git_branch: master
-    issue_url: https://github.com/MrPaulBlack/searx/issues
+    issue_url: https://github.com/paulgoio/searx/issues
     docs_url: https://searx.github.io/searx
     public_instances: https://searx.space
     wiki_url: https://github.com/searx/searx/wiki
