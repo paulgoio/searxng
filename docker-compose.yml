@@ -29,11 +29,9 @@ services:
       - DEBUG=false
 
   filtron:
-    image: dalf/filtron:latest
+    image: paulgoio/filtron:latest
     restart: always
     command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8080
-    volumes:
-      - ./rules.json:/etc/filtron/rules.json:rw,z
     read_only: true
     cap_drop:
       - ALL
