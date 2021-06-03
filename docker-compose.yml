@@ -29,7 +29,7 @@ services:
       - DEBUG=false
 
   filtron:
-    image: image: dalf/filtron:latest
+    image: dalf/filtron:latest
     restart: always
     command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8080
     volumes:
