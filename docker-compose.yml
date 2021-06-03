@@ -29,9 +29,11 @@ services:
       - DEBUG=false
 
   filtron:
-    image: spcodes/filtron:latest
+    image: image: dalf/filtron:latest
     restart: always
     command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8080
+    volumes:
+      - ./rules.json:/etc/filtron/rules.json:rw,z
     read_only: true
     cap_drop:
       - ALL
@@ -41,7 +43,13 @@ services:
       - default
       - proxy
     logging:
-      driver: none
+      driver: loki
+      options:
+        loki-url: "${LOKI_URL}"
+        loki-external-labels: env=${ENV}
+        loki-relabel-config: |
+          - action: labeldrop
+            regex: filename
     labels:
       - traefik.enable=true
       # router for static files
