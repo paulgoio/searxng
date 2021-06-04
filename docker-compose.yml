@@ -31,7 +31,7 @@ services:
   filtron:
     image: paulgoio/filtron:latest
     restart: always
-    command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8888
+    command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8080
     read_only: true
     cap_drop:
       - ALL
