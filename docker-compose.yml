@@ -31,7 +31,7 @@ services:
   filtron:
     image: paulgoio/filtron:latest
     restart: always
-    command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8080
+    command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8888
     read_only: true
     cap_drop:
       - ALL
@@ -88,6 +88,9 @@ services:
     environment:
       - MORTY_KEY={KEY1}
       - DOMAIN={DOMAIN}
+      - CONTACT=mailto:paul+searx@paulgo.io
+      - TWITTER=paul_braeuning
+      - GIT_URL=https://github.com/paulgoio/searx
 
 networks:
   proxy:
