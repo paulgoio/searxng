@@ -1,8 +1,8 @@
 general:
     debug : False # Debug mode, only for development
-    instance_name : "start.paulgo.io" # displayed name
+    instance_name : "{DOMAIN}" # displayed name
     contact_url: mailto:paul+searx@paulgo.io
-    enable_stats: False # activate /stats page - note: it may leak usage data
+    enable_stats: True # activate /stats page - note: it may leak usage data
 
 brand:
     git_url: https://github.com/paulgoio/searx
@@ -24,7 +24,7 @@ server:
     port : 8080
     bind_address : "0.0.0.0" # address to listen on
     secret_key : "ultrasecretkey" # change this!
-    base_url : False # Set custom base_url. Possible values: False or "https://your.custom.host/location/"
+    base_url : https://{DOMAIN}/ # Set custom base_url. Possible values: False or "https://your.custom.host/location/"
     image_proxy : True # Proxying image results through searx
     http_protocol_version : "1.1"  # 1.0 and 1.1 are supported
     method: "POST" # POST queries are more secure as they don't show up in history but may cause problems when using Firefox containers
@@ -54,11 +54,10 @@ preferences:
     lock:
 #      - language
       - autocomplete
-      - method
 
 # searx supports result proxification using an external service: https://github.com/asciimoo/morty
 result_proxy:
-   url : https://start.paulgo.io/morty/
+   url : https://{DOMAIN}/morty/
    key : !!binary "{MORTY_KEY}"
 
 outgoing: # communication with search engines

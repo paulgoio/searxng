@@ -87,6 +87,7 @@ services:
             regex: filename
     environment:
       - MORTY_KEY={KEY1}
+      - DOMAIN={DOMAIN}
 
 networks:
   proxy:

@@ -3,7 +3,7 @@ FROM alpine:latest
 ARG UID=991 GID=991
 RUN addgroup -g ${GID} searx && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx
 
-ENV MORTY_KEY=""
+ENV MORTY_KEY="" DOMAIN=""
 
 WORKDIR /usr/local/searx
 

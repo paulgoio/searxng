@@ -3,6 +3,7 @@
 #change settings based on env
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 -e "s/{MORTY_KEY}/${MORTY_KEY}/g" \
+-e "s/{DOMAIN}/${DOMAIN}/g" \
 searx/settings.yml
 
 # chown log dir on runtime
