@@ -35,6 +35,21 @@ sed -i -e "/enable_stats:/s/False/True/g" \
 -e "/X-XSS-Protection : 1; mode=block/d" \
 -e "/Referrer-Policy : no-referrer/d" \
 -e "/default_theme :/s/oscar/simple/g" \
+-e "/name : torrentz/s/$/\n    disabled : True/g" \
+-e "/name : btdigg/s/$/\n    disabled : True/g" \
+-e "/name : stackoverflow/s/$/\n    disabled : True/g" \
+-e "/name : digg/s/$/\n    disabled : True/g" \
+-e "/name : piratebay/s/$/\n    disabled : True/g" \
+-e "/name: bandcamp/s/$/\n    disabled : True/g" \
+-e "/name : deviantart/s/$/\n    disabled : True/g" \
+-e "/name : vimeo/s/$/\n    disabled : True/g" \
+-e "/name : openairepublications/s/$/\n    disabled : True/g" \
+-e "/name: wikimini/s/$/\n    disabled : True/g" \
+-e "/name : wikidata/s/$/\n    disabled : True/g" \
+-e "/name : google/s/$/\n    disabled : True/g" \
+-e "/shortcut : fd/{n;s/.*/    disabled : False/}" \
+-e "/shortcut: apkm/{n;s/.*/    disabled : False/}" \
+-e "/shortcut : ddg/{n;s/.*/    disabled : False/}" \
 searx/settings.yml; \
 su searx -c "/usr/bin/python3 -m compileall -q searx"; \
 find /usr/local/searx/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' \
