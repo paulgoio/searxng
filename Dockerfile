@@ -47,6 +47,7 @@ sed -i -e "/enable_stats:/s/False/True/g" \
 -e "/name: wikimini/s/$/\n    disabled : True/g" \
 -e "/name : wikidata/s/$/\n    disabled : True/g" \
 -e "/name : google/s/$/\n    disabled : True/g" \
+-e "/name : library of congress/s/$/\n    disabled : True/g" \
 -e "/shortcut : fd/{n;s/.*/    disabled : False/}" \
 -e "/shortcut: apkm/{n;s/.*/    disabled : False/}" \
 -e "/shortcut : ddg/{n;s/.*/    disabled : False/}" \
