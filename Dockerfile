@@ -33,6 +33,7 @@ sed -i -e "/enable_stats:/s/False/True/g" \
 -e "/http_protocol_version :/s/1.0/1.1/g" \
 -e "/X-Content-Type-Options : nosniff/d" \
 -e "/X-XSS-Protection : 1; mode=block/d" \
+-e "/X-Robots-Tag : noindex, nofollow/d" \
 -e "/Referrer-Policy : no-referrer/d" \
 -e "/default_theme :/s/oscar/simple/g" \
 -e "/name : torrentz/s/$/\n    disabled : True/g" \

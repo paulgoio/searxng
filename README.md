@@ -1,6 +1,6 @@
 # Searx
 
-builds custom searx container with a changed simple theme and settings.yml 
+builds custom searx container with a changed simple theme and settings.yml; This project builds on top of https://github.com/searx/searx.
 
 Check out https://start.paulgo.io for a deployed server with this container
 
