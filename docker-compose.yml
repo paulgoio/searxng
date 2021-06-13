@@ -44,7 +44,7 @@ services:
       driver: loki
       options:
         loki-url: "${LOKI_URL}"
-        loki-external-labels: env=${ENV}
+        loki-external-labels: env={ENV}
         loki-relabel-config: |
           - action: labeldrop
             regex: filename
@@ -81,7 +81,7 @@ services:
       driver: loki
       options:
         loki-url: "${LOKI_URL}"
-        loki-external-labels: env=${ENV}
+        loki-external-labels: env={ENV}
         loki-relabel-config: |
           - action: labeldrop
             regex: filename
