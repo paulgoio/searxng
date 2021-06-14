@@ -29,7 +29,7 @@ services:
       - DEBUG=false
 
   filtron:
-    image: paulgoio/filtron:latest
+    image: paulgoio/filtron:production
     restart: always
     command: -listen 0.0.0.0:3000 -api 0.0.0.0:4041 -target searx:8080
     read_only: true
@@ -68,7 +68,7 @@ services:
       - traefik.http.middlewares.{REPO}-dynamic.headers.customResponseHeaders.Cache-Control=no-cache
 
   searx:
-    image: paulgoio/searx:latest
+    image: paulgoio/searx:{ENV}
     restart: always
     cap_drop:
       - ALL

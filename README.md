@@ -20,7 +20,7 @@ Check out https://start.paulgo.io for a deployed server with this container
 
 ### Basic Example
 
-* ```docker run -it --rm --name paulgoio_searx -p 8080:8080 paulgoio/searx:latest```
+* ```docker run -it --rm --name paulgoio_searx -p 8080:8080 paulgoio/searx:production```
 
 * After that just visit http://127.0.0.1:8080 in your browser and stop the server with ctrl-c
 
