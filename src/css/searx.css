@@ -2068,7 +2068,7 @@ article.result-images[data-vim-selected]::before {
   }
   #suggestions,
   #answers {
-    margin-top: 1em;
+    margin: 0.75em 0.5em;
   }
   #infoboxes {
     position: inherit;
