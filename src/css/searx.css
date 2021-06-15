@@ -1939,10 +1939,11 @@ article.result-images[data-vim-selected]::before {
   color: #444;
 }
 #answers {
-  margin: 10px 8px 10px 8px;
+  margin: 10px 8px 10px 8em;
   border: 1px solid #ddd;
   padding: 0.9em;
-  box-shadow: 0px 0px 5px #CCC;
+  border-radius: 10px;
+  color: #222;
 }
 #answers h4 {
   display: none;
