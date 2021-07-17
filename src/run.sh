@@ -2,36 +2,32 @@
 
 # morty config based on morty_key and domain
 if [ ! -z "${MORTY_KEY}" ]; then
-    sed -i -e "/image_proxy :/s/False/True/g" \
-    -e "s/#result_proxy:/result_proxy:/g" \
-    -e "s+#    url : http://127.0.0.1:3000/+    url : https://${DOMAIN}/morty/+g" \
-    -e "s/#    key : !!binary \"your_morty_proxy_key\"/    key : !!binary \"${MORTY_KEY}\"/g" \
+    sed -i -e "/image_proxy:/s/false/true/g" \
+    -e "s/# result_proxy:/result_proxy:/g" \
+    -e "s+#   url: http://127.0.0.1:3000/+  url : https://${DOMAIN}/morty/+g" \
+    -e "s/#   key: !!binary \"your_morty_proxy_key\"/  key : !!binary \"${MORTY_KEY}\"/g" \
+    -e "s/#   proxify_results: true/  proxify_results: false/g" \
     searx/settings.yml;
 fi
 
 # set base_url and instance_name if DOMAIN is not empty
 if [ ! -z "${DOMAIN}" ]; then
-    sed -i -e "s+base_url : False+base_url : \"https://${DOMAIN}/\"+g" \
-    -e "/instance_name :/s/searx/${DOMAIN}/g" \
+    sed -i -e "s+base_url: false+base_url: \"https://${DOMAIN}/\"+g" \
+    -e "/instance_name:/s/searxng/${DOMAIN}/g" \
     searx/settings.yml;
 fi
 
 # set contact url
 if [ ! -z "${CONTACT}" ]; then
-    sed -i -e "/contact_url:/s/False/${CONTACT}/g" \
+    sed -i -e "/contact_url:/s/false/${CONTACT}/g" \
     searx/settings.yml;
 fi
 
 # set git and git issue url
 if [ ! -z "${GIT_URL}" ]; then
-    sed -i -e "s+git_url: https://github.com/searx/searx+git_url: ${GIT_URL}+g" \
-    -e "s+issue_url: https://github.com/searx/searx/issues+issue_url: ${GIT_URL}/issues+g" \
-    searx/settings.yml;
-fi
-
-# set twitter url
-if [ ! -z "${TWITTER}" ]; then
-    sed -i -e "s+twitter_url: https://twitter.com/Searx_engine+twitter_url: https://twitter.com/${TWITTER}+g" \
+    sed -i -e "s+git_url: https://github.com/searxng/searxng+git_url: ${GIT_URL}+g" \
+    -e "s+issue_url: https://github.com/searxng/searxng/issues+issue_url: ${GIT_URL}/issues+g" \
+    -e "s+new_issue_url: https://github.com/searxng/searxng/issues/new+new_issue_url: ${GIT_URL}/issues/new+g" \
     searx/settings.yml;
 fi
 

@@ -1,7 +1,7 @@
-FROM alpine:latest
+FROM alpine:3.14
 
 # GIUD and UID for searx user and optional settings
-ENV UID=991 GID=991 MORTY_KEY= DOMAIN= CONTACT= GIT_URL= TWITTER=
+ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= GIT_URL= TWITTER=
 
 # setup searx user and workdir
 RUN addgroup -g ${GID} searx && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx
@@ -11,7 +11,7 @@ WORKDIR /usr/local/searx
 RUN apk -U upgrade \
  && apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev tar git \
  && apk add --no-cache ca-certificates su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
- && git clone https://github.com/searx/searx.git . \
+ && git clone https://github.com/searxng/searxng.git . \
  && chown -R searx:searx ../searx \
  && pip install --upgrade pip \
  && pip install --no-cache -r requirements.txt \
@@ -26,29 +26,28 @@ COPY ./src/run.sh /usr/local/bin/run.sh
 
 #make run.sh executable, set default settings, precompile searx files
 RUN chmod +x /usr/local/bin/run.sh; \
-sed -i -e "/enable_stats:/s/False/True/g" \
--e "/safe_search :/s/0/1/g" \
--e "/port :/s/8888/8080/g" \
--e "/bind_address :/s/127.0.0.1/0.0.0.0/g" \
--e "/http_protocol_version :/s/1.0/1.1/g" \
--e "/X-Content-Type-Options : nosniff/d" \
--e "/X-XSS-Protection : 1; mode=block/d" \
--e "/X-Robots-Tag : noindex, nofollow/d" \
--e "/Referrer-Policy : no-referrer/d" \
--e "/default_theme :/s/oscar/simple/g" \
--e "/name : torrentz/s/$/\n    disabled : True/g" \
--e "/name : btdigg/s/$/\n    disabled : True/g" \
--e "/name : stackoverflow/s/$/\n    disabled : True/g" \
--e "/name : digg/s/$/\n    disabled : True/g" \
--e "/name : piratebay/s/$/\n    disabled : True/g" \
--e "/name: bandcamp/s/$/\n    disabled : True/g" \
--e "/name : deviantart/s/$/\n    disabled : True/g" \
--e "/name : vimeo/s/$/\n    disabled : True/g" \
--e "/name : openairepublications/s/$/\n    disabled : True/g" \
--e "/name: wikimini/s/$/\n    disabled : True/g" \
--e "/name : wikidata/s/$/\n    disabled : True/g" \
--e "/name : library of congress/s/$/\n    disabled : True/g" \
--e "/name : google images/s/$/\n    disabled : True/g" \
+sed -i -e "/safe_search:/s/0/1/g" \
+-e "/port:/s/8888/8080/g" \
+-e "/bind_address:/s/127.0.0.1/0.0.0.0/g" \
+-e "/http_protocol_version:/s/1.0/1.1/g" \
+-e "/X-Content-Type-Options: nosniff/d" \
+-e "/X-XSS-Protection: 1; mode=block/d" \
+-e "/X-Robots-Tag: noindex, nofollow/d" \
+-e "/Referrer-Policy: no-referrer/d" \
+-e "/default_theme:/s/oscar/simple/g" \
+-e "/name: btdigg/s/$/\n    disabled: true/g" \
+-e "/name: stackoverflow/s/$/\n    disabled: true/g" \
+-e "/name: digg/s/$/\n    disabled: true/g" \
+-e "/name: piratebay/s/$/\n    disabled: true/g" \
+-e "/name: bandcamp/s/$/\n    disabled: true/g" \
+-e "/name: deviantart/s/$/\n    disabled: true/g" \
+-e "/name: vimeo/s/$/\n    disabled: true/g" \
+-e "/name: openairepublications/s/$/\n    disabled: true/g" \
+-e "/name: wikidata/s/$/\n    disabled: true/g" \
+-e "/name: library of congress/s/$/\n    disabled: true/g" \
+-e "/name: currency/s/$/\n    disabled: true/g" \
+-e "/name: dictzone/s/$/\n    disabled: true/g" \
+-e "/name: google images/s/$/\n    disabled: true/g" \
 -e "/shortcut : fd/{n;s/.*/    disabled : False/}" \
 -e "/shortcut: apkm/{n;s/.*/    disabled : False/}" \
 -e "/shortcut : ddg/{n;s/.*/    disabled : False/}" \

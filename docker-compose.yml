@@ -89,7 +89,6 @@ services:
       - MORTY_KEY={KEY1}
       - DOMAIN={DOMAIN}
       - CONTACT=mailto:paul+searx@paulgo.io
-      - TWITTER=paul_braeuning
       - GIT_URL=https://github.com/paulgoio/searx
 
 networks:
