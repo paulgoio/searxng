@@ -52,6 +52,8 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: artic/s/$/\n    disabled: true/g" \
 -e "/name: flickr/s/$/\n    disabled: true/g" \
 -e "/name: unsplash/s/$/\n    disabled: true/g" \
+-e "/name: deezer/s/$/\n    disabled: true/g" \
+-e "/name: gentoo/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: apkm/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
