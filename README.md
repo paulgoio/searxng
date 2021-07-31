@@ -13,7 +13,7 @@ Check out https://start.paulgo.io for a deployed server with this container
 
 * ```CONTACT``` : set instance maintainer contact (for example `mailto:user@example.org`)
 
-* ```GIT_URL``` : set git and issue url for custom searx repo (for example `https://github.com/paulgoio/searx` !Without trailing /)
+* ```ISSUE_URL``` : set issue url for custom searx repo (for example `https://github.com/paulgoio/searx/issues` !Without trailing /)
 
 
 ### Basic Example

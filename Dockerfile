@@ -1,25 +1,26 @@
 FROM alpine:3.14
 
 # GIUD and UID for searx user and optional settings
-ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= GIT_URL= TWITTER=
+ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= ISSUE_URL= TWITTER=
 
 # setup searx user and workdir
 RUN addgroup -g ${GID} searx && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx
 WORKDIR /usr/local/searx
+COPY --chown=searx:searx src/searx ./searx
+COPY --chown=searx:searx src/uwsgi.ini /etc/uwsgi/
+COPY --chown=searx:searx requirements.txt .
 
 # install build deps and git clone searx
 RUN apk -U upgrade \
  && apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev tar git \
  && apk add --no-cache ca-certificates su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
- && git clone https://github.com/searxng/searxng.git . \
- && chown -R searx:searx ../searx \
  && pip install --upgrade pip \
  && pip install --no-cache -r requirements.txt \
  && apk del build-dependencies \
  && rm -rf /var/cache/apk/* /root/.cache
 
 # copy custom simple themes and run.sh
-RUN rm -rf searx/static/themes/simple/css/* && rm -rf searx/static/themes/simple/img/* && rm -rf /etc/uwsgi/uwsgi.ini && cp -v dockerfiles/uwsgi.ini /etc/uwsgi/
+RUN rm -rf searx/static/themes/simple/css/* && rm -rf searx/static/themes/simple/img/*
 COPY ./src/css searx/static/themes/simple/css
 COPY ./src/img searx/static/themes/simple/img
 COPY ./src/run.sh /usr/local/bin/run.sh

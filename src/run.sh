@@ -23,11 +23,10 @@ if [ ! -z "${CONTACT}" ]; then
     searx/settings.yml;
 fi
 
-# set git and git issue url
-if [ ! -z "${GIT_URL}" ]; then
-    sed -i -e "s+git_url: https://github.com/searxng/searxng+git_url: ${GIT_URL}+g" \
-    -e "s+issue_url: https://github.com/searxng/searxng/issues+issue_url: ${GIT_URL}/issues+g" \
-    -e "s+new_issue_url: https://github.com/searxng/searxng/issues/new+new_issue_url: ${GIT_URL}/issues/new+g" \
+# set issue url
+if [ ! -z "${ISSUE_URL}" ]; then
+    sed -i -e "s+issue_url: https://github.com/searxng/searxng/issues+issue_url: ${GIT_URL}+g" \
+    -e "s+new_issue_url: https://github.com/searxng/searxng/issues/new+new_issue_url: ${GIT_URL}/new+g" \
     searx/settings.yml;
 fi
 

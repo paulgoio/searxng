@@ -89,7 +89,7 @@ services:
       - MORTY_KEY={KEY1}
       - DOMAIN={DOMAIN}
       - CONTACT=mailto:paul+searx@paulgo.io
-      - GIT_URL=https://github.com/paulgoio/searx
+      - ISSUE_URL=https://github.com/paulgoio/searx/issues
 
 networks:
   proxy:
