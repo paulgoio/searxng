@@ -8,7 +8,7 @@ RUN addgroup -g ${GID} searx && adduser -u ${UID} -D -h /usr/local/searx -s /bin
 WORKDIR /usr/local/searx
 COPY --chown=searx:searx src/searx ./searx
 COPY --chown=searx:searx src/uwsgi.ini /etc/uwsgi/
-COPY --chown=searx:searx requirements.txt .
+COPY --chown=searx:searx src/requirements.txt .
 
 # install build deps and git clone searx
 RUN apk -U upgrade \
