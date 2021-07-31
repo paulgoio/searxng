@@ -6,9 +6,8 @@ ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= ISSUE_URL= TWITTER=
 # setup searx user and workdir
 RUN addgroup -g ${GID} searx && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx
 WORKDIR /usr/local/searx
-COPY --chown=searx:searx src/searx ./searx
+COPY --chown=searx:searx src/searx .
 COPY --chown=searx:searx src/uwsgi.ini /etc/uwsgi/
-COPY --chown=searx:searx src/requirements.txt .
 
 # install build deps and git clone searx
 RUN apk -U upgrade \
