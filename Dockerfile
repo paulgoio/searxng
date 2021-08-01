@@ -7,7 +7,6 @@ ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= ISSUE_URL= TWITTER=
 RUN addgroup -g ${GID} searx && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx
 WORKDIR /usr/local/searx
 COPY --chown=searx:searx src/searxng .
-COPY --chown=searx:searx src/uwsgi.ini /etc/uwsgi/
 
 # install build deps and git clone searx
 RUN apk -U upgrade \
@@ -19,7 +18,7 @@ RUN apk -U upgrade \
  && rm -rf /var/cache/apk/* /root/.cache
 
 # copy custom simple themes and run.sh
-RUN rm -rf searx/static/themes/simple/css/* && rm -rf searx/static/themes/simple/img/*
+RUN rm -rf searx/static/themes/simple/css/* && rm -rf searx/static/themes/simple/img/* && cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/
 COPY ./src/css searx/static/themes/simple/css
 COPY ./src/img searx/static/themes/simple/img
 COPY ./src/run.sh /usr/local/bin/run.sh
