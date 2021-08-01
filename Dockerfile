@@ -1,3 +1,4 @@
+# minify css files
 FROM tdewolff/minify:latest as builder
 COPY src/css /css
 RUN cd /css && minify searx.css -o searx.min.css && minify searx-rtl.css -o searx-rtl.min.css
