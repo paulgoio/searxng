@@ -1,3 +1,9 @@
+FROM tdewolff/minify:latest as builder
+COPY src/css /css
+RUN cd /css && minify searx.css -o searx.min.css && minify searx-rtl.css -o searx-rtl.min.css
+
+
+
 FROM alpine:3.14
 
 # GIUD and UID for searx user and optional settings
@@ -19,9 +25,8 @@ RUN apk -U upgrade \
  && rm -rf /var/cache/apk/* /root/.cache
 
 # copy custom simple themes and run.sh
-RUN rm -rf searx/static/themes/simple/css/* && rm -rf searx/static/themes/simple/img/* && cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/
-COPY ./src/css searx/static/themes/simple/css
-COPY ./src/img searx/static/themes/simple/img
+RUN rm -rf searx/static/themes/simple/css/searx.min.css.map && rm -rf searx/static/themes/simple/css/searx-rtl.min.css.map && cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/
+COPY --from=builder /css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
 
 #make run.sh executable, set default settings, precompile searx files

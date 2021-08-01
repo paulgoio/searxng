@@ -1,16 +1,389 @@
-/*! searx | 06-08-2019 | https://github.com/asciimoo/searx */
 /*
 * searx, A privacy-respecting, hackable metasearch engine
 *
 * To convert "style.less" to "style.css" run: $make styles
 */
-/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+.github-issue-button {
+  display: block;
+  padding: 8px 16px;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+  background-color: #238636 !important;
+  /* important is needed cause to an !important in logicodev-dark */
+  border: #2ea043;
+  border-radius: 10px !important;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+.github-issue-button:hover {
+  background-color: #2ea043;
+}
+.issue-hide {
+  display: none;
+}
+.engine-stats .engine-name {
+  width: 20rem;
+}
+.engine-stats .engine-score {
+  width: 7rem;
+  text-align: right;
+}
+.engine-stats .engine-reliability {
+  text-align: right;
+}
+.engine-stats table.engine-error {
+  max-width: 1280px;
+  margin: 1rem;
+  border: 1px solid gray;
+}
+.engine-stats table.engine-error th.engine-error-type,
+.engine-stats table.engine-error td.engine-error-type,
+.engine-stats failed-test {
+  width: 10rem;
+}
+.engine-stats table.engine-error span.log_parameters {
+  border-right: 1px solid gray;
+  padding: 0 1rem 0 0;
+  margin: 0 0 0 0.5rem;
+}
+.bar-chart-value {
+  width: 3em;
+  display: inline-block;
+  text-align: right;
+  padding-right: 0.5rem;
+}
+.bar-chart-graph {
+  width: calc(100% - 5rem);
+  display: inline-block;
+}
+.bar-chart-bar {
+  border: 3px solid #5bc0de;
+  margin: 1px 0;
+}
+.bar-chart-serie1 {
+  border: 3px solid #5bc0de;
+  margin: 1px 0;
+  float: left;
+}
+.bar-chart-serie2 {
+  border: 3px solid #deb15b;
+  margin: 1px 0;
+  float: left;
+}
+.bar0 {
+  width: 0;
+  border: 0;
+}
+.bar1 {
+  width: 1%;
+}
+.bar2 {
+  width: 2%;
+}
+.bar3 {
+  width: 3%;
+}
+.bar4 {
+  width: 4%;
+}
+.bar5 {
+  width: 5%;
+}
+.bar6 {
+  width: 6%;
+}
+.bar7 {
+  width: 7%;
+}
+.bar8 {
+  width: 8%;
+}
+.bar9 {
+  width: 9%;
+}
+.bar10 {
+  width: 10%;
+}
+.bar11 {
+  width: 11%;
+}
+.bar12 {
+  width: 12%;
+}
+.bar13 {
+  width: 13%;
+}
+.bar14 {
+  width: 14%;
+}
+.bar15 {
+  width: 15%;
+}
+.bar16 {
+  width: 16%;
+}
+.bar17 {
+  width: 17%;
+}
+.bar18 {
+  width: 18%;
+}
+.bar19 {
+  width: 19%;
+}
+.bar20 {
+  width: 20%;
+}
+.bar21 {
+  width: 21%;
+}
+.bar22 {
+  width: 22%;
+}
+.bar23 {
+  width: 23%;
+}
+.bar24 {
+  width: 24%;
+}
+.bar25 {
+  width: 25%;
+}
+.bar26 {
+  width: 26%;
+}
+.bar27 {
+  width: 27%;
+}
+.bar28 {
+  width: 28%;
+}
+.bar29 {
+  width: 29%;
+}
+.bar30 {
+  width: 30%;
+}
+.bar31 {
+  width: 31%;
+}
+.bar32 {
+  width: 32%;
+}
+.bar33 {
+  width: 33%;
+}
+.bar34 {
+  width: 34%;
+}
+.bar35 {
+  width: 35%;
+}
+.bar36 {
+  width: 36%;
+}
+.bar37 {
+  width: 37%;
+}
+.bar38 {
+  width: 38%;
+}
+.bar39 {
+  width: 39%;
+}
+.bar40 {
+  width: 40%;
+}
+.bar41 {
+  width: 41%;
+}
+.bar42 {
+  width: 42%;
+}
+.bar43 {
+  width: 43%;
+}
+.bar44 {
+  width: 44%;
+}
+.bar45 {
+  width: 45%;
+}
+.bar46 {
+  width: 46%;
+}
+.bar47 {
+  width: 47%;
+}
+.bar48 {
+  width: 48%;
+}
+.bar49 {
+  width: 49%;
+}
+.bar50 {
+  width: 50%;
+}
+.bar51 {
+  width: 51%;
+}
+.bar52 {
+  width: 52%;
+}
+.bar53 {
+  width: 53%;
+}
+.bar54 {
+  width: 54%;
+}
+.bar55 {
+  width: 55%;
+}
+.bar56 {
+  width: 56%;
+}
+.bar57 {
+  width: 57%;
+}
+.bar58 {
+  width: 58%;
+}
+.bar59 {
+  width: 59%;
+}
+.bar60 {
+  width: 60%;
+}
+.bar61 {
+  width: 61%;
+}
+.bar62 {
+  width: 62%;
+}
+.bar63 {
+  width: 63%;
+}
+.bar64 {
+  width: 64%;
+}
+.bar65 {
+  width: 65%;
+}
+.bar66 {
+  width: 66%;
+}
+.bar67 {
+  width: 67%;
+}
+.bar68 {
+  width: 68%;
+}
+.bar69 {
+  width: 69%;
+}
+.bar70 {
+  width: 70%;
+}
+.bar71 {
+  width: 71%;
+}
+.bar72 {
+  width: 72%;
+}
+.bar73 {
+  width: 73%;
+}
+.bar74 {
+  width: 74%;
+}
+.bar75 {
+  width: 75%;
+}
+.bar76 {
+  width: 76%;
+}
+.bar77 {
+  width: 77%;
+}
+.bar78 {
+  width: 78%;
+}
+.bar79 {
+  width: 79%;
+}
+.bar80 {
+  width: 80%;
+}
+.bar81 {
+  width: 81%;
+}
+.bar82 {
+  width: 82%;
+}
+.bar83 {
+  width: 83%;
+}
+.bar84 {
+  width: 84%;
+}
+.bar85 {
+  width: 85%;
+}
+.bar86 {
+  width: 86%;
+}
+.bar87 {
+  width: 87%;
+}
+.bar88 {
+  width: 88%;
+}
+.bar89 {
+  width: 89%;
+}
+.bar90 {
+  width: 90%;
+}
+.bar91 {
+  width: 91%;
+}
+.bar92 {
+  width: 92%;
+}
+.bar93 {
+  width: 93%;
+}
+.bar94 {
+  width: 94%;
+}
+.bar95 {
+  width: 95%;
+}
+.bar96 {
+  width: 96%;
+}
+.bar97 {
+  width: 97%;
+}
+.bar98 {
+  width: 98%;
+}
+.bar99 {
+  width: 99%;
+}
+.bar100 {
+  width: 100%;
+}
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
 /* Document
    ========================================================================== */
+   
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+
 html {
   line-height: 1.5;
   /* 1 */
@@ -19,28 +392,44 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 /* Sections
    ========================================================================== */
+
 /**
  * Remove the margin in all browsers.
  */
+
 body {
   margin: 0;
 }
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+
+ main {
+  display: block;
+}
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
+
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+
 /* Grouping content
    ========================================================================== */
+
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
+
 hr {
   box-sizing: content-box;
   /* 1 */
@@ -49,28 +438,35 @@ hr {
   overflow: visible;
   /* 2 */
 }
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 pre {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
 }
+
 /* Text-level semantics
    ========================================================================== */
+
 /**
  * Remove the gray background on active links in IE 10.
  */
+
 a {
   background-color: transparent;
 }
+
 /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
+
 abbr[title] {
   border-bottom: none;
   /* 1 */
@@ -79,17 +475,21 @@ abbr[title] {
   text-decoration: underline dotted;
   /* 2 */
 }
+
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
+
 b,
 strong {
   font-weight: bolder;
 }
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 code,
 kbd,
 samp {
@@ -98,16 +498,20 @@ samp {
   font-size: 1em;
   /* 2 */
 }
+
 /**
  * Add the correct font size in all browsers.
  */
+
 small {
   font-size: 80%;
 }
+
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
+
 sub,
 sup {
   font-size: 75%;
@@ -115,26 +519,34 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
+
 sub {
   bottom: -0.25em;
 }
+
 sup {
   top: -0.5em;
 }
+
 /* Embedded content
    ========================================================================== */
+
 /**
  * Remove the border on images inside links in IE 10.
  */
+
 img {
   border-style: none;
 }
+
 /* Forms
    ========================================================================== */
+
 /**
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
+
 button,
 input,
 optgroup,
@@ -149,36 +561,44 @@ textarea {
   margin: 0;
   /* 2 */
 }
+
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
+
 button,
 input {
   /* 1 */
   overflow: visible;
 }
+
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
+
 button,
 select {
   /* 1 */
   text-transform: none;
 }
+
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
+
 button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
 }
+
 /**
  * Remove the inner border and padding in Firefox.
  */
+
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -186,27 +606,33 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
+
 /**
  * Restore the focus styles unset by the previous rule.
  */
+
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
+
 /**
  * Correct the padding in Firefox.
  */
+
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
+
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
+
 legend {
   box-sizing: border-box;
   /* 1 */
@@ -221,22 +647,28 @@ legend {
   white-space: normal;
   /* 1 */
 }
+
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
+
 progress {
   vertical-align: baseline;
 }
+
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
+
 textarea {
   overflow: auto;
 }
+
 /**
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
+
 [type="checkbox"],
 [type="radio"] {
   box-sizing: border-box;
@@ -244,66 +676,170 @@ textarea {
   padding: 0;
   /* 2 */
 }
+
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
+
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
+
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
+
 [type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
   /* 2 */
 }
+
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
+
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
+
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   /* 1 */
   font: inherit;
   /* 2 */
 }
+
 /* Interactive
    ========================================================================== */
+
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
+
 details {
   display: block;
 }
+
 /*
  * Add the correct display in all browsers.
  */
+
 summary {
   display: list-item;
 }
+
 /* Misc
    ========================================================================== */
+
 /**
  * Add the correct display in IE 10+.
  */
+
 template {
   display: none;
 }
+
 /**
  * Add the correct display in IE 10.
  */
+
 [hidden] {
   display: none;
+}
+
+@font-face {
+  font-family: "ion";
+  src: url("../fonts/ion.eot?31a1b735188db616a2142d17947e8a45");
+  src: url("../fonts/ion.eot?31a1b735188db616a2142d17947e8a45#iefix") format("embedded-opentype"), url("../fonts/ion.woff2?31a1b735188db616a2142d17947e8a45") format("woff2"), url("../fonts/ion.woff?31a1b735188db616a2142d17947e8a45") format("woff"), url("../fonts/ion.ttf?31a1b735188db616a2142d17947e8a45") format("truetype"), url("../fonts/ion.svg?31a1b735188db616a2142d17947e8a45#ion") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.ion-icon {
+  display: inline-block;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  speak: none;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ion-icon:before {
+  font-family: "ion";
+}
+.ion-navicon-round:before {
+  content: "\f101";
+}
+.ion-search:before {
+  content: "\f102";
+}
+.ion-play:before {
+  content: "\f103";
+}
+.ion-link:before {
+  content: "\f104";
+}
+.ion-chevron-up:before {
+  content: "\f105";
+}
+.ion-chevron-left:before {
+  content: "\f106";
+}
+.ion-chevron-right:before {
+  content: "\f107";
+}
+.ion-arrow-down-a:before {
+  content: "\f108";
+}
+.ion-arrow-up-a:before {
+  content: "\f109";
+}
+.ion-arrow-swap:before {
+  content: "\f10a";
+}
+.ion-arrow-dropdown:before {
+  content: "\f10b";
+}
+.ion-globe:before {
+  content: "\f10c";
+}
+.ion-time:before {
+  content: "\f10d";
+}
+.ion-location:before {
+  content: "\f10e";
+}
+.ion-warning:before {
+  content: "\f10f";
+}
+.ion-error:before {
+  content: "\f110";
+}
+.ion-film-outline:before {
+  content: "\f111";
+}
+.ion-music-note:before {
+  content: "\f112";
+}
+.ion-more-vertical:before {
+  content: "\f113";
+}
+.ion-magnet:before {
+  content: "\f114";
+}
+.ion-close:before {
+  content: "\f115";
 }
 /*
  * searx, A privacy-respecting, hackable metasearch engine
@@ -313,277 +849,17 @@ template {
 /*
 * searx, A privacy-respecting, hackable metasearch engine
 */
-.highlight .hll {
-  background-color: #ffffcc;
-}
-.highlight {
-  background: #f8f8f8;
-}
-.highlight .c {
-  color: #408080;
-  font-style: italic;
-}
-/* Comment */
-.highlight .err {
-  border: 1px solid #FF0000;
-}
-/* Error */
-.highlight .k {
-  color: #008000;
-  font-weight: bold;
-}
-/* Keyword */
-.highlight .o {
-  color: #666666;
-}
-/* Operator */
-.highlight .cm {
-  color: #408080;
-  font-style: italic;
-}
-/* Comment.Multiline */
-.highlight .cp {
-  color: #BC7A00;
-}
-/* Comment.Preproc */
-.highlight .c1 {
-  color: #408080;
-  font-style: italic;
-}
-/* Comment.Single */
-.highlight .cs {
-  color: #408080;
-  font-style: italic;
-}
-/* Comment.Special */
-.highlight .gd {
-  color: #A00000;
-}
-/* Generic.Deleted */
-.highlight .ge {
-  font-style: italic;
-}
-/* Generic.Emph */
-.highlight .gr {
-  color: #FF0000;
-}
-/* Generic.Error */
-.highlight .gh {
-  color: #000080;
-  font-weight: bold;
-}
-/* Generic.Heading */
-.highlight .gi {
-  color: #00A000;
-}
-/* Generic.Inserted */
-.highlight .go {
-  color: #888888;
-}
-/* Generic.Output */
-.highlight .gp {
-  color: #000080;
-  font-weight: bold;
-}
-/* Generic.Prompt */
-.highlight .gs {
-  font-weight: bold;
-}
-/* Generic.Strong */
-.highlight .gu {
-  color: #800080;
-  font-weight: bold;
-}
-/* Generic.Subheading */
-.highlight .gt {
-  color: #0044DD;
-}
-/* Generic.Traceback */
-.highlight .kc {
-  color: #008000;
-  font-weight: bold;
-}
-/* Keyword.Constant */
-.highlight .kd {
-  color: #008000;
-  font-weight: bold;
-}
-/* Keyword.Declaration */
-.highlight .kn {
-  color: #008000;
-  font-weight: bold;
-}
-/* Keyword.Namespace */
-.highlight .kp {
-  color: #008000;
-}
-/* Keyword.Pseudo */
-.highlight .kr {
-  color: #008000;
-  font-weight: bold;
-}
-/* Keyword.Reserved */
-.highlight .kt {
-  color: #B00040;
-}
-/* Keyword.Type */
-.highlight .m {
-  color: #666666;
-}
-/* Literal.Number */
-.highlight .s {
-  color: #BA2121;
-}
-/* Literal.String */
-.highlight .na {
-  color: #7D9029;
-}
-/* Name.Attribute */
-.highlight .nb {
-  color: #008000;
-}
-/* Name.Builtin */
-.highlight .nc {
-  color: #0000FF;
-  font-weight: bold;
-}
-/* Name.Class */
-.highlight .no {
-  color: #880000;
-}
-/* Name.Constant */
-.highlight .nd {
-  color: #AA22FF;
-}
-/* Name.Decorator */
-.highlight .ni {
-  color: #999999;
-  font-weight: bold;
-}
-/* Name.Entity */
-.highlight .ne {
-  color: #D2413A;
-  font-weight: bold;
-}
-/* Name.Exception */
-.highlight .nf {
-  color: #0000FF;
-}
-/* Name.Function */
-.highlight .nl {
-  color: #A0A000;
-}
-/* Name.Label */
-.highlight .nn {
-  color: #0000FF;
-  font-weight: bold;
-}
-/* Name.Namespace */
-.highlight .nt {
-  color: #008000;
-  font-weight: bold;
-}
-/* Name.Tag */
-.highlight .nv {
-  color: #19177C;
-}
-/* Name.Variable */
-.highlight .ow {
-  color: #AA22FF;
-  font-weight: bold;
-}
-/* Operator.Word */
-.highlight .w {
-  color: #bbbbbb;
-}
-/* Text.Whitespace */
-.highlight .mf {
-  color: #666666;
-}
-/* Literal.Number.Float */
-.highlight .mh {
-  color: #666666;
-}
-/* Literal.Number.Hex */
-.highlight .mi {
-  color: #666666;
-}
-/* Literal.Number.Integer */
-.highlight .mo {
-  color: #666666;
-}
-/* Literal.Number.Oct */
-.highlight .sb {
-  color: #BA2121;
-}
-/* Literal.String.Backtick */
-.highlight .sc {
-  color: #BA2121;
-}
-/* Literal.String.Char */
-.highlight .sd {
-  color: #BA2121;
-  font-style: italic;
-}
-/* Literal.String.Doc */
-.highlight .s2 {
-  color: #BA2121;
-}
-/* Literal.String.Double */
-.highlight .se {
-  color: #BB6622;
-  font-weight: bold;
-}
-/* Literal.String.Escape */
-.highlight .sh {
-  color: #BA2121;
-}
-/* Literal.String.Heredoc */
-.highlight .si {
-  color: #BB6688;
-  font-weight: bold;
-}
-/* Literal.String.Interpol */
-.highlight .sx {
-  color: #008000;
-}
-/* Literal.String.Other */
-.highlight .sr {
-  color: #BB6688;
-}
-/* Literal.String.Regex */
-.highlight .s1 {
-  color: #BA2121;
-}
-/* Literal.String.Single */
-.highlight .ss {
-  color: #19177C;
-}
-/* Literal.String.Symbol */
-.highlight .bp {
-  color: #008000;
-}
-/* Name.Builtin.Pseudo */
-.highlight .vc {
-  color: #19177C;
-}
-/* Name.Variable.Class */
-.highlight .vg {
-  color: #19177C;
-}
-/* Name.Variable.Global */
-.highlight .vi {
-  color: #19177C;
-}
-/* Name.Variable.Instance */
-.highlight .il {
-  color: #666666;
-}
-/* Literal.Number.Integer.Long */
-.highlight pre {
+.code-highlight pre {
   overflow: auto;
+  background-color: inherit;
+  color: inherit;
+  border: inherit;
 }
-.highlight .lineno {
+/*
+   this file is generated automatically by searx_extra/update/update_pygments.py
+   using pygments version 2.9.0
+*/
+.code-highlight .linenos {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -591,15 +867,341 @@ template {
   -ms-user-select: none;
   user-select: none;
   cursor: default;
+  margin-right: 8px;
+  text-align: right;
 }
-.highlight .lineno::selection {
+.code-highlight .linenos::selection {
   background: transparent;
   /* WebKit/Blink Browsers */
 }
-.highlight .lineno::-moz-selection {
+.code-highlight .linenos::-moz-selection {
   background: transparent;
   /* Gecko Browsers */
 }
+.code-highlight pre {
+  line-height: 125%;
+}
+.code-highlight td.linenos .normal {
+  color: inherit;
+  background-color: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.code-highlight span.linenos {
+  color: inherit;
+  background-color: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.code-highlight td.linenos .special {
+  color: #000000;
+  background-color: #ffffc0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.code-highlight span.linenos.special {
+  color: #000000;
+  background-color: #ffffc0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.code-highlight .hll {
+  background-color: #ffffcc;
+}
+.code-highlight {
+  background: #f8f8f8;
+}
+.code-highlight .c {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment */
+.code-highlight .err {
+  border: 1px solid #FF0000;
+}
+/* Error */
+.code-highlight .k {
+  color: #008000;
+  font-weight: bold;
+}
+/* Keyword */
+.code-highlight .o {
+  color: #666666;
+}
+/* Operator */
+.code-highlight .ch {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.Hashbang */
+.code-highlight .cm {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.Multiline */
+.code-highlight .cp {
+  color: #BC7A00;
+}
+/* Comment.Preproc */
+.code-highlight .cpf {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.PreprocFile */
+.code-highlight .c1 {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.Single */
+.code-highlight .cs {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.Special */
+.code-highlight .gd {
+  color: #A00000;
+}
+/* Generic.Deleted */
+.code-highlight .ge {
+  font-style: italic;
+}
+/* Generic.Emph */
+.code-highlight .gr {
+  color: #FF0000;
+}
+/* Generic.Error */
+.code-highlight .gh {
+  color: #000080;
+  font-weight: bold;
+}
+/* Generic.Heading */
+.code-highlight .gi {
+  color: #00A000;
+}
+/* Generic.Inserted */
+.code-highlight .go {
+  color: #888888;
+}
+/* Generic.Output */
+.code-highlight .gp {
+  color: #000080;
+  font-weight: bold;
+}
+/* Generic.Prompt */
+.code-highlight .gs {
+  font-weight: bold;
+}
+/* Generic.Strong */
+.code-highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+/* Generic.Subheading */
+.code-highlight .gt {
+  color: #0044DD;
+}
+/* Generic.Traceback */
+.code-highlight .kc {
+  color: #008000;
+  font-weight: bold;
+}
+/* Keyword.Constant */
+.code-highlight .kd {
+  color: #008000;
+  font-weight: bold;
+}
+/* Keyword.Declaration */
+.code-highlight .kn {
+  color: #008000;
+  font-weight: bold;
+}
+/* Keyword.Namespace */
+.code-highlight .kp {
+  color: #008000;
+}
+/* Keyword.Pseudo */
+.code-highlight .kr {
+  color: #008000;
+  font-weight: bold;
+}
+/* Keyword.Reserved */
+.code-highlight .kt {
+  color: #B00040;
+}
+/* Keyword.Type */
+.code-highlight .m {
+  color: #666666;
+}
+/* Literal.Number */
+.code-highlight .s {
+  color: #BA2121;
+}
+/* Literal.String */
+.code-highlight .na {
+  color: #7D9029;
+}
+/* Name.Attribute */
+.code-highlight .nb {
+  color: #008000;
+}
+/* Name.Builtin */
+.code-highlight .nc {
+  color: #0000FF;
+  font-weight: bold;
+}
+/* Name.Class */
+.code-highlight .no {
+  color: #880000;
+}
+/* Name.Constant */
+.code-highlight .nd {
+  color: #AA22FF;
+}
+/* Name.Decorator */
+.code-highlight .ni {
+  color: #999999;
+  font-weight: bold;
+}
+/* Name.Entity */
+.code-highlight .ne {
+  color: #D2413A;
+  font-weight: bold;
+}
+/* Name.Exception */
+.code-highlight .nf {
+  color: #0000FF;
+}
+/* Name.Function */
+.code-highlight .nl {
+  color: #A0A000;
+}
+/* Name.Label */
+.code-highlight .nn {
+  color: #0000FF;
+  font-weight: bold;
+}
+/* Name.Namespace */
+.code-highlight .nt {
+  color: #008000;
+  font-weight: bold;
+}
+/* Name.Tag */
+.code-highlight .nv {
+  color: #19177C;
+}
+/* Name.Variable */
+.code-highlight .ow {
+  color: #AA22FF;
+  font-weight: bold;
+}
+/* Operator.Word */
+.code-highlight .w {
+  color: #bbbbbb;
+}
+/* Text.Whitespace */
+.code-highlight .mb {
+  color: #666666;
+}
+/* Literal.Number.Bin */
+.code-highlight .mf {
+  color: #666666;
+}
+/* Literal.Number.Float */
+.code-highlight .mh {
+  color: #666666;
+}
+/* Literal.Number.Hex */
+.code-highlight .mi {
+  color: #666666;
+}
+/* Literal.Number.Integer */
+.code-highlight .mo {
+  color: #666666;
+}
+/* Literal.Number.Oct */
+.code-highlight .sa {
+  color: #BA2121;
+}
+/* Literal.String.Affix */
+.code-highlight .sb {
+  color: #BA2121;
+}
+/* Literal.String.Backtick */
+.code-highlight .sc {
+  color: #BA2121;
+}
+/* Literal.String.Char */
+.code-highlight .dl {
+  color: #BA2121;
+}
+/* Literal.String.Delimiter */
+.code-highlight .sd {
+  color: #BA2121;
+  font-style: italic;
+}
+/* Literal.String.Doc */
+.code-highlight .s2 {
+  color: #BA2121;
+}
+/* Literal.String.Double */
+.code-highlight .se {
+  color: #BB6622;
+  font-weight: bold;
+}
+/* Literal.String.Escape */
+.code-highlight .sh {
+  color: #BA2121;
+}
+/* Literal.String.Heredoc */
+.code-highlight .si {
+  color: #BB6688;
+  font-weight: bold;
+}
+/* Literal.String.Interpol */
+.code-highlight .sx {
+  color: #008000;
+}
+/* Literal.String.Other */
+.code-highlight .sr {
+  color: #BB6688;
+}
+/* Literal.String.Regex */
+.code-highlight .s1 {
+  color: #BA2121;
+}
+/* Literal.String.Single */
+.code-highlight .ss {
+  color: #19177C;
+}
+/* Literal.String.Symbol */
+.code-highlight .bp {
+  color: #008000;
+}
+/* Name.Builtin.Pseudo */
+.code-highlight .fm {
+  color: #0000FF;
+}
+/* Name.Function.Magic */
+.code-highlight .vc {
+  color: #19177C;
+}
+/* Name.Variable.Class */
+.code-highlight .vg {
+  color: #19177C;
+}
+/* Name.Variable.Global */
+.code-highlight .vi {
+  color: #19177C;
+}
+/* Name.Variable.Instance */
+.code-highlight .vm {
+  color: #19177C;
+}
+/* Name.Variable.Magic */
+.code-highlight .il {
+  color: #666666;
+}
+/* Literal.Number.Integer.Long */
 html.no-js .hide_if_nojs {
   display: none;
 }
@@ -610,7 +1212,7 @@ html.js .show_if_nojs {
   text-align: center;
 }
 .right {
-  float: right ;
+  float: right;
 }
 .left {
   float: left;
@@ -627,6 +1229,12 @@ html.js .show_if_nojs {
 }
 .danger {
   background-color: #fae1e1;
+}
+.warning {
+  background: #faf5e1;
+}
+.success {
+  background: #e3fae1;
 }
 .badge {
   display: inline-block;
@@ -662,11 +1270,11 @@ tr:hover {
   background: #ececec;
 }
 div.selectable_url {
+  display: block;
   border: 1px solid #888;
   padding: 4px;
   color: #444;
   width: 100%;
-  display: block;
   margin: 0.1em;
   overflow: hidden;
   height: 1.2em;
@@ -693,7 +1301,7 @@ div.selectable_url pre {
   background: #fae1e1;
   border-color: #db3434;
 }
-.dialog-error:before {
+.dialog-error::before {
   position: absolute;
   top: 0.5em;
   left: 0.5em;
@@ -735,7 +1343,7 @@ div.selectable_url pre {
   position: relative;
   width: 70%;
   padding: 1em 1em 1em 2.7em;
-  margin: 0em 8% 1em 8%;
+  margin: 0 8% 1em 8%;
   border: 1px solid black;
   border-radius: 4px;
   text-align: left;
@@ -743,7 +1351,7 @@ div.selectable_url pre {
   background: #faf5e1;
   border-color: #dbba34;
 }
-.dialog-warning:before {
+.dialog-warning::before {
   position: absolute;
   top: 0.5em;
   left: 0.5em;
@@ -785,7 +1393,7 @@ div.selectable_url pre {
   position: relative;
   width: 70%;
   padding: 1em 1em 1em 2.7em;
-  margin: 0em 8% 1em 8%;
+  margin: 0 8% 1em 8%;
   border: 1px solid black;
   border-radius: 4px;
   text-align: left;
@@ -799,7 +1407,7 @@ div.selectable_url pre {
   margin: 0 50% 0 0;
   box-shadow: 0 0 1em;
 }
-.dialog-modal:before {
+.dialog-modal::before {
   position: absolute;
   top: 0.5em;
   left: 0.5em;
@@ -845,7 +1453,7 @@ div.selectable_url pre {
   margin: 0;
   border: none;
 }
-/* -- tabs --*/
+/* -- tabs -- */
 .tabs .tabs > label {
   font-size: 90%;
 }
@@ -872,7 +1480,7 @@ div.selectable_url pre {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   border: solid white;
-  border-width: 0px 0px 2px 0;
+  border-width: 0 0 2px 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -972,7 +1580,7 @@ select:focus {
     top: -5px;
     cursor: pointer;
     border-radius: 50px;
-    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
     transition: all 0.4s ease;
     left: 27px;
     background-color: #1A73E8;
@@ -985,7 +1593,7 @@ select:focus {
     background: #dcdcdc;
   }
 }
-/* -- checkbox --*/
+/* -- checkbox -- */
 @supports (transform: rotate(-45deg)) {
   .checkbox {
     width: 20px;
@@ -1001,9 +1609,9 @@ select:focus {
     left: 0;
     background: white;
     border-radius: 4px;
-    box-shadow: inset 0px 1px 1px white, 0px 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 1px 1px white, 0 1px 4px rgba(0, 0, 0, 0.5);
   }
-  .checkbox label:after {
+  .checkbox label::after {
     content: '';
     width: 9px;
     height: 5px;
@@ -1020,8 +1628,8 @@ select:focus {
   .checkbox input[type=checkbox] {
     visibility: hidden;
   }
-  .checkbox input[type=checkbox]:checked + label:after {
-    border-color: #3498DB;
+  .checkbox input[type=checkbox]:checked + label::after {
+    border-color: #3498db;
     opacity: 1;
   }
   .checkbox input[disabled] + label {
@@ -1040,7 +1648,7 @@ select:focus {
 }
 /* -- loader -- */
 .loader,
-.loader:after {
+.loader::after {
   border-radius: 50%;
   width: 2em;
   height: 2em;
@@ -1079,6 +1687,88 @@ select:focus {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+/* -- engine-tooltip -- */
+.engine-tooltip {
+  display: none;
+  position: absolute;
+  padding: 0.5rem 1rem;
+  margin: 0 0 0 2rem;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.1);
+  background: white;
+  font-size: 14px;
+  font-weight: normal;
+  z-index: 1000000;
+  text-align: left;
+}
+th:hover .engine-tooltip,
+td:hover .engine-tooltip,
+.engine-tooltip:hover {
+  display: inline-block;
+}
+/* -- stacked bar chart -- */
+.stacked-bar-chart {
+  margin: 0;
+  padding: 0 0.125rem 0 4rem;
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  display: inline-flex;
+}
+.stacked-bar-chart-value {
+  width: 3rem;
+  display: inline-block;
+  position: absolute;
+  padding: 0 0.5rem;
+  text-align: right;
+}
+.stacked-bar-chart-base {
+  display: flex;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: unset;
+}
+.stacked-bar-chart-median {
+  display: flex;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: unset;
+  background: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  padding: 0.3rem 0;
+}
+.stacked-bar-chart-rate80 {
+  display: flex;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: unset;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 0.3rem 0;
+}
+.stacked-bar-chart-rate95 {
+  display: flex;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: unset;
+  background: transparent;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+  padding: 0;
+}
+.stacked-bar-chart-rate100 {
+  display: flex;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: unset;
+  background: transparent;
+  border-left: 1px solid rgba(0, 0, 0, 0.9);
+  padding: 0.4rem 0;
+  width: 1px;
 }
 /*! Autocomplete.js v2.6.3 | license MIT | (c) 2017, Baptiste Donaux | http://autocomplete-js.com */
 .autocomplete {
@@ -1146,109 +1836,6 @@ select:focus {
     border-bottom: 1px solid #E8E7E6;
     text-align: left;
   }
-}
-@font-face {
-  font-family: "ion";
-  src: url("../fonts/ion.eot?ce7a0ead692560b4405a96d5b8471f51");
-  src: url("../fonts/ion.eot?#iefix") format("embedded-opentype"), url("../fonts/ion.woff2?ce7a0ead692560b4405a96d5b8471f51") format("woff2"), url("../fonts/ion.woff?ce7a0ead692560b4405a96d5b8471f51") format("woff"), url("../fonts/ion.ttf?ce7a0ead692560b4405a96d5b8471f51") format("truetype"), url("../fonts/ion.svg?ce7a0ead692560b4405a96d5b8471f51#ion") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-.ion-icon {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  font-weight: normal;
-  font-style: normal;
-  speak: none;
-  text-decoration: inherit;
-  text-transform: none;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.ion-icon:before {
-  font-family: "ion";
-}
-.ion-navicon-round:before {
-  content: "\f101";
-}
-.ion-search:before {
-  content: "\f102";
-}
-.ion-play:before {
-  content: "\f103";
-}
-.ion-link:before {
-  content: "\f104";
-}
-.ion-chevron-up:before {
-  content: "\f105";
-}
-.ion-chevron-left:before {
-  content: "\f106";
-}
-.ion-chevron-right:before {
-  content: "\f107";
-}
-.ion-arrow-down-a:before {
-  content: "\f108";
-}
-.ion-arrow-up-a:before {
-  content: "\f109";
-}
-.ion-arrow-swap:before {
-  content: "\f10a";
-}
-.ion-arrow-dropdown:before {
-  content: "\f10b";
-}
-.ion-globe:before {
-  content: "\f10c";
-}
-.ion-time:before {
-  content: "\f10d";
-}
-.ion-location:before {
-  content: "\f10e";
-}
-.ion-warning:before {
-  content: "\f10f";
-}
-.ion-error:before {
-  content: "\f110";
-}
-.ion-film-outline:before {
-  content: "\f111";
-}
-.ion-music-note:before {
-  content: "\f112";
-}
-.ion-more-vertical:before {
-  content: "\f113";
-}
-.ion-magnet:before {
-  content: "\f114";
-}
-.ion-close:before {
-  content: "\f115";
-}
-.ion-icon-big {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  font-weight: normal;
-  font-style: normal;
-  speak: none;
-  text-decoration: inherit;
-  text-transform: none;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 149%;
-}
-.ion-icon-big:before {
-  font-family: "ion";
 }
 .index {
   text-align: center;
@@ -1425,10 +2012,6 @@ select:focus {
 #clear_search.empty * {
   display: none;
 }
-#q::-ms-clear,
-#q::-webkit-search-cancel-button {
-  display: none;
-}
 #q,
 #send_search {
   display: block !important;
@@ -1441,16 +2024,20 @@ select:focus {
   border: none;
   border-radius: 2em;
   outline: none;
-  color: rgba(0,0,0,.87);
+  color: rgba(0, 0, 0, 0.87);
   font-size: 16px;
   z-index: 2;
 }
 #q {
   outline: medium none;
   padding-left: 20px;
-  padding-right: 0px !important;
+  padding-right: 0 !important;
   border-right: none;
   width: 36em;
+}
+#q::-ms-clear,
+#q::-webkit-search-cancel-button {
+  display: none;
 }
 #send_search {
   border-left: none;
@@ -1472,7 +2059,7 @@ select:focus {
   #search {
   	padding: 0 0 0 2em;
   	margin: 1em 0;
-  	border-bottom: 1px solig #ebebeb;
+  	border-bottom: 1px solid #ebebeb;
   }
 
   #categories {
@@ -1480,8 +2067,8 @@ select:focus {
     clear: both;
   }
   #categories .checkbox_container {
-    margin-top: 2px;
     margin: auto;
+    margin-top: 2px;
   }
   html.touch #main_index #categories_container,
   html.touch #main_results #categories_container {
@@ -1503,7 +2090,7 @@ select:focus {
     overflow-x: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    box-shadow: 0px 7px 6px -5px #DFE1E5;
+    box-shadow: 0px 7px 6px -5px #DFE1E5;
   }
 }
 @media screen and (max-width: 50em) {
@@ -1564,10 +2151,10 @@ select:focus {
   display: inline-block;
   position: relative;
   margin: 0 3px;
-  padding: 0px;
-  /*label:hover {
+  padding: 0;
+  /* label:hover {
   border-bottom: 2px solid @color-categories-item-border-unselected-hover;
-  }*/
+  } */
 }
 .category input {
   display: none;
@@ -1588,7 +2175,7 @@ select:focus {
   user-select: none;
 }
 .category input[type="checkbox"]:focus + label {
-  box-shadow: 0px 0px 8px #3498DB;
+  box-shadow: 0 0 8px #3498db;
 }
 .category input[type="checkbox"]:checked + label {
   color: #1A73E8;
@@ -1605,12 +2192,28 @@ select:focus {
   opacity: 0;
   transition: opacity 1s ease;
   font-size: 0.8em;
-  text-position: center;
+  text-align: center;
   background: white;
 }
 #categories_container:hover .help {
   opacity: 0.8;
   transition: opacity 1s ease;
+}
+.ion-icon-big {
+  display: inline-block;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  speak: none;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 149%;
+}
+.ion-icon-big:before {
+  font-family: "ion";
 }
 html {
   font-family: arial, sans-serif;
@@ -1632,11 +2235,6 @@ main {
   width: 100%;
   margin-bottom: 10em;
 }
-footer {
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-}
 #main_preferences,
 #main_about,
 #main_stats {
@@ -1645,6 +2243,8 @@ footer {
 }
 footer {
   bottom: 0;
+  width: 100%;
+  height: 50px;
   right: 0;
   left: 0;
   height: 4em;
@@ -1849,6 +2449,30 @@ article.result-images[data-vim-selected]::before {
   background-color: rgba(0, 0, 0, 0.6);
   font-size: 0.7em;
 }
+.result-map img.image {
+  float: right !important;
+  height: 100px !important;
+  width: auto !important;
+}
+.result-map table {
+  font-size: 0.9em;
+  width: auto;
+  border-collapse: separate;
+  border-spacing: 0 0.35rem;
+}
+.result-map table th {
+  font-weight: inherit;
+  width: 17rem;
+  vertical-align: top;
+  text-align: left;
+}
+.result-map table td {
+  vertical-align: top;
+  text-align: left;
+}
+.hidden {
+  display: none !important;
+}
 .torrent_result {
   border-left: 10px solid lightgray;
   padding-left: 3px;
@@ -1922,7 +2546,7 @@ article.result-images[data-vim-selected]::before {
 #corrections {
   display: flex;
   flex-flow: row wrap;
-  margin: 0em 0em 0em 8em;
+  margin: 0 0 0 8em;
 }
 #corrections h4,
 #corrections input[type="submit"] {
@@ -1961,8 +2585,8 @@ article.result-images[data-vim-selected]::before {
   position: absolute;
   top: 140px;
   left: 57em;
-  margin: 0px 2px 5px 5px;
-  padding: 0px 2px 2px;
+  margin: 0 2px 5px 5px;
+  padding: 0 2px 2px;
   max-width: 25em;
   word-wrap: break-word;
   color: #222;
@@ -1975,7 +2599,7 @@ article.result-images[data-vim-selected]::before {
   font-size: 0.9em;
 }
 #sidebar .infobox h2 {
-  margin: 0 0 .5em 0;
+  margin: 0 0 0.5em 0;
 }
 #sidebar .infobox img {
   max-width: 100%;
@@ -2045,7 +2669,7 @@ article.result-images[data-vim-selected]::before {
   margin: 0 0 0 2em;
   padding: 0;
   font-size: 1em;
-  box-shadow: 0px 0px 5px #CCC;
+  box-shadow: 0 0 5px #ccc;
   background: white;
   position: fixed;
   bottom: 85px;
@@ -2169,9 +2793,9 @@ article.result-images[data-vim-selected]::before {
   }
   #linkto_preferences {
     display: none;
-    postion: fixed !important;
+    position: fixed !important;
     top: 100px;
-    right: 0px;
+    right: 0;
   }
   #sidebar {
     margin: 0 5px 2px 5px;
@@ -2204,4 +2828,7 @@ article.result-images[data-vim-selected]::before {
   .result-videos .content {
     overflow: inherit;
   }
+}
+pre code {
+  white-space: pre-wrap;
 }
