@@ -11,7 +11,7 @@ WORKDIR /usr/local/searx
 RUN apk -U upgrade \
  && apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev tar \
  && apk add --no-cache ca-certificates git su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
- && git clone https://github.com/searxng/searxng.git \
+ && git clone https://github.com/searxng/searxng.git . \
  && chown -R searx:searx . \
  && pip install --upgrade pip \
  && pip install --no-cache -r requirements.txt \
