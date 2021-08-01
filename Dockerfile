@@ -60,6 +60,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: gentoo/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: apkm/{n;s/.*/    disabled: false/}" \
+-e "/shortcut: ddg/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
 su searx -c "/usr/bin/python3 -m compileall -q searx"; \
 find /usr/local/searx/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' \
