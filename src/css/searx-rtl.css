@@ -1822,7 +1822,6 @@ td:hover .engine-tooltip,
   max-height: 500px;
   overflow-y: auto;
   z-index: 100;
-  top: 355px !important;
 }
 .autocomplete.open:empty {
   display: none;
