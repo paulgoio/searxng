@@ -2237,7 +2237,7 @@ main {
 #main_preferences,
 #main_about,
 #main_stats {
-  margin: 3em;
+  margin: 3em 3em 10em 3em;
   width: auto;
 }
 footer {
