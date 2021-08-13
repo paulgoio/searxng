@@ -17,6 +17,7 @@ apk -U upgrade \
 && apk add --no-cache ca-certificates git su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
 && git clone https://github.com/searxng/searxng.git . \
 && chown -R searx:searx . \
+&& git remote set-url origin https://github.com/paulgoio/searx.git \
 && pip install --upgrade pip \
 && pip install --no-cache -r requirements.txt \
 && apk del build-dependencies \
@@ -65,10 +66,7 @@ searx/settings.yml; \
 su searx -c "/usr/bin/python3 -m compileall -q searx"; \
 find /usr/local/searx/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' \
 -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
--type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+; \
-git config user.email "paul+searx@paulgo.io" && git config user.name "MrPaulBlack" && \
-git add -A && git commit -m "add custom theme and settings"
-# (temp. workaround for new git version checker on startup)
+-type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
 # expose port and set tini as CMD
 EXPOSE 8080
