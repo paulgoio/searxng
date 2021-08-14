@@ -13,16 +13,19 @@ WORKDIR /usr/local/searx
 RUN addgroup -g ${GID} searx \
 && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx; \
 apk -U upgrade \
-&& apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev tar \
-&& apk add --no-cache ca-certificates git su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
+&& apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev git tar \
+&& apk add --no-cache ca-certificates su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
 && git clone https://github.com/searxng/searxng.git . \
 && chown -R searx:searx . \
-&& pip install --upgrade pip \
+&& su searx -c "/usr/bin/python3 -m searx.version freeze" \
+&& sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" \
+-e "/GIT_URL/s/searxng\/searxng/paulgoio\/searx/g" \
+-e "/GIT_BRANCH/s/master/main/g" \
+searx/version_frozen.py; \
+pip install --upgrade pip \
 && pip install --no-cache -r requirements.txt \
 && apk del build-dependencies \
-&& rm -rf /var/cache/apk/* /root/.cache \
-&& su searx -c "/usr/bin/python3 -m searx.version freeze" \
-&& sed -i -e "/GIT_URL/s/searxng\/searxng/paulgoio\/searx/" searx/version_frozen.py
+&& rm -rf /var/cache/apk/* /root/.cache
 
 # copy custom simple themes and run.sh
 COPY --from=builder /css/* searx/static/themes/simple/css/
