@@ -17,11 +17,12 @@ apk -U upgrade \
 && apk add --no-cache ca-certificates git su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
 && git clone https://github.com/searxng/searxng.git . \
 && chown -R searx:searx . \
-&& git remote set-url origin https://github.com/paulgoio/searx.git \
 && pip install --upgrade pip \
 && pip install --no-cache -r requirements.txt \
 && apk del build-dependencies \
-&& rm -rf /var/cache/apk/* /root/.cache
+&& rm -rf /var/cache/apk/* /root/.cache \
+&& su searx -c "/usr/bin/python3 -m searx.version freeze" \
+&& sed -i -e "/GIT_URL/s/searxng\/searxng/paulgoio\/searx/" searx/version_frozen.py
 
 # copy custom simple themes and run.sh
 COPY --from=builder /css/* searx/static/themes/simple/css/
