@@ -28,9 +28,9 @@ Check out https://start.paulgo.io for a deployed server with this container
 
 * ```ISSUE_URL``` : set issue url for custom searx repo (for example `https://github.com/paulgoio/searx/issues` !Without trailing /)
 
-* ```ISSUE_URL``` : set git url for custom searx repo (for example `https://github.com/paulgoio/searx`)
+* ```GIT_URL``` : set git url for custom searx repo (for example `https://github.com/paulgoio/searx`)
 
-* ```ISSUE_URL``` : set git branch for custom searx repo (for example `main`)
+* ```GIT_BRANCH``` : set git branch for custom searx repo (for example `main`)
 
 
 

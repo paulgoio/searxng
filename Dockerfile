@@ -3,7 +3,7 @@ FROM alpine:3.14
 ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= ISSUE_URL=
 WORKDIR /usr/local/searx
 
-# install build deps and git clone searxng as well as setting the version (and repo)
+# install build deps and git clone searxng as well as setting the version
 RUN addgroup -g ${GID} searx \
 && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx; \
 apk -U upgrade \
