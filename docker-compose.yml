@@ -90,6 +90,8 @@ services:
       - DOMAIN={DOMAIN}
       - CONTACT=mailto:paul+searx@paulgo.io
       - ISSUE_URL=https://github.com/paulgoio/searx/issues
+      - GIT_URL=https://github.com/paulgoio/searx
+      - GIT_BRANCH=main
 
 networks:
   proxy:

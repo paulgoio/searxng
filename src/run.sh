@@ -30,6 +30,18 @@ if [ ! -z "${ISSUE_URL}" ]; then
     searx/settings.yml;
 fi
 
+# set git url
+if [ ! -z "${GIT_URL}" ]; then
+    sed -i -e "/GIT_URL/s/\".*\"/\"${GIT_URL}\"/g" \
+    searx/version_frozen.py; \
+fi
+
+# set git branch
+if [ ! -z "${GIT_BRANCH}" ]; then
+    sed -i -e "/GIT_BRANCH/s/\".*\"/\"${GIT_BRANCH}\"/g" \
+    searx/version_frozen.py; \
+fi
+
 # auto gen random key for every unique container
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml

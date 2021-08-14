@@ -1,8 +1,21 @@
 # Searx
 
-builds custom searx container with a changed simple theme and settings.yml; This project builds on top of https://github.com/searxng/searxng (searxng vs searx: https://github.com/searxng/searxng/issues/46).
+builds custom searxng container with a changed simple theme and settings.yml; This project builds on top of https://github.com/searxng/searxng (searxng vs searx: https://github.com/searxng/searxng/issues/46).
 
 Check out https://start.paulgo.io for a deployed server with this container
+
+
+
+### Development
+
+* Clone this repo: ```git clone https://github.com/paulgoio/searx.git```
+
+* After making your changes make sure to update `searx.min.css` as well as `searx-rtl.min.css` by running `update.sh` (docker needed)
+
+* You can build the docker container locally by running: ```docker build --pull -f ./Dockerfile -t searx-dev:latest .```
+
+* Debug the local container with: ```docker run -it --rm -p 8080:8080 searx-dev:latest```
+
 
 
 ### Environment Variables (all optional: if not set -> using default settings)
@@ -15,12 +28,18 @@ Check out https://start.paulgo.io for a deployed server with this container
 
 * ```ISSUE_URL``` : set issue url for custom searx repo (for example `https://github.com/paulgoio/searx/issues` !Without trailing /)
 
+* ```ISSUE_URL``` : set git url for custom searx repo (for example `https://github.com/paulgoio/searx`)
+
+* ```ISSUE_URL``` : set git branch for custom searx repo (for example `main`)
+
+
 
 ### Basic Example
 
 * ```docker run -it --rm -p 8080:8080 paulgoio/searx:production```
 
 * After that just visit http://127.0.0.1:8080 in your browser and stop the server with ctrl-c
+
 
 
 ### Production Setup

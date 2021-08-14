@@ -1,15 +1,9 @@
-# minify css files
-FROM tdewolff/minify:latest as builder
-COPY src/css /css
-RUN cd /css && minify searx.css -o searx.min.css && minify searx-rtl.css -o searx-rtl.min.css
-
-
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:3.14
 ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= ISSUE_URL=
 WORKDIR /usr/local/searx
 
-# install build deps and git clone searx
+# install build deps and git clone searxng as well as setting the version (and repo)
 RUN addgroup -g ${GID} searx \
 && adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx; \
 apk -U upgrade \
@@ -20,15 +14,12 @@ apk -U upgrade \
 && pip install --upgrade pip \
 && pip install --no-cache -r requirements.txt \
 && su searx -c "/usr/bin/python3 -m searx.version freeze" \
-&& sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" \
--e "/GIT_URL/s/searxng\/searxng/paulgoio\/searx/g" \
--e "/GIT_BRANCH/s/master/main/g" \
-searx/version_frozen.py; \
+&& sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" searx/version_frozen.py; \
 apk del build-dependencies \
 && rm -rf /var/cache/apk/* /root/.cache
 
 # copy custom simple themes and run.sh
-COPY --from=builder /css/* searx/static/themes/simple/css/
+COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
