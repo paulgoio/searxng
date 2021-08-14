@@ -23,7 +23,7 @@ pip install --upgrade pip \
 && sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" \
 -e "/GIT_URL/s/searxng\/searxng/paulgoio\/searx/g" \
 -e "/GIT_BRANCH/s/master/main/g" \
-searx/version_frozen.py; \
+searx/version_frozen.py \
 && apk del build-dependencies \
 && rm -rf /var/cache/apk/* /root/.cache
 
