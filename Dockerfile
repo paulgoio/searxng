@@ -1,6 +1,6 @@
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:3.14
-ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= ISSUE_URL=
+ENV GID=991 UID=991 MORTY_KEY= DOMAIN= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH=
 WORKDIR /usr/local/searx
 
 # install build deps and git clone searxng as well as setting the version
