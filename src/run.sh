@@ -1,9 +1,15 @@
 #!/bin/sh
 
-# morty config based on morty_key and domain
-if [ ! -z "${MORTY_KEY}" ]; then
+# enable built in image proxy
+if [ ! -z "${IMAGE_PROXY}" ]; then
+    sed -i -e "/image_proxy:/s/false/true/g" \
+    searx/settings.yml;
+fi
+
+# morty config based on morty_key and and morty_url
+if [ ! -z "${MORTY_KEY}" ] && [ ! -z "${MORTY_URL}" ]; then
     sed -i -e "s/# result_proxy:/result_proxy:/g" \
-    -e "s+#   url: http://127.0.0.1:3000/+  url : https://${DOMAIN}/morty/+g" \
+    -e "s+#   url: http://127.0.0.1:3000/+  url : ${MORTY_URL}+g" \
     -e "s/#   key: !!binary \"your_morty_proxy_key\"/  key : !!binary \"${MORTY_KEY}\"/g" \
     -e "s/#   proxify_results: true/  proxify_results: false/g" \
     searx/settings.yml;

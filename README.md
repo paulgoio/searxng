@@ -20,9 +20,13 @@ Check out https://start.paulgo.io for a deployed server with this container
 
 ### Environment Variables (all optional: if not set -> using default settings)
 
-* ```MORTY_KEY``` : set the morty key in the settings.yml file (it also enables/disables image proxy)
+* ```IMAGE_PROXY``` : enable the image proxyfication through searx; If `MORTY_KEY` and `MORTY_URL` is set morty is used instead of the built in /image_proxy, otherwise the built in image proxy is used (set this to `true`)
 
-* ```DOMAIN``` : set the domain for instance name and morty, as well as the base url (for example example.org would have `https://example.org/` as base and `https://example.org/morty` as morty url)
+* ```MORTY_KEY``` : set the morty key here (a secret key that is shared by searx and morty, for example `1234`)
+
+* ```MORTY_URL``` : set the full URL where the morty instance is reachable (for example `https://morty.example.com/morty`)
+
+* ```DOMAIN``` : set the domain for instance name and the base url (for example example.org would have `https://example.org/` as base)
 
 * ```CONTACT``` : set instance maintainer contact (for example `mailto:user@example.org`)
 
