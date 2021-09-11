@@ -1,33 +1,6 @@
 version: '3.7'
 
 services:
-  morty:
-    image: dalf/morty:latest
-    restart: always
-    command: -timeout 6
-    read_only: true
-    cap_drop:
-      - ALL
-    depends_on:
-      - filtron
-    networks:
-      - proxy
-      - default
-    logging:
-      driver: none
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.{REPO}-morty.rule=Host(`{DOMAIN}`)&&PathPrefix(`/morty`)&&Method(`GET`,`HEAD`)
-      - traefik.http.routers.{REPO}-morty.entrypoints=https
-      - traefik.http.routers.{REPO}-morty.tls=true
-      - traefik.http.routers.{REPO}-morty.middlewares=external-secure,{REPO}-morty-csp,{REPO}-fp,{REPO}-dynamic
-      # CSP for morty
-      - traefik.http.middlewares.{REPO}-morty-csp.headers.contentSecurityPolicy=default-src 'none'; style-src 'self' 'unsafe-inline'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'
-    environment:
-      - MORTY_KEY={KEY1}
-      - MORTY_ADDRESS=0.0.0.0:3000
-      - DEBUG=false
-
   filtron:
     image: paulgoio/filtron:production
     restart: always
@@ -87,8 +60,6 @@ services:
             regex: filename
     environment:
       - IMAGE_PROXY=true
-      - MORTY_KEY={KEY1}
-      - MORTY_URL=https://{DOMAIN}/morty
       - DOMAIN={DOMAIN}
       - CONTACT=mailto:paul+searx@paulgo.io
       - ISSUE_URL=https://github.com/paulgoio/searx/issues
