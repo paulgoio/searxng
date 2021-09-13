@@ -18,7 +18,7 @@ fi
 # set base_url and instance_name if DOMAIN is not empty
 if [ ! -z "${DOMAIN}" ]; then
     sed -i -e "s+base_url: false+base_url: \"https://${DOMAIN}/\"+g" \
-    -e "/instance_name:/s/searxng/${DOMAIN}/g" \
+    -e "/instance_name:/s/SearXNG/${DOMAIN}/g" \
     searx/settings.yml;
 fi
 
