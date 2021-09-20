@@ -2707,8 +2707,6 @@ article.result-images[data-vim-selected]::before {
     margin: 0.75em 0.5em;
     padding-top: 8px;
     padding-bottom: 6px;
-    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-    border-radius: 8px;
   }
   .result h3 {
     margin: 0 0 1px 0;
@@ -2791,6 +2789,8 @@ article.result-images[data-vim-selected]::before {
   }
   .result {
     padding: 8px 10px 6px 10px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    border-radius: 8px;
   }
   .result-images {
     margin: 0;
