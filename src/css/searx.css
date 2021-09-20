@@ -2067,10 +2067,13 @@ td:hover .engine-tooltip,
     overflow-x: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    box-shadow: 0px 7px 6px -5px #DFE1E5;
   }
 }
 @media screen and (max-width: 50em) {
+  html.touch #main_index #categories,
+  html.touch #main_results #categories {
+    box-shadow: 0px 7px 6px -5px #DFE1E5;
+  }
   #search {
     width: 100%;
     margin: 0;
@@ -2697,6 +2700,9 @@ article.result-images[data-vim-selected]::before {
   #sidebar input {
     border: 0;
   }
+  #corrections {
+    margin: 0.75em 0.5em;
+  }
   #apis {
     display: none;
   }
@@ -2773,10 +2779,10 @@ article.result-images[data-vim-selected]::before {
     right: 0;
   }
   #sidebar {
-    margin: 0 5px 2px 5px;
+    margin: 0.75em 0.5em;
   }
   #corrections {
-    margin: 1em 5px 1em 5px;
+    margin: 0.75em 0.5em;
   }
   #results {
     margin: 0;
