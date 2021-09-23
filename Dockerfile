@@ -1,6 +1,21 @@
+# built filtron from upstream dalf/filtron
+FROM golang:1.14-alpine as builder
+WORKDIR $GOPATH/src/github.com/asciimoo/filtron
+
+# add gcc musl-dev for "go test"; get source and build filtron
+RUN apk add --no-cache git
+RUN git clone https://github.com/dalf/filtron.git .
+RUN go get -d -v
+RUN gofmt -l ./
+# RUN go vet -v ./...
+# RUN go test -v ./...
+RUN go build .
+
+
+
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:3.14
-ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH=
+ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON=
 WORKDIR /usr/local/searx
 
 # install build deps and git clone searxng as well as setting the version
@@ -18,9 +33,11 @@ apk -U upgrade \
 apk del build-dependencies \
 && rm -rf /var/cache/apk/* /root/.cache
 
-# copy custom simple themes and run.sh
+# copy custom simple themes, run.sh and filtron
 COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
+COPY --from=builder /go/src/github.com/asciimoo/filtron/filtron /usr/local/bin/filtron
+COPY ./src/rules.json /etc/filtron/rules.json
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
 RUN cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/; \
@@ -57,12 +74,14 @@ sed -i -e "/port:/s/8888/8080/g" \
 -e "/shortcut: apkm/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: ddg/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
-sed -i -e "/workers = 4/s/$/\n# Enable 4 threads per core\nthreads = 4/g" /etc/uwsgi/uwsgi.ini; \
+sed -i -e "/workers = 4/s/$/\n# Enable 4 threads per core\nthreads = 4\n\nauto-procname = true/g" /etc/uwsgi/uwsgi.ini; \
+touch /var/run/uwsgi-logrotate; \
+chown -R searx:searx /var/log/uwsgi /var/run/uwsgi-logrotate; \
 su searx -c "/usr/bin/python3 -m compileall -q searx"; \
-find /usr/local/searx/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' \
--o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
+find /usr/local/searx/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
-# expose port and set tini as CMD
+# expose port and set tini as CMD; default user is searx
+USER searx
 EXPOSE 8080
 CMD ["/sbin/tini","--","run.sh"]
