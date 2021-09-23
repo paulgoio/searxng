@@ -51,12 +51,13 @@ fi
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml
 
-# touch and chown log dir on runtime
-touch /var/run/uwsgi-logrotate
-chown -R searx:searx /var/log/uwsgi /var/run/uwsgi-logrotate
-
 # unset variables in running container
 unset MORTY_KEY
 
-# exec uwsgi prod server with tini
-exec su-exec searx:searx uwsgi --master --http-socket "0.0.0.0:8080" "/etc/uwsgi/uwsgi.ini"
+# start filtron in front of searx or just searx
+if [ ! -z "${FILTRON}" ]; then
+    exec uwsgi --master --http-socket "127.0.0.1:3000" "/etc/uwsgi/uwsgi.ini" &
+    exec filtron --rules /etc/filtron/rules.json -listen 0.0.0.0:8080 -api 0.0.0.0:4041 -target 127.0.0.1:3000
+else
+    exec uwsgi --master --http-socket "0.0.0.0:8080" "/etc/uwsgi/uwsgi.ini"
+fi

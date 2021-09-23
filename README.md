@@ -1,6 +1,6 @@
 # Searx
 
-builds custom searxng container with a changed simple theme and settings.yml; This project builds on top of https://github.com/searxng/searxng (searxng vs searx: https://github.com/searxng/searxng/issues/46).
+builds custom searxng container with a changed simple theme, settings.yml and bundled with filtron binary; This project builds on top of https://github.com/searxng/searxng (searxng vs searx: https://github.com/searxng/searxng/issues/46) as well as https://github.com/dalf/filtron.
 
 Check out https://start.paulgo.io for a deployed server with this container
 
@@ -20,9 +20,11 @@ Check out https://start.paulgo.io for a deployed server with this container
 
 ### Environment Variables (all optional: if not set -> using default settings)
 
+* ```FILTRON``` : set this to `true` to run filtron binary on startup; filtron is a basic rate limiter and bot protection (do not use this with a load balancer in front, since rate limiting wont be effective; using dalf/filtron; rules are in src/rule.json, they are from searx/searx-docker with a patch to make the built in image_proxy work properly)
+
 * ```IMAGE_PROXY``` : enable the image proxyfication through searx; If `MORTY_KEY` and `MORTY_URL` is set morty is used instead of the built in /image_proxy, otherwise the built in image proxy is used (set this to `true`)
 
-* ```MORTY_KEY``` : set the morty key here (a secret key that is shared by searx and morty, for example `1234`)
+* ```MORTY_KEY``` : set the morty key here (a secret key that is shared by searx and morty, generate one with `openssl rand -hex 16`)
 
 * ```MORTY_URL``` : set the full URL where the morty instance is reachable (for example `https://morty.example.com/morty`)
 
