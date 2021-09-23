@@ -4,10 +4,11 @@ services:
   searx:
     image: paulgoio/searx:{ENV}
     restart: always
+    networks:
+      - proxy
     cap_drop:
       - ALL
     cap_add:
-      - CHOWN
       - SETGID
       - SETUID
       - DAC_OVERRIDE
