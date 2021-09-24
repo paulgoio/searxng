@@ -1848,6 +1848,11 @@ td:hover .engine-tooltip,
 .column-reliability .engine-tooltip {
   right: 12rem;
 }
+#tab-contentquery table td,
+#tab-contentquery table th {
+  text-align: left !important;
+  height: 3rem;
+}
 #main_preferences form {
   width: 100%;
 }
@@ -2074,7 +2079,6 @@ td:hover .engine-tooltip,
   html.touch #main_results #categories {
     box-shadow: 0px 7px 6px -5px #DFE1E5;
   }
-
   #search {
     width: 100%;
     margin: 0;
