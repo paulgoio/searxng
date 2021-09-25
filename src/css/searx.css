@@ -1933,6 +1933,14 @@ td:hover .engine-tooltip,
 #main_preferences div.selectable_url pre {
   width: 100%;
 }
+#main_preferences th.name .engine-tooltip {
+  margin-top: 1.8rem;
+  left: 20rem;
+  max-width: 40rem;
+}
+#main_preferences th.name .engine-tooltip .engine-description {
+  margin-top: 0.5rem;
+}
 @media screen and (max-width: 75em) {
   .preferences_back {
     clear: both;
@@ -2672,7 +2680,7 @@ article.result-images[data-vim-selected]::before {
   #main_preferences,
   #main_about,
   #main_stats {
-    margin: 0.5em;
+    margin: 0.5em 0.5em 10em;
     width: auto;
   }
   #suggestions,
