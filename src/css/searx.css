@@ -390,10 +390,8 @@
  */
 
 html {
-  line-height: 1.5; /* 1 */
+  line-height: 1.4; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
-  position: relative;
-  min-height: 100%;
 }
 
 /* Sections
@@ -1249,7 +1247,6 @@ div.selectable_url {
   border: 1px solid #888;
   padding: 4px;
   color: #444;
-  width: 100%;
   margin: 0.1em;
   overflow: hidden;
   height: 1.2em;
@@ -1268,7 +1265,7 @@ div.selectable_url pre {
 .dialog-error {
   position: relative;
   padding: 1em 1em 1em 2.7em;
-  margin: 0;
+  margin: 0 0 1em 0;
   border: 1px solid black;
   border-radius: 4px;
   text-align: left;
@@ -1316,9 +1313,8 @@ div.selectable_url pre {
 }
 .dialog-warning {
   position: relative;
-  width: 70%;
   padding: 1em 1em 1em 2.7em;
-  margin: 0 8% 1em 8%;
+  margin: 0 0 1em 0;
   border: 1px solid black;
   border-radius: 4px;
   text-align: left;
@@ -1366,9 +1362,8 @@ div.selectable_url pre {
 }
 .dialog-modal {
   position: relative;
-  width: 70%;
   padding: 1em 1em 1em 2.7em;
-  margin: 0 8% 1em 8%;
+  margin: 0 0 1em 0;
   border: 1px solid black;
   border-radius: 4px;
   text-align: left;
@@ -1499,8 +1494,6 @@ html body .tabs > input:checked ~ label:hover {
 html body .tabs > input:checked + label {
   border-bottom: 3px solid #1A73E8;
   color: #1A73E8;
-  font-weight: bold;
-  letter-spacing: -0.1px;
 }
 html body .tabs > input:checked + label + section {
   display: block;
@@ -1543,7 +1536,7 @@ select:focus {
     width: 40px;
     height: 10px;
     background: #dcdcdc;
-    margin: 8px auto;
+    margin: 8px 1rem;
     position: relative;
     border-radius: 50px;
   }
@@ -1767,7 +1760,7 @@ td:hover .engine-tooltip,
 }
 .autocomplete > ul > li {
   cursor: pointer;
-  padding: 7px 0 7px 20px;
+  padding: 5px 0 5px 10px;
   color: rgb(0, 0, 0.87);
 }
 .autocomplete > ul > li.active,
@@ -1801,7 +1794,7 @@ td:hover .engine-tooltip,
 .autocomplete.open:empty {
   display: none;
 }
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 45rem) {
   .autocomplete {
     bottom: 0;
   }
@@ -1811,16 +1804,17 @@ td:hover .engine-tooltip,
     text-align: left;
   }
 }
+#main_index {
+  margin-top: 16em;
+}
 .index {
   text-align: center;
 }
 .index .title {
   background: url('../img/searx.png') no-repeat;
-  background-size: contain;
   width: 100%;
   min-height: 80px;
   background-position: center;
-  margin-top: 10em;
 }
 .index h1 {
   font-size: 5em;
@@ -1840,9 +1834,17 @@ td:hover .engine-tooltip,
   padding: 10px;
   border-bottom: initial !important;
 }
-@media screen and (max-width: 75em) {
+@media screen and (max-width: 80em) {
   div.title h1 {
     font-size: 1em;
+  }
+  #main_index {
+    margin-top: 6em;
+  }
+}
+@media screen and (max-width: 50em) {
+  #main_index {
+    margin-top: 0;
   }
 }
 .column-reliability .engine-tooltip {
@@ -1941,7 +1943,7 @@ td:hover .engine-tooltip,
 #main_preferences th.name .engine-tooltip .engine-description {
   margin-top: 0.5rem;
 }
-@media screen and (max-width: 75em) {
+@media screen and (max-width: 80em) {
   .preferences_back {
     clear: both;
   }
@@ -1950,13 +1952,13 @@ td:hover .engine-tooltip,
 * searx, A privacy-respecting, hackable metasearch engine
 */
 #search {
-  padding: 0 0 0 10em;
-  margin: 1em 0;
+  padding: 0 2em 0 10rem;
+  margin: 0;
   border-bottom: 1px solid #ebebeb;
   
 }
 #search_wrapper {
-  padding: 10px 0;
+  padding: 2em 0 1em 0;
 }
 .search_box {
   margin: 0 12px 0 0;
@@ -2023,7 +2025,7 @@ td:hover .engine-tooltip,
   padding-left: 20px;
   padding-right: 0 !important;
   border-right: none;
-  width: 36em;
+  width: 36rem;
 }
 #q::-ms-clear,
 #q::-webkit-search-cancel-button {
@@ -2045,13 +2047,12 @@ td:hover .engine-tooltip,
   display: inline-block;
   vertical-align: middle;
 }
-@media screen and (max-width: 75em) {
+@media screen and (max-width: 80em) {
   #search {
   	padding: 0 0 0 2em;
   	margin: 1em 0;
   	border-bottom: 1px solid #ebebeb;
   }
-
   #categories {
     font-size: 90%;
     clear: both;
@@ -2120,7 +2121,7 @@ td:hover .engine-tooltip,
   }
   .category {
     display: block;
-    width: 90%;
+    width: 100%;
   }
   .category label {
     border-bottom: 0;
@@ -2209,7 +2210,7 @@ td:hover .engine-tooltip,
   font-family: "ion";
 }
 html {
-  font-family: arial, sans-serif;
+  font-family: sans-serif;
   font-size: 0.9em;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -2224,31 +2225,31 @@ main {
   padding: 0;
   margin: 0;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
 main {
   width: 100%;
-  margin-bottom: 10em;
+  margin-bottom: 2rem;
+  flex: 1;
 }
 #main_preferences,
 #main_about,
 #main_stats {
-  margin: 3em 3em 10em 3em;
-  width: auto;
+  margin: 2em auto;
+  width: 85em;
 }
 footer {
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  right: 0;
-  left: 0;
-  height: 4em;
-  margin: 0;
-  padding: 1em 0;
   clear: both;
+  min-height: 4rem;
+  padding: 1rem 0;
   width: 100%;
   text-align: center;
   background-color: #f2f2f2;
   border-top: 1px solid #e4e4e4;
-  position: absolute;
   overflow: hidden;
 }
 footer p {
@@ -2268,7 +2269,6 @@ footer p {
 input[type="submit"],
 #results button[type="submit"] {
   padding: 0.5rem;
-  margin: 2px 4px;
   display: inline-block;
   background: #1A73E8;
   color: #FFF;
@@ -2293,7 +2293,7 @@ article[data-vim-selected] {
 }
 article[data-vim-selected]::before {
   position: absolute;
-  left: 1em;
+  left: 8rem;
   padding: 2px;
   content: ">";
   font-weight: bold;
@@ -2307,7 +2307,7 @@ article.result-images[data-vim-selected]::before {
   content: "";
 }
 .result {
-  margin: 19px 0 18px 8em;
+  margin: 3em 0;
   padding: 0;
 }
 .result h3 {
@@ -2320,7 +2320,7 @@ article.result-images[data-vim-selected]::before {
 .result h3 a {
   color: #1a0dab;
   font-weight: normal;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 .result h3 a:visited {
   color: #609;
@@ -2340,12 +2340,12 @@ article.result-images[data-vim-selected]::before {
 .result .content,
 .result .stat,
 .result .altlink {
-  font-size: 0.95em;
+  font-size: 0.9em;
   margin: 0;
   padding: 0;
   max-width: 54em;
   word-wrap: break-word;
-  line-height: 1.5;
+  line-height: 1.24;
 }
 .result .content .highlight,
 .result .stat .highlight,
@@ -2360,7 +2360,7 @@ article.result-images[data-vim-selected]::before {
   font-weight: normal;
 }
 .result .url {
-  font-size: 1em;
+  font-size: 0.9em;
   margin: 0 0 3px 0;
   padding: 0;
   max-width: 54em;
@@ -2484,9 +2484,21 @@ article.result-images[data-vim-selected]::before {
   color: #684898;
 }
 #results {
-  margin: 2em 2em 20px 2em;
+  margin: 2rem 2rem 0 10rem;
+  display: grid;
+  grid-template-columns: 45rem 25rem;
+  grid-template-rows: min-content min-content 1fr min-content;
+  gap: 0 5rem;
+  grid-template-areas: "corrections sidebar" "answers sidebar" "urls sidebar" "pagination sidebar";
+}
+#results #answers *:first-child,
+#results #sidebar *:first-child,
+#results #urls *:first-child {
+  margin-top: 0;
+}
+#urls {
   padding: 0;
-  width: 50em;
+  grid-area: urls;
 }
 #suggestions .wrapper {
   display: flex;
@@ -2496,11 +2508,6 @@ article.result-images[data-vim-selected]::before {
 #suggestions .wrapper form {
   display: inline-block;
   flex: 1 1 50%;
-}
-#suggestions,
-#answers,
-#corrections {
-  max-width: 50em;
 }
 #suggestions input,
 #answers input,
@@ -2537,9 +2544,10 @@ article.result-images[data-vim-selected]::before {
   text-decoration: underline;
 }
 #corrections {
+  grid-area: corrections;
   display: flex;
   flex-flow: row wrap;
-  margin: 0 0 0 8em;
+  margin: 0 0 1em 0;
 }
 #corrections h4,
 #corrections input[type="submit"] {
@@ -2556,7 +2564,7 @@ article.result-images[data-vim-selected]::before {
   color: #444;
 }
 #answers {
-  margin: 10px 8px 10px 8em;
+  grid-area: answers;
   border: 1px solid #ddd;
   padding: 0.9em;
   border-radius: 10px;
@@ -2575,12 +2583,7 @@ article.result-images[data-vim-selected]::before {
   min-width: 210px;
 }
 #sidebar {
-  position: absolute;
-  top: 140px;
-  left: 57em;
-  margin: 0 2px 5px 5px;
-  padding: 0 2px 2px;
-  max-width: 25em;
+  grid-area: sidebar;
   word-wrap: break-word;
   color: #222;
 }
@@ -2648,7 +2651,7 @@ article.result-images[data-vim-selected]::before {
   color: #222;
 }
 #pagination {
-  clear: both;
+  grid-area: pagination;
 }
 #pagination br {
   clear: both;
@@ -2659,14 +2662,14 @@ article.result-images[data-vim-selected]::before {
 }
 #backToTop {
   border: 1px solid #ddd;
-  margin: 0 0 0 2em;
+  margin: 0;
   padding: 0;
   font-size: 1em;
   box-shadow: 0 0 5px #ccc;
   background: white;
   position: fixed;
-  bottom: 85px;
-  left: 50em;
+  bottom: 8rem;
+  left: 56.3rem;
   transition: opacity 0.5s;
   opacity: 0;
   visibility: hidden;
@@ -2676,16 +2679,12 @@ article.result-images[data-vim-selected]::before {
   margin: 0;
   padding: 0.6em;
 }
-@media screen and (max-width: 75em) {
+@media screen and (max-width: 80em) {
   #main_preferences,
   #main_about,
   #main_stats {
-    margin: 0.5em 0.5em 10em;
+    margin: 2rem 0.5rem;
     width: auto;
-  }
-  #suggestions,
-  #answers {
-    margin: 0.75em 0.5em;
   }
   #infoboxes {
     position: inherit;
@@ -2702,9 +2701,6 @@ article.result-images[data-vim-selected]::before {
     margin: 0.5em 0.5em 0.5em 0;
   }
   #sidebar {
-    position: static;
-    max-width: 50em;
-    margin: 0 0 2px 0;
     padding: 0;
     float: none;
     border: none;
@@ -2713,9 +2709,6 @@ article.result-images[data-vim-selected]::before {
   #sidebar input {
     border: 0;
   }
-  #corrections {
-    margin: 0.75em 0.5em;
-  }
   #apis {
     display: none;
   }
@@ -2723,7 +2716,7 @@ article.result-images[data-vim-selected]::before {
     display: none;
   }
   .result {
-    margin: 0.75em 0.5em;
+    margin: 0;
     padding-top: 8px;
     padding-bottom: 6px;
   }
@@ -2757,30 +2750,48 @@ article.result-images[data-vim-selected]::before {
   .image_result img {
     max-width: 98%;
   }
+  #backToTop {
+    display: none;
+  }
+  #pagination {
+    margin: 2rem 0 0 0 !important;
+  }
+  #main_results div#results {
+    margin: 2rem 0.5rem 0 0.5rem;
+    display: grid;
+    grid-template-columns: 45rem;
+    grid-template-rows: min-content min-content min-content 1fr min-content min-content;
+    gap: 0;
+    grid-template-areas: "corrections" "answers" "sidebar" "urls" "pagination";
+  }
+  article[data-vim-selected]::before {
+    left: 0;
+  }
 }
 #main_results div#results.only_template_images {
-  flex-direction: column;
-  width: auto;
-  display: flex;
-}
-#main_results div#results.only_template_images #sidebar {
-  position: relative;
-  top: auto;
-  order: 2;
+  margin: 2rem 0.5rem 0 0.5rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content min-content 1fr min-content min-content;
+  gap: 0;
+  grid-template-areas: "corrections" "urls" "answers" "sidebar" "pagination";
 }
 #main_results div#results.only_template_images #urls {
-  position: relative;
-  order: 1;
+  width: inherit;
+  margin: 0;
 }
 #main_results div#results.only_template_images #backToTop {
-  right: 0.5em;
   left: auto;
+  right: 2rem;
 }
 #main_results div#results.only_template_images #pagination {
-  position: relative;
-  order: 3;
+  margin-right: 4rem;
 }
 @media screen and (max-width: 50em) {
+  #main_results div#results {
+    grid-template-columns: 100%;
+    margin: 2rem 0 0 0;
+  }
   article[data-vim-selected]::before {
     display: none;
     content: "";
@@ -2791,25 +2802,23 @@ article.result-images[data-vim-selected]::before {
     top: 100px;
     right: 0;
   }
-  #sidebar {
-    margin: 0.75em 0.5em;
-  }
-  #corrections {
-    margin: 0.75em 0.5em;
+  #sidebar,
+  #corrections,
+  #answers {
+    margin: 1em 0.5em;
   }
   #results {
     margin: 0;
     padding: 0;
-    width: initial;
   }
-  #backToTop {
-    left: 40em;
-    bottom: 35px;
+  #pagination {
+    margin: 2rem 1rem 0 1rem !important;
   }
   .result {
     padding: 8px 10px 6px 10px;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
     border-radius: 8px;
+    margin: 1em 0.5em;
   }
   .result-images {
     margin: 0;
