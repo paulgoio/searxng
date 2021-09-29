@@ -54,7 +54,6 @@ sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/Referrer-Policy: no-referrer/d" \
 -e "/default_theme:/s/oscar/simple/g" \
 -e "/name: btdigg/s/$/\n    disabled: true/g" \
--e "/name: stackoverflow/s/$/\n    disabled: true/g" \
 -e "/name: digg/s/$/\n    disabled: true/g" \
 -e "/name: piratebay/s/$/\n    disabled: true/g" \
 -e "/name: bandcamp/s/$/\n    disabled: true/g" \
