@@ -41,8 +41,8 @@ COPY ./src/rules.json /etc/filtron/rules.json
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
 RUN cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/; \
-rm -rf searx/static/themes/simple/css/searx.min.css.map; \
-rm -rf searx/static/themes/simple/css/searx-rtl.min.css.map; \
+rm -rf searx/static/themes/simple/css/searxng.min.css.map; \
+rm -rf searx/static/themes/simple/css/searxng-rtl.min.css.map; \
 chmod +x /usr/local/bin/run.sh; \
 sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/port:/s/8888/8080/g" \
