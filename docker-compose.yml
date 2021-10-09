@@ -24,7 +24,7 @@ services:
       - FILTRON=true
       - IMAGE_PROXY=true
       - DOMAIN={DOMAIN}
-      - CONTACT=mailto:paul+searx@paulgo.io
+      - CONTACT=https://paulgo.io/#about
       - ISSUE_URL=https://github.com/paulgoio/searxng/issues
       - GIT_URL=https://github.com/paulgoio/searxng
       - GIT_BRANCH=main
