@@ -24,7 +24,7 @@ fi
 
 # set contact url
 if [ ! -z "${CONTACT}" ]; then
-    sed -i -e "/contact_url:/s/false/${CONTACT}/g" \
+    sed -i -e "s+contact_url: false+contact_url: ${CONTACT}+g" \
     searx/settings.yml;
 fi
 
