@@ -881,10 +881,10 @@ html {
   --color-toolkit-tabs-label-border: #fff;
   --color-toolkit-tabs-section-border: #ebebeb;
   --color-toolkit-select-border: #ebebeb;
-  --color-toolkit-checkbox-onoff-background: #f2f2f2;
+  --color-toolkit-checkbox-onoff-background: #dfe1e5;
   --color-toolkit-checkbox-onoff-label-shadow: rgba(0, 0, 0, 0.3);
   --color-toolkit-checkbox-onoff-label-background: #1a73e8;
-  --color-toolkit-checkbox-onoff-checked-background: #f2f2f2;
+  --color-toolkit-checkbox-onoff-checked-background: #dfe1e5;
   --color-toolkit-checkbox-label-background: #fff;
   --color-toolkit-checkbox-label-border: #f2f2f2;
   --color-toolkit-checkbox-input-border: #1a73e8;
