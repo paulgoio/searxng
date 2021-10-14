@@ -55,8 +55,6 @@ sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/default_theme:/s/oscar/simple/g" \
 -e "/name: btdigg/s/$/\n    disabled: true/g" \
 -e "/name: digg/s/$/\n    disabled: true/g" \
--e "/name: piratebay/s/$/\n    disabled: true/g" \
--e "/name: bandcamp/s/$/\n    disabled: true/g" \
 -e "/name: deviantart/s/$/\n    disabled: true/g" \
 -e "/name: vimeo/s/$/\n    disabled: true/g" \
 -e "/name: openairepublications/s/$/\n    disabled: true/g" \
@@ -69,8 +67,9 @@ sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/name: flickr/s/$/\n    disabled: true/g" \
 -e "/name: unsplash/s/$/\n    disabled: true/g" \
 -e "/name: gentoo/s/$/\n    disabled: true/g" \
+-e "/name: ccengine/s/$/\n    disabled: true/g" \
+-e "/name: google videos/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
--e "/shortcut: apkm/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
 sed -i -e "/workers = 4/s/$/\n# Enable 4 threads per core\nthreads = 4\n\nauto-procname = true/g" /etc/uwsgi/uwsgi.ini; \
 touch /var/run/uwsgi-logrotate; \
