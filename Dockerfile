@@ -62,7 +62,6 @@ sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/name: openairepublications/s/$/\n    disabled: true/g" \
 -e "/name: wikidata/s/$/\n    disabled: true/g" \
 -e "/name: library of congress/s/$/\n    disabled: true/g" \
--e "/name: currency/s/$/\n    disabled: true/g" \
 -e "/name: dictzone/s/$/\n    disabled: true/g" \
 -e "/name: brave/s/$/\n    disabled: true/g" \
 -e "/name: genius/s/$/\n    disabled: true/g" \
@@ -72,7 +71,6 @@ sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/name: gentoo/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: apkm/{n;s/.*/    disabled: false/}" \
--e "/shortcut: ddg/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
 sed -i -e "/workers = 4/s/$/\n# Enable 4 threads per core\nthreads = 4\n\nauto-procname = true/g" /etc/uwsgi/uwsgi.ini; \
 touch /var/run/uwsgi-logrotate; \
