@@ -2,7 +2,17 @@
 
 builds custom SearXNG container with a changed simple theme, settings.yml and bundled with filtron binary; This project builds on top of https://github.com/searxng/searxng (SearXNG vs SearX: https://github.com/searxng/searxng/issues/46) as well as https://github.com/dalf/filtron.
 
-Check out https://start.paulgo.io for a deployed server with this container
+
+
+### Project Links
+
+Production Server / Instance : https://paulgo.io
+
+DockerHub : https://hub.docker.com/r/paulgoio/searxng
+
+GitHub : https://github.com/paulgoio/searxng
+
+GitLab : https://paulgo.dev/paulgoio/searxng
 
 
 
