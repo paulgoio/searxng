@@ -23,7 +23,7 @@ fi
 
 # set instance name
 if [ ! -z "${NAME}" ]; then
-    sed -i -e "/instance_name:/s/SearXNG/${DOMAIN}/g" \
+    sed -i -e "/instance_name:/s/SearXNG/${NAME}/g" \
     searx/settings.yml;
 fi
 
