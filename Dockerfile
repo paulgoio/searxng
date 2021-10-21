@@ -16,19 +16,19 @@ RUN go build .
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:3.14
 ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON=
-WORKDIR /usr/local/searx
+WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
-RUN addgroup -g ${GID} searx \
-&& adduser -u ${UID} -D -h /usr/local/searx -s /bin/sh -G searx searx; \
+RUN addgroup -g ${GID} searxng \
+&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/sh -G searxng searxng; \
 apk -U upgrade \
 && apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev git tar \
 && apk add --no-cache ca-certificates su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
 && git clone https://github.com/searxng/searxng.git . \
-&& chown -R searx:searx . \
+&& chown -R searxng:searxng . \
 && pip install --upgrade pip \
 && pip install --no-cache -r requirements.txt \
-&& su searx -c "/usr/bin/python3 -m searx.version freeze" \
+&& su searxng -c "/usr/bin/python3 -m searx.version freeze" \
 && sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" searx/version_frozen.py; \
 apk del build-dependencies \
 && rm -rf /var/cache/apk/* /root/.cache
@@ -73,12 +73,12 @@ sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 searx/settings.yml; \
 sed -i -e "/workers = 4/s/$/\n# Enable 4 threads per core\nthreads = 4\n\nauto-procname = true/g" /etc/uwsgi/uwsgi.ini; \
 touch /var/run/uwsgi-logrotate; \
-chown -R searx:searx /var/log/uwsgi /var/run/uwsgi-logrotate; \
-su searx -c "/usr/bin/python3 -m compileall -q searx"; \
-find /usr/local/searx/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
+chown -R searxng:searxng /var/log/uwsgi /var/run/uwsgi-logrotate; \
+su searxng -c "/usr/bin/python3 -m compileall -q searx"; \
+find /usr/local/searxng/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
-# expose port and set tini as CMD; default user is searx
-USER searx
+# expose port and set tini as CMD; default user is searxng
+USER searxng
 EXPOSE 8080
 CMD ["/sbin/tini","--","run.sh"]
