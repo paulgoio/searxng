@@ -27,7 +27,7 @@ apk del build-dependencies \
 # copy custom simple themes, run.sh and filtron
 COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
-COPY --from=filtron ./filtron /usr/local/bin/filtron
+COPY --from=filtron /usr/local/filtron/filtron /usr/local/bin/filtron
 COPY ./src/rules.json /etc/filtron/rules.json
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
