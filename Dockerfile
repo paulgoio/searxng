@@ -1,21 +1,21 @@
 # built filtron from upstream dalf/filtron
 FROM golang:1.14-alpine as builder
+ENV UPSTREAM_COMMIT=e671167b6f6ec122ceb4e982fdfab20462c47bf6
 WORKDIR $GOPATH/src/github.com/asciimoo/filtron
 
 # add gcc musl-dev for "go test"; get source and build filtron
 RUN apk add --no-cache git
 RUN git clone https://github.com/dalf/filtron.git .
+RUN git reset --hard ${UPSTREAM_COMMIT}
 RUN go get -d -v
 RUN gofmt -l ./
-# RUN go vet -v ./...
-# RUN go test -v ./...
 RUN go build .
 
 
 
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:3.14
-ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON=
+ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= UPSTREAM_COMMIT=dfdf71bf08d48332a30ff982dcc8b4ac499d9c8d
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
@@ -25,6 +25,7 @@ apk -U upgrade \
 && apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev git tar \
 && apk add --no-cache ca-certificates su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
 && git clone https://github.com/searxng/searxng.git . \
+&& git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
 && pip install --upgrade pip \
 && pip install --no-cache -r requirements.txt \
