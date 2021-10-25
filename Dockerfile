@@ -1,15 +1,5 @@
-# built filtron from upstream dalf/filtron
-FROM golang:1.14-alpine as builder
-ENV UPSTREAM_COMMIT=e671167b6f6ec122ceb4e982fdfab20462c47bf6
-WORKDIR $GOPATH/src/github.com/asciimoo/filtron
-
-# add gcc musl-dev for "go test"; get source and build filtron
-RUN apk add --no-cache git
-RUN git clone https://github.com/dalf/filtron.git .
-RUN git reset --hard ${UPSTREAM_COMMIT}
-RUN go get -d -v
-RUN gofmt -l ./
-RUN go build .
+# use upstream dalf/filtron docker hub build for build in filtron
+FROM dalf/filtron:latest as filtron
 
 
 
@@ -37,7 +27,7 @@ apk del build-dependencies \
 # copy custom simple themes, run.sh and filtron
 COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
-COPY --from=builder /go/src/github.com/asciimoo/filtron/filtron /usr/local/bin/filtron
+COPY --from=filtron /go/src/github.com/asciimoo/filtron/filtron /usr/local/bin/filtron
 COPY ./src/rules.json /etc/filtron/rules.json
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
