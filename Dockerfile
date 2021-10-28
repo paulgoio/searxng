@@ -61,6 +61,7 @@ sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/name: ccengine/s/$/\n    disabled: true/g" \
 -e "/name: google videos/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
+-e "s/    use_mobile_ui: false/    use_mobile_ui: true/g" \
 searx/settings.yml; \
 sed -i -e "/workers = 4/s/$/\n# Enable 4 threads per core\nthreads = 4\n\nauto-procname = true/g" /etc/uwsgi/uwsgi.ini; \
 touch /var/run/uwsgi-logrotate; \
