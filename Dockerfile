@@ -35,7 +35,8 @@ RUN cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/; \
 rm -rf searx/static/themes/simple/css/searxng.min.css.map; \
 rm -rf searx/static/themes/simple/css/searxng-rtl.min.css.map; \
 chmod +x /usr/local/bin/run.sh; \
-sed -i -e "/autocomplete:/s/\"\"/\"google\"/g" \
+sed -i -e "/safe_search:/s/0/1/g" \
+-e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/port:/s/8888/8080/g" \
 -e "/bind_address:/s/127.0.0.1/0.0.0.0/g" \
 -e "/http_protocol_version:/s/1.0/1.1/g" \
