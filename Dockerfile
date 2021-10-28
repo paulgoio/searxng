@@ -5,7 +5,7 @@ FROM dalf/filtron:latest as filtron
 
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:3.14
-ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= UPSTREAM_COMMIT=2624034cd6f417b52ed3f9f3f5226720fa0b53a1
+ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= UPSTREAM_COMMIT=8985d3e6ef3c1371b21bee69074f0e38acae9967
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
