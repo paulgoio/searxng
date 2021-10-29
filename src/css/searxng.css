@@ -2004,7 +2004,7 @@ article.result-images .detail {
   position: fixed;
   left: 60rem;
   right: 0;
-  top: 8.25rem;
+  top: 8.75rem;
   bottom: 0;
   background: var(--color-result-detail-background);
   border: 1px solid var(--color-result-detail-background);
