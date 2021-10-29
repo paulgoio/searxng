@@ -2199,7 +2199,7 @@ article.result-images .detail {
   margin-top: 24vh;
 }
 #main_index #linkto_preferences {
-  right: 1.8rem;
+  right: 2.2rem;
 }
 .index {
   text-align: center;
@@ -2527,7 +2527,6 @@ article.result-images .detail {
     width: 100%;
   }
   .category label {
-    padding: 10px !important;
     text-transform: uppercase !important;
   }
 }
@@ -3011,7 +3010,7 @@ article.result-images[data-vim-selected] .image_thumbnail {
 #linkto_preferences {
   position: absolute;
   right: 10px;
-  top: 2rem;
+  top: 2.2rem;
   padding: 0;
   border: 0;
   display: block;
