@@ -2209,6 +2209,7 @@ article.result-images .detail {
   min-height: 4rem;
   margin: 4rem auto;
   background-position: center;
+  background-size: contain;
 }
 .index h1 {
   font-size: 4em;
