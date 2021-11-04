@@ -1577,7 +1577,7 @@ div.selectable_url pre {
   vertical-align: text-top;
 }
 .dialog-modal tr:hover {
-  background: transparent;
+  background: transparent !important;
 }
 .dialog-modal td {
   padding: 0 1em 0 0;
@@ -1647,7 +1647,6 @@ div.selectable_url pre {
   border-bottom: 2px solid var(--color-categories-item-border-selected);
   background: var(--color-categories-item-selected);
   color: var(--color-categories-item-selected-font);
-  font-weight: bold;
   letter-spacing: -0.1px;
 }
 .tabs > section:last-of-type {
@@ -3128,6 +3127,14 @@ article[data-vim-selected].category-social {
   .result .engines {
     float: right;
     padding: 0 0 3px 0;
+  }
+  .category-videos,
+  .category-news,
+  .category-map,
+  .category-music,
+  .category-files,
+  .category-social {
+    margin: 1rem 0 !important;
   }
   .result-images {
     border-bottom: none !important;
