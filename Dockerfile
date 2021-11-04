@@ -55,6 +55,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/X-Robots-Tag: noindex, nofollow/d" \
 -e "/Referrer-Policy: no-referrer/d" \
 -e "/default_theme:/s/oscar/simple/g" \
+-e "s/    use_mobile_ui: false/    use_mobile_ui: true/g" \
 -e "/name: btdigg/s/$/\n    disabled: true/g" \
 -e "/name: digg/s/$/\n    disabled: true/g" \
 -e "/name: deviantart/s/$/\n    disabled: true/g" \
@@ -71,8 +72,9 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: gentoo/s/$/\n    disabled: true/g" \
 -e "/name: ccengine/s/$/\n    disabled: true/g" \
 -e "/name: google videos/s/$/\n    disabled: true/g" \
+-e "/name: yahoo news/s/$/\n    disabled: true/g" \
+-e "/name: bing news/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
--e "s/    use_mobile_ui: false/    use_mobile_ui: true/g" \
 searx/settings.yml; \
 sed -i -e "/workers = 4/s/$/\n# Enable 4 threads per core\nthreads = 4\n\nauto-procname = true/g" /etc/uwsgi/uwsgi.ini; \
 touch /var/run/uwsgi-logrotate; \
