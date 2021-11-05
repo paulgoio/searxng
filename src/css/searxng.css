@@ -390,7 +390,7 @@
  */
 
 html {
-  line-height: 1.4; /* 1 */
+  line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
@@ -2206,7 +2206,7 @@ article.result-images .detail {
   margin-top: 26vh;
 }
 #main_index #linkto_preferences {
-  right: 2.2rem;
+  right: 1.8rem;
 }
 .index {
   text-align: center;
@@ -2537,7 +2537,6 @@ article.result-images .detail {
   }
   .category label {
     padding: 10px !important;
-    text-transform: uppercase !important;
   }
 }
 #categories {
