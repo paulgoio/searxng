@@ -2009,7 +2009,7 @@ article.result-images .detail {
   position: fixed;
   left: 60rem;
   right: 0;
-  top: 8.1rem;
+  top: 7.8rem;
   transition: top 0.064s ease-in 0s;
   bottom: 0;
   background: var(--color-result-detail-background);
