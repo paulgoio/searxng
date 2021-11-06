@@ -55,6 +55,8 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/X-Robots-Tag: noindex, nofollow/d" \
 -e "/Referrer-Policy: no-referrer/d" \
 -e "/default_theme:/s/oscar/simple/g" \
+-e "s/# results_on_new_tab: false/results_on_new_tab: true/g" \
+-e "s/# enabled_plugins:/enabled_plugins:\n   - vim_hotkeys/g" \
 -e "s/    use_mobile_ui: false/    use_mobile_ui: true/g" \
 -e "/name: btdigg/s/$/\n    disabled: true/g" \
 -e "/name: digg/s/$/\n    disabled: true/g" \
