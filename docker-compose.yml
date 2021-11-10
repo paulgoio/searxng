@@ -12,14 +12,6 @@ services:
       - SETGID
       - SETUID
       - DAC_OVERRIDE
-    logging:
-      driver: loki
-      options:
-        loki-url: "${LOKI_URL}"
-        loki-external-labels: env={ENV}
-        loki-relabel-config: |
-          - action: labeldrop
-            regex: filename
     environment:
       - FILTRON=true
       - IMAGE_PROXY=true
