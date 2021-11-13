@@ -15,7 +15,7 @@ RUN go build .
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:3.14
 ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= \
-UPSTREAM_COMMIT=7a9dda51d2f532089396e97a890e1727c1e872d1
+UPSTREAM_COMMIT=de7f8b757b4d63b19e935676467b2b5320e2b6b6
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
