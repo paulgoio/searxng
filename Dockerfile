@@ -1,7 +1,7 @@
 # built filtron from dalf/filtron
 FROM golang:1.17-alpine as builder
 WORKDIR $GOPATH/src/github.com/asciimoo/filtron
-ENV UPSTREAM_COMMIT=b5cf8fd75dfb6e85b6099a3809dc6f4a566277ab
+ENV UPSTREAM_COMMIT=d8150687f4f220593de723a5b8c016a1a2a841b5
 
 RUN apk add --no-cache git
 RUN git clone https://github.com/dalf/filtron.git .
