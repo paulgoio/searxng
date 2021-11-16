@@ -1,38 +1,22 @@
-# built filtron from dalf/filtron
-FROM golang:1.17-alpine as builder
-WORKDIR $GOPATH/src/github.com/asciimoo/filtron
-ENV UPSTREAM_COMMIT=d8150687f4f220593de723a5b8c016a1a2a841b5
-
-RUN apk add --no-cache git
-RUN git clone https://github.com/dalf/filtron.git .
-RUN git reset --hard ${UPSTREAM_COMMIT}
-RUN go get -d -v
-RUN gofmt -l ./
-RUN go build .
+# use prebuild filtron image from filtron branch
+FROM registry.paulgo.dev/paulgoio/searxng:filtron as builder
 
 
 
-# use alpine as base for searx and set workdir as well as env vars
-FROM alpine:3.14
+# use prebuild alpine image with needed python packages from base branch
+FROM registry.paulgo.dev/paulgoio/searxng:base
 ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= DOMAIN= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= \
 UPSTREAM_COMMIT=646db5d4f942b4c4da4a62f38b159bd80b7f9db1
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
 RUN addgroup -g ${GID} searxng \
-&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/sh -G searxng searxng; \
-apk -U upgrade \
-&& apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev git tar \
-&& apk add --no-cache ca-certificates su-exec python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli \
+&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/sh -G searxng searxng \
 && git clone https://github.com/searxng/searxng.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
-&& pip install --upgrade pip wheel setuptools \
-&& pip install --no-cache  --no-binary :all: -r requirements.txt \
 && su searxng -c "/usr/bin/python3 -m searx.version freeze" \
-&& sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" searx/version_frozen.py; \
-apk del build-dependencies \
-&& rm -rf /var/cache/apk/* /root/.cache
+&& sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" searx/version_frozen.py
 
 # copy custom simple themes, run.sh and filtron
 COPY ./src/css/* searx/static/themes/simple/css/
