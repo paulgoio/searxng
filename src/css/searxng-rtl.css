@@ -906,7 +906,7 @@ template {
     --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
   }
 }
-:root.theme-auto {
+:root.theme-dark {
   --color-base-font: #bdc1c6;
   --color-base-font-rgb: 189, 193, 198;
   --color-base-background: #202124;
