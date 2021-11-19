@@ -820,7 +820,7 @@ template {
   --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root.theme-auto {
     --color-base-font: #bdc1c6;
     --color-base-font-rgb: 189, 193, 198;
     --color-base-background: #202124;
@@ -905,6 +905,91 @@ template {
     --color-toolkit-loader-border: rgba(0, 0, 0, 0.2);
     --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
   }
+}
+:root.theme-auto {
+  --color-base-font: #bdc1c6;
+  --color-base-font-rgb: 189, 193, 198;
+  --color-base-background: #202124;
+  --color-url-font: #8ab4f8;
+  --color-url-visited-font: #C58AF9;
+  --color-header-background: #202124;
+  --color-header-border: #3c4043;
+  --color-footer-background: #171717;
+  --color-footer-border: #212327;
+  --color-sidebar-border: #3c4043;
+  --color-sidebar-font: #fff;
+  --color-backtotop-font: #bdc1c6;
+  --color-backtotop-border: #212327;
+  --color-backtotop-background: #171717;
+  --color-btn-background: #8ab4f8;
+  --color-btn-font: #202124;
+  --color-search-border: transparent;
+  --color-search-background: #303134;
+  --color-search-font: #fff;
+  --color-search-background-hover: #8ab4f8;
+  --color-search-shadow-hover: 0 1px 6px rgba(23,23,23,0.9);
+  --color-error: #f55b5b;
+  --color-error-background: #390a0a;
+  --color-warning: #f1d561;
+  --color-warning-background: #39300a;
+  --color-success: #79f56e;
+  --color-success-background: #0e390a;
+  --color-categories-item-selected-font: #8ab4f8;
+  --color-categories-item-border-selected: #8ab4f8;
+  --color-autocomplete-font: #fff;
+  --color-autocomplete-border: transparent;
+  --color-autocomplete-background: #303134;
+  --color-autocomplete-background-hover: #171717;
+  --color-answer-border: #3c4043;
+  --color-answer-font: #fff;
+  --color-answer-background: #171717;
+  --color-result-border: #3c4043;
+  --color-result-url-font: #bdc1c6;
+  --color-result-vim-selected: #171717;
+  --color-result-vim-arrow: #8ab4f8;
+  --color-result-description-highlight-font: #bdc1c6;
+  --color-result-link-font: #8ab4f8;
+  --color-result-link-font-highlight: #8ab4f8;
+  --color-result-link-visited-font: #C58AF9;
+  --color-result-publishdate-font: #bdc1c6;
+  --color-result-engines-font: #bdc1c6;
+  --color-result-search-url-border: #3c4043;
+  --color-result-search-url-font: #fff;
+  --color-result-detail-font: #fff;
+  --color-result-detail-label-font: lightgray;
+  --color-result-detail-background: #000;
+  --color-result-detail-hr: #3c4043;
+  --color-result-detail-link: #8ab4f8;
+  --color-result-detail-loader-border: rgba(255, 255, 255, 0.2);
+  --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
+  --color-result-image-span-background-hover: rgba(0, 0, 0, 0.6);
+  --color-result-image-span-font: #fff;
+  --color-result-image-background: #8ab4f8;
+  --color-settings-tr-hover: #3c4043;
+  --color-settings-engine-description-font: #bdc1c6;
+  --color-toolkit-badge-font: #202124;
+  --color-toolkit-badge-background: #bdc1c6;
+  --color-toolkit-kbd-font: #000;
+  --color-toolkit-kbd-background: #fff;
+  --color-toolkit-dialog-border: #3c4043;
+  --color-toolkit-dialog-background: #202124;
+  --color-toolkit-tabs-label-border: #202124;
+  --color-toolkit-tabs-section-border: #3c4043;
+  --color-toolkit-select-border: #3c4043;
+  --color-toolkit-select-border-hover: #3c4043;
+  --color-toolkit-input-text-font: #fff;
+  --color-toolkit-input-text-border: #3c4043;
+  --color-toolkit-input-text-border-hover: #3c4043;
+  --color-toolkit-checkbox-onoff-background: #303134;
+  --color-toolkit-checkbox-onoff-label-background: #8ab4f8;
+  --color-toolkit-checkbox-onoff-checked-background: #bdc1c6;
+  --color-toolkit-checkbox-label-background: #fff;
+  --color-toolkit-checkbox-label-border: #3c4043;
+  --color-toolkit-checkbox-input-border: #8ab4f8;
+  --color-toolkit-engine-tooltip-border: #3c4043;
+  --color-toolkit-engine-tooltip-background: #202124;
+  --color-toolkit-loader-border: rgba(0, 0, 0, 0.2);
+  --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
 }
 /*
 * SearXNG, A privacy-respecting, hackable metasearch engine
@@ -1603,9 +1688,13 @@ select:focus {
     background-color: var(--color-base-background);
   }
   @media (prefers-color-scheme: dark) {
-    select {
+    html.theme-auto select,
+    html.theme-dark select {
       background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%0A%3Cg%3E%3Cpolygon%20fill%3D%22%23ddd%22%20points%3D%22128%2C192%20256%2C320%20384%2C192%22%2F%3E%3C%2Fg%3E%0A%3C%2Fsvg%3E");
     }
+  }
+  html.theme-dark select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%0A%3Cg%3E%3Cpolygon%20fill%3D%22%23ddd%22%20points%3D%22128%2C192%20256%2C320%20384%2C192%22%2F%3E%3C%2Fg%3E%0A%3C%2Fsvg%3E");
   }
 }
 /* -- checkbox-onoff -- */
