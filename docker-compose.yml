@@ -23,23 +23,14 @@ services:
       - GIT_BRANCH=main
     labels:
       - traefik.enable=true
-      # router for static files
-      - traefik.http.routers.{REPO}-static.rule=Host(`{DOMAIN}`)&&PathPrefix(`/static`)&&Method(`GET`,`HEAD`)
-      - traefik.http.routers.{REPO}-static.entrypoints=https
-      - traefik.http.routers.{REPO}-static.tls=true
-      - traefik.http.routers.{REPO}-static.middlewares=external-secure,searx-csp@file,{REPO}-fp,{REPO}-static
-      # router for dynamic files
       - traefik.http.routers.{REPO}.rule=Host(`{DOMAIN}`)&&Method(`GET`,`POST`,`HEAD`)
       - traefik.http.routers.{REPO}.entrypoints=https
       - traefik.http.routers.{REPO}.tls=true
-      - traefik.http.routers.{REPO}.middlewares=external-secure,searx-csp@file,{REPO}-fp,{REPO}-dynamic
+      - traefik.http.routers.{REPO}.middlewares=external-secure,searx-csp@file,{REPO}-headers
       # CSP for SearXNG in dynamic config
-      # feature policy for SearXNG and morty
-      - traefik.http.middlewares.{REPO}-fp.headers.customResponseHeaders.Permissions-Policy=accelerometer=();ambient-light-sensor=(); autoplay=();camera=();encrypted-media=();focus-without-user-activation=(); geolocation=();gyroscope=();magnetometer=();microphone=();midi=();payment=();picture-in-picture=(); speaker=();sync-xhr=();usb=();vr=()
-      # cache control dynamic and static
-      - traefik.http.middlewares.{REPO}-static.headers.customResponseHeaders.Cache-Control=public, max-age=43200
-      - traefik.http.middlewares.{REPO}-dynamic.headers.customResponseHeaders.Cache-Control=no-cache
-
+      # feature policy for SearXNG and disable browser caching
+      - traefik.http.middlewares.{REPO}-headers.headers.customResponseHeaders.Permissions-Policy=accelerometer=();ambient-light-sensor=(); autoplay=();camera=();encrypted-media=();focus-without-user-activation=(); geolocation=();gyroscope=();magnetometer=();microphone=();midi=();payment=();picture-in-picture=(); speaker=();sync-xhr=();usb=();vr=()
+      - traefik.http.middlewares.{REPO}-headers.headers.customResponseHeaders.Cache-Control=no-cache
 networks:
   proxy:
     external: true
