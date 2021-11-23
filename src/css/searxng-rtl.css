@@ -755,7 +755,6 @@ template {
   --color-search-background: #fff;
   --color-search-font: #000;
   --color-search-background-hover: #1a73e8;
-  --color-search-shadow-hover: 0 2px 8px 1px rgba(64,60,67,.24);
   --color-error: #db3434;
   --color-error-background: #fae1e1;
   --color-warning: #dbba34;
@@ -839,7 +838,6 @@ template {
     --color-search-background: #303134;
     --color-search-font: #fff;
     --color-search-background-hover: #8ab4f8;
-    --color-search-shadow-hover: 0 1px 6px rgba(23,23,23,0.9);
     --color-error: #f55b5b;
     --color-error-background: #390a0a;
     --color-warning: #f1d561;
@@ -923,7 +921,6 @@ template {
   --color-search-background: #303134;
   --color-search-font: #fff;
   --color-search-background-hover: #8ab4f8;
-  --color-search-shadow-hover: 0 1px 6px rgba(23,23,23,0.9);
   --color-error: #f55b5b;
   --color-error-background: #390a0a;
   --color-warning: #f1d561;
@@ -1952,7 +1949,6 @@ td:hover .engine-tooltip,
   max-height: 500px;
   overflow-y: auto;
   z-index: 100;
-  box-shadow: var(--color-search-shadow-hover);
 }
 .autocomplete.open:empty {
   display: none;
@@ -2447,11 +2443,6 @@ article.result-images .detail {
   display: inline-flex;
   flex-direction: row;
   white-space: nowrap;
-}
-.search_box:focus-within,
-.search_box:hover {
-  box-shadow: var(--color-search-shadow-hover);
-  border: 1px solid transparent;
 }
 #clear_search {
   display: block;
