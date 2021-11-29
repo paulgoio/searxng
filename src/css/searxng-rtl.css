@@ -784,7 +784,7 @@ template {
   --color-result-search-url-font: #000;
   --color-result-image-span-background-hover: rgba(0, 0, 0, 0.6);
   --color-result-image-span-font: #fff;
-  --color-result-image-background: #1a73e8;
+  --color-result-image-background: #fff;
   --color-settings-tr-hover: #f2f2f2;
   --color-settings-engine-description-font: #909090;
   --color-result-detail-font: #fff;
@@ -874,7 +874,7 @@ template {
     --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
     --color-result-image-span-background-hover: rgba(0, 0, 0, 0.6);
     --color-result-image-span-font: #fff;
-    --color-result-image-background: #8ab4f8;
+    --color-result-image-background: #202124;
     --color-settings-tr-hover: #3c4043;
     --color-settings-engine-description-font: #bdc1c6;
     --color-toolkit-badge-font: #202124;
@@ -957,7 +957,7 @@ template {
   --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
   --color-result-image-span-background-hover: rgba(0, 0, 0, 0.6);
   --color-result-image-span-font: #fff;
-  --color-result-image-background: #8ab4f8;
+  --color-result-image-background: #202124;
   --color-settings-tr-hover: #3c4043;
   --color-settings-engine-description-font: #bdc1c6;
   --color-toolkit-badge-font: #202124;
