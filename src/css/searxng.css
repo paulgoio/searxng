@@ -2585,10 +2585,6 @@ article.result-images .detail {
   .search_filters {
     margin: 0;
   }
-  .language,
-  .time_range {
-    width: 45%;
-  }
   .category {
     display: block;
     width: 100%;
