@@ -34,7 +34,7 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * Clone this repo: ```git clone https://github.com/paulgoio/searxng.git```
 
-* After making your changes make sure to update `searxng.min.css` as well as `searxng-rtl.min.css` by running `update.sh` (docker needed)
+* After making your changes in `src/less` make sure to update `src/css` by running `update.sh` (python, npm and make needed)
 
 * You can build the docker container locally by running (check out base branch for the alpine base with the needed python packages and filtron branch for the filtron binary build which this image is using): ```docker build --pull -f ./Dockerfile -t searxng-dev:latest .```
 
