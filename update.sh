@@ -8,6 +8,7 @@ then
     git clone https://github.com/searxng/searxng.git build
 else
     cd build
+    git restore .
     git pull https://github.com/searxng/searxng.git
     cd ..
 fi
