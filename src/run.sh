@@ -15,9 +15,9 @@ if [ ! -z "${MORTY_KEY}" ] && [ ! -z "${MORTY_URL}" ]; then
     searx/settings.yml;
 fi
 
-# set base_url and instance_name if DOMAIN is not empty
-if [ ! -z "${DOMAIN}" ]; then
-    sed -i -e "s+base_url: false+base_url: \"https://${DOMAIN}/\"+g" \
+# set base_url and instance_name if BASE_URL is not empty
+if [ ! -z "${BASE_URL}" ]; then
+    sed -i -e "s+base_url: false+base_url: \"${BASE_URL}\"+g" \
     searx/settings.yml;
 fi
 

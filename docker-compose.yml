@@ -15,7 +15,7 @@ services:
     environment:
       - FILTRON=true
       - IMAGE_PROXY=true
-      - DOMAIN={DOMAIN}
+      - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
       - CONTACT=https://about.paulgo.io/#about
       - ISSUE_URL=https://github.com/paulgoio/searxng/issues

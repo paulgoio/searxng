@@ -52,7 +52,7 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * ```MORTY_URL``` : set the full URL where the morty instance is reachable (for example `https://morty.example.com/morty`)
 
-* ```DOMAIN``` : set the domain and the base url (for example example.org would have `https://example.org/` as base)
+* ```BASE_URL``` : set the base url (for example example.org would have `https://example.org/` as base)
 
 * ```NAME``` : set the name of the instance, which is for example displayed in the title of the site (for example `PaulGO`)
 
