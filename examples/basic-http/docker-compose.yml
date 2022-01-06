@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  searxng:
+    image: paulgoio/searxng:production
+    restart: always
+    ports:
+      - 127.0.0.1:8080:8080
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    environment:
+      - IMAGE_PROXY=true
+      - BASE_URL=http://127.0.0.1
+      - NAME=PaulGO
+      - CONTACT=contact@searxng.org
+      - ISSUE_URL=https://github.com/paulgoio/searxng/issues
+      - GIT_URL=https://github.com/paulgoio/searxng
+      - GIT_BRANCH=main
