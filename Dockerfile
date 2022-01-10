@@ -54,7 +54,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: flickr/s/$/\n    disabled: true/g" \
 -e "/name: unsplash/s/$/\n    disabled: true/g" \
 -e "/name: gentoo/s/$/\n    disabled: true/g" \
--e "/name: ccengine/s/$/\n    disabled: true/g" \
+-e "/name: openverse/s/$/\n    disabled: true/g" \
 -e "/name: google videos/s/$/\n    disabled: true/g" \
 -e "/name: yahoo news/s/$/\n    disabled: true/g" \
 -e "/name: bing news/s/$/\n    disabled: true/g" \
