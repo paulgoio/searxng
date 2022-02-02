@@ -19,7 +19,7 @@ services:
       - DAC_OVERRIDE
     environment:
       - LIMITER=true
-      - REDIS=redis://redis:6379/0
+      - REDIS_URL=redis://redis:6379/0
       - IMAGE_PROXY=true
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
