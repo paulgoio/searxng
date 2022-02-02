@@ -1,10 +1,15 @@
 version: '3.7'
 
 services:
+  redis:
+    image: redis:alpine
+    restart: always
+
   searxng:
     image: paulgoio/searxng:{ENV}
     restart: always
     networks:
+      - default
       - proxy
     cap_drop:
       - ALL
@@ -13,7 +18,8 @@ services:
       - SETUID
       - DAC_OVERRIDE
     environment:
-      - FILTRON=true
+      - LIMITER=true
+      - REDIS=redis://redis:6379/0
       - IMAGE_PROXY=true
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO

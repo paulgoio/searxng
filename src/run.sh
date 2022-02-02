@@ -15,6 +15,18 @@ if [ ! -z "${MORTY_KEY}" ] && [ ! -z "${MORTY_URL}" ]; then
     searx/settings.yml;
 fi
 
+# set redis if REDIS_URL contains URL
+if [ ! -z "${REDIS_URL}" ]; then
+    sed -i -e "s+url: unix:///usr/local/searxng-redis/run/redis.sock?db=0+url: ${REDIS_URL}+g" \
+    searx/settings.yml;
+fi
+
+# enable limiter if LIMITER exists
+if [ ! -z "${LIMITER}" ]; then
+    sed -i -e "s+limiter: false+limiter: true+g" \
+    searx/settings.yml;
+fi
+
 # set base_url and instance_name if BASE_URL is not empty
 if [ ! -z "${BASE_URL}" ]; then
     sed -i -e "s+base_url: false+base_url: \"${BASE_URL}\"+g" \
