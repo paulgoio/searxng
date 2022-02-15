@@ -56,6 +56,8 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * ```LIMITER``` : set the built in filtron alternative; this option also requires redis to be set up
 
+* ```LIMITER2``` : set the built in filtron alternative; this is an expirimental limiter2 refactor from https://gist.github.com/dalf/76ee391b6353f979981ae40af9b79132; You can only enable limiter OR limiter2
+
 * ```BASE_URL``` : set the base url (for example example.org would have `https://example.org/` as base)
 
 * ```NAME``` : set the name of the instance, which is for example displayed in the title of the site (for example `PaulGO`)
