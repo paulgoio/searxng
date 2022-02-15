@@ -34,7 +34,7 @@ if [ ! -z "${LIMITER2}" ]; then
     -e "s+#   - \'Search on category select\'+  - \'Search on category select\'+g" \
     -e "s+#   - \'Self Informations\'+  - \'Self Informations\'+g" \
     -e "s+#   - \'Tracker URL remover\'+  - \'Tracker URL remover\'+g" \
-    -e "s+# plugins:+plugins:\n  - \'searx.extra.limiter\'+g" \
+    -e "s+# plugins:+plugins:\n  - \'searx.extra.limiter2\'+g" \
     searx/settings.yml;
 fi
 
