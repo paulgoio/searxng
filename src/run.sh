@@ -33,7 +33,8 @@ if [ ! -z "${LIMITER2}" ]; then
     -e "s+#   - \'Hash plugin\'+  - \'Hash plugin\'+g" \
     -e "s+#   - \'Search on category select\'+  - \'Search on category select\'+g" \
     -e "s+#   - \'Self Informations\'+  - \'Self Informations\'+g" \
-    -e "s+#   - \'Tracker URL remover\'+  - \'Tracker URL remover\'\n  - \'searx.extra.limiter\'+g" \
+    -e "s+#   - \'Tracker URL remover\'+  - \'Tracker URL remover\'+g" \
+    -e "s+# plugins:+plugins:\n  - \'searx.extra.limiter\'+g" \
     searx/settings.yml;
 fi
 

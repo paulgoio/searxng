@@ -21,7 +21,7 @@ RUN addgroup -g ${GID} searxng \
 # copy custom simple themes, run.sh, limiter2 and filtron
 COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
-COPY ./src/limiter.py /usr/local/searxng/searx/extra/limiter.py
+COPY ./src/limiter2.py /usr/local/searxng/searx/extra/limiter2.py
 COPY --from=builder /go/src/github.com/searxng/filtron/filtron /usr/local/bin/filtron
 COPY ./src/rules.json /etc/filtron/rules.json
 
