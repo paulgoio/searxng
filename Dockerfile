@@ -58,6 +58,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: google videos/s/$/\n    disabled: true/g" \
 -e "/name: yahoo news/s/$/\n    disabled: true/g" \
 -e "/name: bing news/s/$/\n    disabled: true/g" \
+-e "/name: tineye/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
 touch /var/run/uwsgi-logrotate; \
