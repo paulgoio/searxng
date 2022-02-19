@@ -27,17 +27,6 @@ if [ ! -z "${LIMITER}" ]; then
     searx/settings.yml;
 fi
 
-# enable exp limiter2 if LIMITER exists
-if [ ! -z "${LIMITER2}" ]; then
-    sed -i -e "s+# enabled_plugins:+enabled_plugins:+g" \
-    -e "s+#   - \'Hash plugin\'+  - \'Hash plugin\'+g" \
-    -e "s+#   - \'Search on category select\'+  - \'Search on category select\'+g" \
-    -e "s+#   - \'Self Informations\'+  - \'Self Informations\'+g" \
-    -e "s+#   - \'Tracker URL remover\'+  - \'Tracker URL remover\'+g" \
-    -e "s+# plugins:+plugins:\n  - \'searx.extra.limiter2\'+g" \
-    searx/settings.yml;
-fi
-
 # set base_url and instance_name if BASE_URL is not empty
 if [ ! -z "${BASE_URL}" ]; then
     sed -i -e "s+base_url: false+base_url: \"${BASE_URL}\"+g" \

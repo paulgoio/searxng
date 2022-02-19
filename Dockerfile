@@ -5,7 +5,7 @@ FROM registry.paulgo.dev/paulgoio/searxng:filtron as builder
 
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/paulgoio/searxng:base
-ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= REDIS_URL= LIMITER= LIMITER2= BASE_URL= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= \
+ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= REDIS_URL= LIMITER= BASE_URL= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= \
 UPSTREAM_COMMIT=883e9c1ddd1cf2af0dc6e9b82885219150b9e849
 WORKDIR /usr/local/searxng
 
@@ -21,7 +21,6 @@ RUN addgroup -g ${GID} searxng \
 # copy custom simple themes, run.sh, limiter2 and filtron
 COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
-COPY ./src/limiter2.py /usr/local/searxng/searx/extra/limiter2.py
 COPY --from=builder /go/src/github.com/searxng/filtron/filtron /usr/local/bin/filtron
 COPY ./src/rules.json /etc/filtron/rules.json
 
