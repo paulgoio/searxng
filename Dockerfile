@@ -6,7 +6,7 @@ FROM registry.paulgo.dev/paulgoio/searxng:filtron as builder
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/paulgoio/searxng:base
 ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= REDIS_URL= LIMITER= BASE_URL= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= \
-UPSTREAM_COMMIT=6c38bb599447db8cbe3436e4c3596ca0f4574080
+UPSTREAM_COMMIT=cb037c89f95d56aee2c72d09e6bead0a49cc0a1d
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
@@ -15,8 +15,7 @@ RUN addgroup -g ${GID} searxng \
 && git clone https://github.com/searxng/searxng.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
-&& su searxng -c "/usr/bin/python3 -m searx.version freeze" \
-&& sed -i -e "/VERSION_STRING/s/-.*\"/\"/g" searx/version_frozen.py
+&& su searxng -c "/usr/bin/python3 -m searx.version freeze"
 
 # copy custom simple themes, run.sh, limiter2 and filtron
 COPY ./src/css/* searx/static/themes/simple/css/
