@@ -36,7 +36,6 @@ services:
       # CSP for SearXNG in dynamic config
       # feature policy for SearXNG and disable browser caching
       - traefik.http.middlewares.{REPO}-headers.headers.customResponseHeaders.Permissions-Policy=accelerometer=();ambient-light-sensor=(); autoplay=();camera=();encrypted-media=();focus-without-user-activation=(); geolocation=();gyroscope=();magnetometer=();microphone=();midi=();payment=();picture-in-picture=(); speaker=();sync-xhr=();usb=();vr=()
-      - traefik.http.middlewares.{REPO}-headers.headers.customResponseHeaders.Cache-Control=no-cache
 networks:
   proxy:
     external: true
