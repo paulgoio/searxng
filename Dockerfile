@@ -6,7 +6,7 @@ FROM registry.paulgo.dev/paulgoio/searxng:filtron as builder
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/paulgoio/searxng:base
 ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= REDIS_URL= LIMITER= BASE_URL= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= \
-UPSTREAM_COMMIT=750724cb23da7f50d158e5215e921da7515fa099
+UPSTREAM_COMMIT=27adcc7037b45b2a11ea8a3b3285f203031959b7
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
@@ -58,8 +58,6 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: tineye/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
-touch /var/run/uwsgi-logrotate; \
-chown -R searxng:searxng /var/log/uwsgi /var/run/uwsgi-logrotate; \
 su searxng -c "/usr/bin/python3 -m compileall -q searx"; \
 find /usr/local/searxng/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
