@@ -95,11 +95,17 @@
 
 .search_box {
   border: 1px solid var(--color-search-border);
+  box-shadow: var(--color-search-shadow);
   border-radius: 2em;
   width: @search-width;
   display: inline-flex;
   flex-direction: row;
   white-space: nowrap;
+}
+
+.search_box:hover,
+.search_box:focus-within {
+  box-shadow: var(--color-search-shadow-hover);
 }
 
 #clear_search {
@@ -108,7 +114,7 @@
   box-sizing: border-box;
   width: 1.8rem;
   margin: 0;
-  padding: 0.8rem 0.2rem;
+  padding: 1rem 0.2rem;
   background: none repeat scroll 0 0 var(--color-search-background);
   border: none;
   outline: none;
@@ -133,7 +139,7 @@ html.no-js #clear_search.hide_if_nojs {
 #send_search {
   display: block;
   margin: 0;
-  padding: 0.8rem;
+  padding: 1rem;
   background: none repeat scroll 0 0 var(--color-search-background);
   border: none;
   outline: none;
