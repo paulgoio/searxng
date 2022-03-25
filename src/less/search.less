@@ -120,7 +120,6 @@
   outline: none;
   color: var(--color-search-font);
   font-size: 1.1rem;
-  z-index: 10000;
 
   &:hover {
     color: var(--color-search-background-hover);
@@ -302,6 +301,7 @@ html.no-js #clear_search.hide_if_nojs {
       border-right: none;
       width: 100%;
       border-radius: 0;
+      box-shadow: none;
 
       #send_search {
         .ltr-margin-right(0) !important; // Delete when send_search button is disabled on mobile.
@@ -310,6 +310,7 @@ html.no-js #clear_search.hide_if_nojs {
       * {
         border: none;
         border-radius: 0;
+        box-shadow: none;
       }
     }
   }
