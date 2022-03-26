@@ -68,4 +68,4 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * ```GIT_BRANCH``` : set git branch for custom SearXNG repo (for example `main`)
 
-* ```PROXY``` : set proxy server that are applied as round robin for all engines (for example `http://example.org:8080`)
+* ```PROXY1``` ```PROXY2``` ```PROXY3``` : set proxy server that are applied as round robin for all engines (for example `http://example.org:8080`)

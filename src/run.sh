@@ -15,10 +15,22 @@ if [ ! -z "${MORTY_KEY}" ] && [ ! -z "${MORTY_URL}" ]; then
     searx/settings.yml;
 fi
 
-# proxy config based on PROXY
-if [ ! -z "${PROXY}" ]; then
-    sed -i -e "s/#  proxies:/proxies:/g" \
-    -e "s+#    all://:/  all://\n      - ${PROXY}:+g" \
+# proxy1 config based on PROXY1
+if [ ! -z "${PROXY1}" ]; then
+    sed -i -e "s/  #  proxies:/  proxies:/g" \
+    -e "s+  #    all://:+    all://:\n      - ${PROXY1}:+g" \
+    searx/settings.yml;
+fi
+
+# proxy2 config based on PROXY2 (set this only when proxy1 is set)
+if [ ! -z "${PROXY2}" ]; then
+    sed -i -e "s+    all://:+    all://:\n      - ${PROXY2}:+g" \
+    searx/settings.yml;
+fi
+
+# proxy3 config based on PROXY3 (set this only when proxy1 is set)
+if [ ! -z "${PROXY3}" ]; then
+    sed -i -e "s+    all://:+    all://:\n      - ${PROXY3}:+g" \
     searx/settings.yml;
 fi
 
