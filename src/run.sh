@@ -15,6 +15,13 @@ if [ ! -z "${MORTY_KEY}" ] && [ ! -z "${MORTY_URL}" ]; then
     searx/settings.yml;
 fi
 
+# proxy config based on PROXY
+if [ ! -z "${PROXY}" ]; then
+    sed -i -e "s/#  proxies:/proxies:/g" \
+    -e "s+#    all://:/  all://\n      - ${PROXY}:+g" \
+    searx/settings.yml;
+fi
+
 # set redis if REDIS_URL contains URL
 if [ ! -z "${REDIS_URL}" ]; then
     sed -i -e "s+url: unix:///usr/local/searxng-redis/run/redis.sock?db=0+url: ${REDIS_URL}+g" \
