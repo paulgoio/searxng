@@ -6,7 +6,7 @@ FROM registry.paulgo.dev/paulgoio/searxng:filtron as builder
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/paulgoio/searxng:base
 ENV GID=991 UID=991 IMAGE_PROXY= MORTY_KEY= MORTY_URL= REDIS_URL= LIMITER= BASE_URL= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= FILTRON= PROXY1= PROXY2= PROXY3= \
-UPSTREAM_COMMIT=4135a7400143cc934480afced3f6858c0d671fc6
+UPSTREAM_COMMIT=27f8fa6fe066c15dfc60bc2c50533ef87663ce29
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
