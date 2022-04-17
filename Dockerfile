@@ -12,6 +12,7 @@ WORKDIR /usr/local/searxng
 # install build deps and git clone searxng as well as setting the version
 RUN addgroup -g ${GID} searxng \
 && adduser -u ${UID} -D -h /usr/local/searxng -s /bin/sh -G searxng searxng \
+&& git config --global --add safe.directory /usr/local/searxng \
 && git clone https://github.com/searxng/searxng.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
