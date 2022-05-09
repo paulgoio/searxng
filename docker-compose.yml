@@ -4,10 +4,24 @@ services:
   redis:
     image: redis:alpine
     restart: always
+    command: redis-server --save "" --appendonly "no"
+    tmpfs:
+      - /var/lib/redis
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
 
   searxng:
     image: paulgoio/searxng:{ENV}
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
     networks:
       - default
       - proxy
@@ -38,7 +52,8 @@ services:
       - traefik.http.routers.{REPO}.middlewares=external-secure,searx-csp@file,{REPO}-headers
       # CSP for SearXNG in dynamic config
       # feature policy for SearXNG and disable browser caching
-      - traefik.http.middlewares.{REPO}-headers.headers.customResponseHeaders.Permissions-Policy=accelerometer=();ambient-light-sensor=(); autoplay=();camera=();encrypted-media=();focus-without-user-activation=(); geolocation=();gyroscope=();magnetometer=();microphone=();midi=();payment=();picture-in-picture=(); speaker=();sync-xhr=();usb=();vr=()
+      - traefik.http.middlewares.{REPO}-headers.headers.customResponseHeaders.Permissions-Policy=accelerometer=(),ambient-light-sensor=(),autoplay=(),camera=(),encrypted-media=(),focus-without-user-activation=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),speaker=(),sync-xhr=(),usb=(),vr=()
+
 networks:
   proxy:
     external: true

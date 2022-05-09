@@ -6,15 +6,6 @@ if [ ! -z "${IMAGE_PROXY}" ]; then
     searx/settings.yml;
 fi
 
-# morty config based on morty_key and and morty_url
-if [ ! -z "${MORTY_KEY}" ] && [ ! -z "${MORTY_URL}" ]; then
-    sed -i -e "s/# result_proxy:/result_proxy:/g" \
-    -e "s+#   url: http://127.0.0.1:3000/+  url : ${MORTY_URL}+g" \
-    -e "s/#   key: !!binary \"your_morty_proxy_key\"/  key : !!binary \"${MORTY_KEY}\"/g" \
-    -e "s/#   proxify_results: true/  proxify_results: false/g" \
-    searx/settings.yml;
-fi
-
 # proxy1 config based on PROXY1
 if [ ! -z "${PROXY1}" ]; then
     sed -i -e "s/  #  proxies:/  proxies:/g" \
@@ -90,10 +81,5 @@ searx/settings.yml
 # unset variables in running container
 unset MORTY_KEY
 
-# start filtron in front of searxng or just searxng
-if [ ! -z "${FILTRON}" ]; then
-    exec uwsgi --master --http-socket "127.0.0.1:3000" "/etc/uwsgi/uwsgi.ini" &
-    exec filtron --rules /etc/filtron/rules.json -listen 0.0.0.0:8080 -api 0.0.0.0:4041 -target 127.0.0.1:3000
-else
-    exec uwsgi --master --http-socket "0.0.0.0:8080" "/etc/uwsgi/uwsgi.ini"
-fi
+# start uwsgi with SearXNG workload
+exec uwsgi --master --http-socket "0.0.0.0:8080" "/etc/uwsgi/uwsgi.ini"
