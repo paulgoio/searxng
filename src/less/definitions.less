@@ -10,6 +10,7 @@
   --color-base-font: #4d5156;
   --color-base-font-rgb: 77, 81, 86;
   --color-base-background: #fff;
+  --color-base-background-mobile: #f1f3f4;
   --color-url-font: #1a0dab;
   --color-url-visited-font: #609;
   /// Header Colors
@@ -21,6 +22,7 @@
   /// Sidebar Colors
   --color-sidebar-border: #dfe1e5;
   --color-sidebar-font: #000;
+  --color-sidebar-background: #fff;
   /// BackToTop Colors
   --color-backtotop-font: #4d5156;
   --color-backtotop-border: #dfe1e5;
@@ -32,11 +34,11 @@
   --color-show-btn-font: #4d5156;
   /// Search Input Colors
   --color-search-border: #ebebeb;
+  --color-search-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16);
+  --color-search-shadow-hover: 0 2px 8px 1px rgba(64, 60, 67, 0.24);
   --color-search-background: #fff;
   --color-search-font: #000;
   --color-search-background-hover: #1a73e8;
-  --color-search-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16);
-  --color-search-shadow-hover: 0 2px 8px 1px rgba(64, 60, 67, 0.24);
   /// Modal Colors
   --color-error: #db3434;
   --color-error-background: lighten(#db3434, 40%);
@@ -57,6 +59,7 @@
   --color-answer-font: #000;
   --color-answer-background: #f2f2f2;
   /// Results Colors
+  --color-result-background: #fff;
   --color-result-border: #dfe1e5;
   --color-result-url-font: #202124;
   --color-result-vim-selected: #f2f2f2;
@@ -95,6 +98,7 @@
   --color-toolkit-tabs-label-border: #fff;
   --color-toolkit-tabs-section-border: #ebebeb;
   --color-toolkit-select-background: #f2f2f2;
+  --color-toolkit-select-border: #ddd;
   --color-toolkit-select-background-hover: #bbb;
   --color-toolkit-input-text-font: #000;
   --color-toolkit-checkbox-onoff-off-background: #dfe1e5;
@@ -119,6 +123,7 @@
   --color-base-font: #bdc1c6;
   --color-base-font-rgb: 189, 193, 198;
   --color-base-background: #202124;
+  --color-base-background-mobile: #202124;
   --color-url-font: #8ab4f8;
   --color-url-visited-font: #c58af9;
   /// Header Colors
@@ -130,6 +135,7 @@
   /// Sidebar Colors
   --color-sidebar-border: #3c4043;
   --color-sidebar-font: #fff;
+  --color-sidebar-background: #171717;
   /// BackToTop Colors
   --color-backtotop-font: #bdc1c6;
   --color-backtotop-border: #212327;
@@ -141,11 +147,11 @@
   --color-show-btn-font: #bdc1c6;
   /// Search Input Colors
   --color-search-border: transparent;
+  --color-search-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+  --color-search-shadow-hover: 0 4px 12px rgba(23, 23, 23, 0.9);
   --color-search-background: #303134;
   --color-search-font: #fff;
   --color-search-background-hover: #8ab4f8;
-  --color-search-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
-  --color-search-shadow-hover: 0 4px 12px rgba(23, 23, 23, 0.9);
   /// Modal Colors
   --color-error: #f55b5b;
   --color-error-background: darken(#db3434, 40%);
@@ -162,10 +168,10 @@
   --color-autocomplete-background: #303134;
   --color-autocomplete-background-hover: #171717;
   /// Answer Colors
-  --color-answer-border: #3c4043;
   --color-answer-font: #fff;
   --color-answer-background: #171717;
   /// Results Colors
+  --color-result-background: #303134;
   --color-result-border: #3c4043;
   --color-result-url-font: #bdc1c6;
   --color-result-vim-selected: #171717;
@@ -204,6 +210,7 @@
   --color-toolkit-tabs-label-border: #202124;
   --color-toolkit-tabs-section-border: #3c4043;
   --color-toolkit-select-background: #303134;
+  --color-toolkit-select-border: #555;
   --color-toolkit-select-background-hover: #3c4043;
   --color-toolkit-input-text-font: #fff;
   --color-toolkit-checkbox-onoff-off-background: #303134;
@@ -257,7 +264,7 @@
 
 /// Autocomplete fixes/changes
 .autocomplete.open {
-  margin-top: 3.6rem !important;
+  margin-top: 4rem !important;
   box-shadow: var(--color-search-shadow-hover);
 }
 

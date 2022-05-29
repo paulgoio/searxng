@@ -1,7 +1,7 @@
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/paulgoio/searxng:base
 ENV GID=991 UID=991 IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= PROXY1= PROXY2= PROXY3= \
-UPSTREAM_COMMIT=85c1c14fd7e8ff217ff57509cf9d58ec92f7af9a
+UPSTREAM_COMMIT=38403ee515ba09fb675bbc8d544ea579436aeee6
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
