@@ -1,7 +1,7 @@
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/paulgoio/searxng:base
-ENV GID=991 UID=991 IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= PROXY1= PROXY2= PROXY3= \
-UPSTREAM_COMMIT=ed1ff4b8bc2df0c58890fa87df0df4a669ba446a
+ENV GID=991 UID=991 IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= PRIVACYPOLICY= CONTACT= ISSUE_URL= GIT_URL= GIT_BRANCH= PROXY1= PROXY2= PROXY3= \
+UPSTREAM_COMMIT=e5cc3e36ad5d075bef119aaa5994535a46633397
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
@@ -37,6 +37,8 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: vimeo/s/$/\n    disabled: true/g" \
 -e "/name: openairepublications/s/$/\n    disabled: true/g" \
 -e "/name: wikidata/s/$/\n    disabled: true/g" \
+-e "/name: duckduckgo/s/$/\n    disabled: true/g" \
+-e "/name: currency/s/$/\n    disabled: true/g" \
 -e "/name: library of congress/s/$/\n    disabled: true/g" \
 -e "/name: dictzone/s/$/\n    disabled: true/g" \
 -e "/name: brave/s/$/\n    disabled: true/g" \

@@ -49,6 +49,12 @@ if [ ! -z "${NAME}" ]; then
     searx/settings.yml;
 fi
 
+# set privacy policy url
+if [ ! -z "${PRIVACYPOLICY}" ]; then
+    sed -i -e "s+privacypolicy_url: false+privacypolicy_url: ${PRIVACYPOLICY}+g" \
+    searx/settings.yml;
+fi
+
 # set contact url
 if [ ! -z "${CONTACT}" ]; then
     sed -i -e "s+contact_url: false+contact_url: ${CONTACT}+g" \

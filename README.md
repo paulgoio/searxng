@@ -54,6 +54,8 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * ```NAME``` : set the name of the instance, which is for example displayed in the title of the site (for example `PaulGO`)
 
+* ```PRIVACYPOLICY``` : set URL of privacy policy of the instance (for example `https://example.org/privacy-policy`)
+
 * ```CONTACT``` : set instance maintainer contact (for example `mailto:user@example.org`)
 
 * ```ISSUE_URL``` : set issue url for custom SearXNG repo (for example `https://github.com/paulgoio/searxng/issues` !Without trailing /)
