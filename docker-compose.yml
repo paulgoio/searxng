@@ -38,6 +38,7 @@ services:
       - PROXY1={URL1}
       - PROXY2={URL2}
       - PROXY3={URL3}
+      - PROXY4={URL4}
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
       - CONTACT=https://about.paulgo.io/#about
