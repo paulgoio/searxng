@@ -25,6 +25,12 @@ if [ ! -z "${PROXY3}" ]; then
     searx/settings.yml;
 fi
 
+# proxy4 config based on PROXY4 (set this only when proxy1 is set)
+if [ ! -z "${PROXY4}" ]; then
+    sed -i -e "s+    all://:+    all://:\n      - ${PROXY4}+g" \
+    searx/settings.yml;
+fi
+
 # set redis if REDIS_URL contains URL
 if [ ! -z "${REDIS_URL}" ]; then
     sed -i -e "s+url: unix:///usr/local/searxng-redis/run/redis.sock?db=0+url: ${REDIS_URL}+g" \
