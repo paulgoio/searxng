@@ -90,8 +90,5 @@ fi
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml
 
-# unset variables in running container
-unset MORTY_KEY
-
 # start uwsgi with SearXNG workload
 exec uwsgi --master --http-socket "0.0.0.0:8080" "/etc/uwsgi/uwsgi.ini"
