@@ -35,9 +35,7 @@ services:
       - LIMITER=true
       - REDIS_URL=redis://redis:6379/0
       - IMAGE_PROXY=true
-      - PROXY1={URL1}
-      - PROXY2={URL2}
-      - PROXY3={URL3}
+      - PROXY={URL1}
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
       - CONTACT=https://about.paulgo.io/#about
