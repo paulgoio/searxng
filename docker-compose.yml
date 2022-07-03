@@ -38,13 +38,9 @@ services:
       - PROXY1={URL1}
       - PROXY2={URL2}
       - PROXY3={URL3}
-      - PROXY4={URL4}
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
       - CONTACT=https://about.paulgo.io/#about
-      - ISSUE_URL=https://github.com/paulgoio/searxng/issues
-      - GIT_URL=https://github.com/paulgoio/searxng
-      - GIT_BRANCH=main
     labels:
       - traefik.enable=true
       - traefik.http.routers.{REPO}.rule=Host(`{DOMAIN}`)&&Method(`GET`,`POST`,`HEAD`)
