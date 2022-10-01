@@ -5,7 +5,7 @@ GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=eb3d185e66dea1add88ef8d3a3c6bb74b8a3b166
+UPSTREAM_COMMIT=901143f056f784e2f04fc852d667ccfb00962cf4
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
