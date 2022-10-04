@@ -32,7 +32,6 @@ services:
       - SETUID
       - DAC_OVERRIDE
     environment:
-      - LIMITER=true
       - REDIS_URL=redis://redis:6379/0
       - IMAGE_PROXY=true
       - PROXY={URL1}
