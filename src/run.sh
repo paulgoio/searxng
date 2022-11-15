@@ -21,7 +21,7 @@ fi
 
 # set redis if REDIS_URL contains URL
 if [ ! -z "${REDIS_URL}" ]; then
-    sed -i -e "s+url: unix:///usr/local/searxng-redis/run/redis.sock?db=0+url: ${REDIS_URL}+g" \
+    sed -i -e "s+  url: false+  url: ${REDIS_URL}+g" \
     searx/settings.yml;
 fi
 
