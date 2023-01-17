@@ -65,3 +65,7 @@ Check out the `docker-compose.yml` file in this repo for reference
 * ```GIT_BRANCH``` : set git branch for custom SearXNG repo (for example `main`)
 
 * ```PROXY``` : set proxy servers that are applied as round robin for all engines; seperate multiple proxies with a comma (for example `http://example.org:8080,http://proxy.example.net`)
+
+* ```UWSGI_WORKERS``` : set the amount of uwsgi workers (each worker can handle http requests to the server); defaults to the amount of cors the server has (for example: `4`)
+
+* ```UWSGI_THREADS``` : set the amount of uwsgi threads per worker; so each worker has the amount of threads defined here; defaults to 4 (for example: `4`)
