@@ -35,7 +35,7 @@ services:
       - LIMITER=true
       - REDIS_URL=redis://redis:6379/0
       - IMAGE_PROXY=true
-      #- PROXY={URL1}
+      - PROXY={URL1}
       - UWSGI_WORKERS=8
       - UWSGI_THREADS=4
       - BASE_URL=https://{DOMAIN}/
