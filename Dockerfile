@@ -36,7 +36,6 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/X-Robots-Tag: noindex, nofollow/d" \
 -e "/Referrer-Policy: no-referrer/d" \
 -e "/static_use_hash:/s/false/true/g" \
--e "s/    use_mobile_ui: false/    use_mobile_ui: true/g" \
 -e "/name: btdigg/s/$/\n    disabled: true/g" \
 -e "/name: deviantart/s/$/\n    disabled: true/g" \
 -e "/name: vimeo/s/$/\n    disabled: true/g" \
