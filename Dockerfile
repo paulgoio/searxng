@@ -41,8 +41,6 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: vimeo/s/$/\n    disabled: true/g" \
 -e "/name: openairepublications/s/$/\n    disabled: true/g" \
 -e "/name: wikidata/s/$/\n    disabled: true/g" \
--e "/name: duckduckgo/s/$/\n    disabled: true/g" \
--e "/name: currency/s/$/\n    disabled: true/g" \
 -e "/name: library of congress/s/$/\n    disabled: true/g" \
 -e "/name: dictzone/s/$/\n    disabled: true/g" \
 -e "/name: genius/s/$/\n    disabled: true/g" \
@@ -55,6 +53,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: yahoo news/s/$/\n    disabled: true/g" \
 -e "/name: bing news/s/$/\n    disabled: true/g" \
 -e "/name: tineye/s/$/\n    disabled: true/g" \
+-e "/name: qwant.*/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: bi/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
