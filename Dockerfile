@@ -5,7 +5,7 @@ GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=4380fc2bac7d910591b9e0f165e80a1a5b096696
+UPSTREAM_COMMIT=65d8b1a3106800304e9ed31b6c3f26e5b3ee5fcd
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
@@ -41,6 +41,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: vimeo/s/$/\n    disabled: true/g" \
 -e "/name: openairepublications/s/$/\n    disabled: true/g" \
 -e "/name: wikidata/s/$/\n    disabled: true/g" \
+-e "/name: duckduckgo/s/$/\n    disabled: true/g" \
 -e "/name: library of congress/s/$/\n    disabled: true/g" \
 -e "/name: dictzone/s/$/\n    disabled: true/g" \
 -e "/name: genius/s/$/\n    disabled: true/g" \
