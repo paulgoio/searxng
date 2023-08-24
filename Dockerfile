@@ -5,15 +5,14 @@ GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=b4e4cfc026fdc287622e0aa5f08db5d1e30ef869
+UPSTREAM_COMMIT=9069da051a78290b38c12a49443dc30d7b2652fb
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
 RUN addgroup -g ${GID} searxng \
 && adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng \
 && git config --global --add safe.directory /usr/local/searxng \
-&& git clone https://github.com/dalf/searxng.git . \
-&& git checkout update_httpx \
+&& git clone https://github.com/searxng/searxng.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
 && su searxng -c "/usr/bin/python3 -m searx.version freeze"
