@@ -41,6 +41,7 @@ services:
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
       - CONTACT=https://about.paulgo.io/#about
+      - SEARCH_DEFAULT_LANG=en-US
     labels:
       - traefik.enable=true
       - traefik.http.routers.{REPO}.rule=Host(`{DOMAIN}`)&&Method(`GET`,`POST`,`HEAD`)

@@ -1,6 +1,6 @@
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/infra/paulgoio/searxng:base
-ENV IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= PRIVACYPOLICY= CONTACT= PROXY= \
+ENV IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= PRIVACYPOLICY= CONTACT= PROXY= SEARCH_DEFAULT_LANG= \
 GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \

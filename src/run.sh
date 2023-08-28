@@ -86,6 +86,12 @@ if [ ! -z "${GIT_BRANCH}" ]; then
     searx/version_frozen.py; \
 fi
 
+# set default search lang
+if [ ! -z "${SEARCH_DEFAULT_LANG}" ]; then
+    sed -i -e "s+default_lang: \"auto\"+default_lang: \"${SEARCH_DEFAULT_LANG}\"+g" \
+    searx/settings.yml;
+fi
+
 # auto gen random key for every unique container
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml

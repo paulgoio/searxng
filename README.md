@@ -69,3 +69,5 @@ Check out the `docker-compose.yml` file in this repo for reference
 * ```UWSGI_WORKERS``` : set the amount of uwsgi workers (each worker can handle http requests to the server); defaults to the amount of cors the server has (for example: `4`)
 
 * ```UWSGI_THREADS``` : set the amount of uwsgi threads per worker; so each worker has the amount of threads defined here; defaults to 4 (for example: `4`)
+
+* ```SEARCH_DEFAULT_LANG``` : Set the default language used for search queries. By default, this is set to auto to autodetect the language from the query string (for example `en-US`)
