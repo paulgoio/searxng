@@ -17,9 +17,10 @@ RUN addgroup -g ${GID} searxng \
 && chown -R searxng:searxng . \
 && su searxng -c "/usr/bin/python3 -m searx.version freeze"
 
-# copy custom simple themes, run.sh, limiter2 and filtron
+# copy custom simple theme css, run.sh and limiter config
 COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
+COPY ./src/limiter.toml /etc/searxng/limiter.toml
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
 RUN cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/; \
