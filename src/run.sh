@@ -98,6 +98,12 @@ if [ ! -z "${SEARCH_ENGINE_ACCESS_DENIED}" ]; then
     searx/settings.yml;
 fi
 
+# set instance as public instance to enable some features that are only needed for public instances
+if [ ! -z "${PUBLIC_INSTANCE}" ]; then
+    sed -i -e "/public_instance:/s/false/true/g" \
+    searx/settings.yml;
+fi
+
 # auto gen random key for every unique container
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml

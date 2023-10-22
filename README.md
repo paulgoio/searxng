@@ -73,3 +73,5 @@ Check out the `docker-compose.yml` file in this repo for reference
 * ```SEARCH_DEFAULT_LANG``` : Set the default language used for search queries. By default, this is set to auto to autodetect the language from the query string (for example `en-US`)
 
 * ```SEARCH_ENGINE_ACCESS_DENIED``` : Set the suspension timeout in seconds if a search engine throws a SEARCH_ENGINE_ACCESS_DENIED exception, by default this value is set to `86400` (e.g. 1 day)
+
+* ```PUBLIC_INSTANCE``` : Set instance as public instance to enable some optional features, that are only relevent to public instances (defaults to false, can be set to `true`)
