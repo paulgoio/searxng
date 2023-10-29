@@ -69,14 +69,14 @@ fi
 
 # set issue url
 if [ ! -z "${ISSUE_URL}" ]; then
-    sed -i -e "s+issue_url: https://github.com/searxng/searxng/issues+issue_url: ${ISSUE_URL}+g" \
-    -e "s+new_issue_url: https://github.com/searxng/searxng/issues/new+new_issue_url: ${ISSUE_URL}/new+g" \
+    sed -i -e "s+issue_url: https://github.com/dalf/searxng/issues+issue_url: ${ISSUE_URL}+g" \
+    -e "s+new_issue_url: https://github.com/dalf/searxng/issues/new+new_issue_url: ${ISSUE_URL}/new+g" \
     searx/settings.yml;
 fi
 
 # set git url
 if [ ! -z "${GIT_URL}" ]; then
-    sed -i -e "s+GIT_URL = \"https://github.com/searxng/searxng\"+GIT_URL = \"${GIT_URL}\"+g" \
+    sed -i -e "s+GIT_URL = \"https://github.com/dalf/searxng\"+GIT_URL = \"${GIT_URL}\"+g" \
     searx/version_frozen.py; \
 fi
 
