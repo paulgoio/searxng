@@ -69,8 +69,8 @@ fi
 
 # set issue url
 if [ ! -z "${ISSUE_URL}" ]; then
-    sed -i -e "s+issue_url: https://github.com/dalf/searxng/issues+issue_url: ${ISSUE_URL}+g" \
-    -e "s+new_issue_url: https://github.com/dalf/searxng/issues/new+new_issue_url: ${ISSUE_URL}/new+g" \
+    sed -i -e "s+issue_url: https://github.com/searxng/searxng/issues+issue_url: ${ISSUE_URL}+g" \
+    -e "s+new_issue_url: https://github.com/searxng/searxng/issues/new+new_issue_url: ${ISSUE_URL}/new+g" \
     searx/settings.yml;
 fi
 
