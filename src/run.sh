@@ -76,7 +76,7 @@ fi
 
 # set git url
 if [ ! -z "${GIT_URL}" ]; then
-    sed -i -e "s+GIT_URL = \"https://github.com/dalf/searxng\"+GIT_URL = \"${GIT_URL}\"+g" \
+    sed -i -e "s+GIT_URL = \"https://github.com/searxng/searxng\"+GIT_URL = \"${GIT_URL}\"+g" \
     searx/version_frozen.py; \
 fi
 
