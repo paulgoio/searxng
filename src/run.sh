@@ -19,18 +19,6 @@ if [ ! -z "${PROXY}" ]; then
     done
 fi
 
-# set UWSGI_WORKERS from env
-if [ ! -z "${UWSGI_WORKERS}" ]; then
-sed -i -e "s|workers = .*|workers = ${UWSGI_WORKERS}|g" \
-/etc/uwsgi/uwsgi.ini
-fi
-
-# set UWSGI_THREADS from env
-if [ ! -z "${UWSGI_THREADS}" ]; then
-sed -i -e "s|threads = .*|threads = ${UWSGI_THREADS}|g" \
-/etc/uwsgi/uwsgi.ini
-fi
-
 # set redis if REDIS_URL contains URL
 if [ ! -z "${REDIS_URL}" ]; then
     sed -i -e "s+  url: false+  url: ${REDIS_URL}+g" \
