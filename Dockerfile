@@ -5,7 +5,7 @@ UWSGI_WORKERS=2 UWSGI_THREADS=4 GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=b3d29cb86db4cc1a4e6320016529d1361451e1f1
+UPSTREAM_COMMIT=27e26b3d658bb3bad0d5a204891b9b8e73ce8fc2
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
@@ -58,6 +58,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: qwant.*/s/$/\n    disabled: true/g" \
 -e "/engine: brave/s/$/\n    disabled: true/g" \
 -e "/name: lingva/s/$/\n    disabled: true/g" \
+-e "/name: wallhaven/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: bi/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
