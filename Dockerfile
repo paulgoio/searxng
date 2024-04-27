@@ -42,6 +42,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: vimeo/s/$/\n    disabled: true/g" \
 -e "/name: openairepublications/s/$/\n    disabled: true/g" \
 -e "/name: wikidata/s/$/\n    disabled: true/g" \
+-e "/name: duckduckgo/s/$/\n    disabled: true/g" \
 -e "/name: library of congress/s/$/\n    disabled: true/g" \
 -e "/name: dictzone/s/$/\n    disabled: true/g" \
 -e "/name: genius/s/$/\n    disabled: true/g" \
