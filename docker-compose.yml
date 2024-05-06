@@ -2,17 +2,22 @@ version: '3.7'
 
 services:
   redis:
-    image: redis:alpine
+    image: cgr.dev/chainguard/valkey:latest
     restart: always
-    command: redis-server --save "" --appendonly "no"
-    tmpfs:
-      - /var/lib/redis
+    command: --save 60 1 --loglevel warning
+    volumes:
+      - valkey-data:/data
     cap_drop:
       - ALL
     cap_add:
       - SETGID
       - SETUID
       - DAC_OVERRIDE
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
 
   searxng:
     image: paulgoio/searxng:{ENV}
@@ -57,3 +62,6 @@ services:
 networks:
   proxy:
     external: true
+
+volumes:
+  valkey-data:
