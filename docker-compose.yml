@@ -46,7 +46,7 @@ services:
       - UWSGI_THREADS=4
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
-      - CONTACT=https://about.paulgo.io/
+      - CONTACT=https://mrpaulblack.paulgo.page
       - SEARCH_DEFAULT_LANG=en-US
       - SEARCH_ENGINE_ACCESS_DENIED=60
     labels:
