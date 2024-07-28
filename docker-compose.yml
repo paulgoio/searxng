@@ -51,7 +51,7 @@ services:
       - SEARCH_ENGINE_ACCESS_DENIED=60
     labels:
       - traefik.enable=true
-      - traefik.http.routers.{REPO}.rule=Host(`{DOMAIN}`)&&(Method(`GET`)||Method(`POST`)||Method(`HEAD`)))
+      - traefik.http.routers.{REPO}.rule=Host(`{DOMAIN}`)&&(Method(`GET`)||Method(`POST`)||Method(`HEAD`))
       - traefik.http.routers.{REPO}.tls=true
       - traefik.http.routers.{REPO}.middlewares=external-secure,searx-csp@file,{REPO}-headers
       # CSP for SearXNG in dynamic config
