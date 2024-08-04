@@ -1,0 +1,12 @@
+[Unit]
+Description=RPIPv6 random IPv6 outgoing address setup for squid
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
+ 
+[Service]
+User=root
+ExecStart=/etc/squid/conf.d/rpipv6.sh
+ 
+[Install]
+WantedBy=multi-user.target
