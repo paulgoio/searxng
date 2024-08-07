@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   redis:
     image: cgr.dev/chainguard/valkey:latest

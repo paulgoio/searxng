@@ -10,7 +10,7 @@ The script has some small modifications and is from: https://github.com/BackInBa
 
 * Install squid proxy on host and make sure to set a /64 network on your outgoing interface
 
-* copy the `searxng.conf` and `rpipv6.sh` file to `/etc/squid/conf.d` and make sure to set your Ipv6 range at permitserver acl
+* copy the `99-searxng.conf` and `rpipv6.sh` file to `/etc/squid/conf.d` and make sure to set your Ipv6 range at permitserver acl and set your IPv4 addresses or comment out the tcp outgoing section
 
 * copy systemctl service file `rpipv6.service` to `/etc/systemd/system`
 
