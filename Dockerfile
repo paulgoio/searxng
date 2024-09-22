@@ -5,22 +5,23 @@ UWSGI_WORKERS=2 UWSGI_THREADS=4 GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=e76a4f72ef956b7dff0550096392a4621c7a8038
+UPSTREAM_COMMIT=90e3a8c760ecc7ad9d129348bb782fd2f2522d95
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
 RUN addgroup -g ${GID} searxng \
 && adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng \
 && git config --global --add safe.directory /usr/local/searxng \
-&& git clone https://github.com/searxng/searxng.git . \
+&& git clone https://github.com/privau/searxng-favicon.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
 && su searxng -c "/usr/bin/python3 -m searx.version freeze"
 
-# copy custom simple theme css, run.sh and limiter config
+# copy custom simple theme css, run.sh and limiter, favicons config
 COPY ./src/css/* searx/static/themes/simple/css/
 COPY ./src/run.sh /usr/local/bin/run.sh
 COPY ./src/limiter.toml /etc/searxng/limiter.toml
+COPY ./src/favicons.toml /etc/searxng/favicons.toml
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
 RUN cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/; \
@@ -29,6 +30,7 @@ chmod +x /usr/local/bin/run.sh; \
 sed -i -e "/safe_search:/s/0/1/g" \
 -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/autocomplete_min:/s/4/0/g" \
+-e "/favicon_resolver:/s/\"\"/\"google\"/g" \
 -e "/port:/s/8888/8080/g" \
 -e "/bind_address:/s/127.0.0.1/0.0.0.0/g" \
 -e "/http_protocol_version:/s/1.0/1.1/g" \

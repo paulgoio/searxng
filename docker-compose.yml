@@ -25,6 +25,8 @@ services:
       options:
         max-size: "1m"
         max-file: "1"
+    volumes:
+      - favicon-cache:/var/cache/searxng
     networks:
       - default
       - proxy
@@ -62,3 +64,4 @@ networks:
 
 volumes:
   valkey-data:
+  favicon-cache:
