@@ -5,14 +5,14 @@ UWSGI_WORKERS=2 UWSGI_THREADS=4 GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=90e3a8c760ecc7ad9d129348bb782fd2f2522d95
+UPSTREAM_COMMIT=7e8b330b3e9f5b7381dcf8bdcbcdf2cf2d94f2cd
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
 RUN addgroup -g ${GID} searxng \
 && adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng \
 && git config --global --add safe.directory /usr/local/searxng \
-&& git clone https://github.com/privau/searxng-favicon.git . \
+&& git clone https://github.com/searxng/searxng.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
 && su searxng -c "/usr/bin/python3 -m searx.version freeze"
