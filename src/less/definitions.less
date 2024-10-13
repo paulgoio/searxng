@@ -117,6 +117,14 @@
   --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
   --color-doc-code: #fff;
   --color-doc-code-background: #1a73e8;
+  /// Other misc colors
+  --color-bar-chart-primary: #1a73e8;
+  --color-bar-chart-secondary: #dbba34;
+  --color-image-resolution-background: rgba(0, 0, 0, 50%);
+  --color-image-resolution-font: #fff;
+  --color-loading-indicator: rgba(255, 255, 255, 0.2);
+  --color-loading-indicator-gap: #fff;
+  --color-line-number: #1a73e8;
   // Favicons Colors
   --color-favicon-background-color: #f1f3f4;
   --color-favicon-border-color: #dadce0;
@@ -238,6 +246,14 @@
   --color-favicon-border-color: #9aa0a6;
 }
 
+.black-themes() {
+  --color-base-background: #000;
+  --color-base-background-mobile: #000;
+  --color-header-background: #000;
+  --color-footer-background: #000;
+  --color-sidebar-background: #000;
+}
+
 /// Dark Theme (autoswitch based on device pref)
 @media (prefers-color-scheme: dark) {
   :root.theme-auto {
@@ -248,6 +264,11 @@
 // Dark Theme by preferences
 :root.theme-dark {
   .dark-themes();
+}
+
+:root.theme-black {
+  .dark-themes();
+  .black-themes();
 }
 
 /// General Size
