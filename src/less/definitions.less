@@ -35,7 +35,7 @@
   /// Search Input Colors
   --color-search-border: #ebebeb;
   --color-search-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16);
-  --color-search-shadow-hover: 0 2px 8px 1px rgba(64, 60, 67, 0.24);
+  --color-search-shadow-hover: 0 9px 8px -3px rgba(64, 60, 67, 0.24), 8px 0 8px -7px rgba(64, 60, 67, 0.24), -8px 0 8px -7px rgba(64, 60, 67, 0.24);
   --color-search-background: #fff;
   --color-search-font: #000;
   --color-search-background-hover: #1a73e8;
@@ -52,7 +52,7 @@
   /// Autocomplete Colors
   --color-autocomplete-font: #000;
   --color-autocomplete-border: transparent;
-  --color-autocomplete-shadow: 0 2px 8px 1px rgba(64, 60, 67, 0.24);
+  --color-autocomplete-shadow: 0 9px 8px -3px rgba(64, 60, 67, 0.24), 8px 0 8px -7px rgba(64, 60, 67, 0.24), -8px 0 8px -7px rgba(64, 60, 67, 0.24);
   --color-autocomplete-background: #fff;
   --color-autocomplete-background-hover: #f2f2f2;
   /// Answer Colors
@@ -160,7 +160,7 @@
   /// Search Input Colors
   --color-search-border: transparent;
   --color-search-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
-  --color-search-shadow-hover: 0 4px 12px rgba(23, 23, 23, 0.9);
+  --color-search-shadow-hover: 0 4px 6px 0 #171717;
   --color-search-background: #303134;
   --color-search-font: #fff;
   --color-search-background-hover: #8ab4f8;
@@ -177,7 +177,7 @@
   /// Autocomplete Colors
   --color-autocomplete-font: #fff;
   --color-autocomplete-border: transparent;
-  --color-autocomplete-shadow: 0 4px 12px rgba(23, 23, 23, 0.9);
+  --color-autocomplete-shadow: 0 4px 6px 0 #171717;
   --color-autocomplete-background: #303134;
   --color-autocomplete-background-hover: #171717;
   /// Answer Colors
@@ -279,7 +279,7 @@
 @results-gap: 5rem;
 @results-margin: 0.125rem;
 @result-padding: 1rem;
-@results-image-row-height: 12rem;
+@results-image-row-height: 16rem;
 @results-image-row-height-phone: 6rem;
 @search-width: 46rem;
 // heigh of #search, see detail.less
@@ -299,16 +299,17 @@
 .autocomplete {
   &.open {
     margin-top: 4rem !important;
+    box-shadow: var(--color-autocomplete-shadow);
   }
 }
 
 /// Load fonts from this directory.
-@icon-font-path:          "../../../fonts/";
+@icon-font-path: "../../../fonts/";
 //** File name for all font files.
-@icon-font-name:          "glyphicons-halflings-regular";
+@icon-font-name: "glyphicons-halflings-regular";
 //** Element ID within SVG icon file.
-@icon-font-svg-id:        "glyphicons_halflingsregular";
+@icon-font-svg-id: "glyphicons_halflingsregular";
 
 // decoration of the select HTML elements
-@select-light-svg-path:   "../svg/select-light.svg";
-@select-dark-svg-path:    "../svg/select-dark.svg";
+@select-light-svg-path: "../svg/select-light.svg";
+@select-dark-svg-path: "../svg/select-dark.svg";
