@@ -92,6 +92,12 @@ if [ ! -z "${PUBLIC_INSTANCE}" ]; then
     searx/settings.yml;
 fi
 
+# enable /metrics if METRICS_PASSWORD is set
+if [ ! -z "${METRICS_PASSWORD}" ]; then
+    sed -i -e "s|open_metrics: ''|open_metrics: '${METRICS_PASSWORD}'|g" \
+    searx/settings.yml;
+fi
+
 # auto gen random key for every unique container
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml

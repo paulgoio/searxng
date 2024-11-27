@@ -50,6 +50,8 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * ```LIMITER``` : limit bot traffic; this option also requires Redis to be set up
 
+* ```METRICS_PASSWORD```: enable the /metrics endpoint with basic auth for ingestion via prometheus (username can be any string, password is the set password, for example: `pass123`, `|` is not allowed in the password)
+
 * ```BASE_URL``` : set the base URL (for example example.org would have `https://example.org/` as base)
 
 * ```NAME``` : set the name of the instance, which is for example displayed in the title of the site (for example `PaulGO`)

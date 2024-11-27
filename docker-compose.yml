@@ -39,6 +39,7 @@ services:
     environment:
       - PUBLIC_INSTANCE=true
       - LIMITER=true
+      - METRICS_PASSWORD={KEY1}
       - REDIS_URL=redis://redis:6379/0
       - IMAGE_PROXY=true
       - PROXY={URL1}
