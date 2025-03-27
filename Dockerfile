@@ -5,7 +5,7 @@ UWSGI_WORKERS=2 UWSGI_THREADS=4 GID=991 UID=991 \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=19ee529b78bd7840488fd36005270f7ae25e566b
+UPSTREAM_COMMIT=150b2e21fdcc06492b7d78bbcb91fbcc037a7831
 WORKDIR /usr/local/searxng
 
 # install build deps and git clone searxng as well as setting the version
@@ -70,6 +70,7 @@ find /usr/local/searxng/searx/static -a \( -name '*.html' -o -name '*.css' -o -n
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
 # expose port and set tini as CMD; default user is searxng
+HEALTHCHECK CMD wget --quiet --tries=1 --spider http://localhost:8080/healthz || exit 1
 USER searxng
 EXPOSE 8080
 CMD ["/sbin/tini","--","run.sh"]
