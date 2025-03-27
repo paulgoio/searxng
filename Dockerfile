@@ -62,6 +62,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: lingva/s/$/\n    disabled: true/g" \
 -e "/name: wallhaven/s/$/\n    disabled: true/g" \
 -e "/engine: piped/s/$/\n    disabled: true/g" \
+-e "/engine: startpage/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: bi/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
