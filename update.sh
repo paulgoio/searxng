@@ -14,11 +14,10 @@ else
 fi
 
 echo "delete upstream simple theme definitions"
-rm -f build/searx/static/themes/simple/src/less/definitions.less build/searx/static/themes/simple/src/less/search.less
+rm -f build/client/simple/src/less/definitions.less build/client/simple/src/less/search.less
 
-echo "copy fork simple theme definitions in place"
-cp -v src/less/definitions.less build/searx/static/themes/simple/src/less/definitions.less
-cp -v src/less/search.less build/searx/static/themes/simple/src/less/search.less
+echo "Replace fork simple theme definitions."
+cp -v src/less/* build/client/simple/src/less/
 
 echo "build themes with upstream scripts"
 cd build
