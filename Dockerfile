@@ -70,7 +70,6 @@ find /usr/local/searxng/searx/static -a \( -name '*.html' -o -name '*.css' -o -n
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
 # expose port and set tini as CMD; default user is searxng
-HEALTHCHECK CMD wget --quiet --tries=1 --spider http://localhost:8080/healthz || exit 1
 USER searxng
 EXPOSE 8080
 CMD ["/sbin/tini","--","run.sh"]
