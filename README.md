@@ -46,6 +46,8 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * ```IMAGE_PROXY``` : enable the image proxyfication through SearXNG; the built-in image proxy is used (set this to `true`)
 
+* ```FAVICON_RESOLVER``` : by default disabled; set a favicon resolver (this requires a local database file defined in src/favicons.toml) (for example `google`)
+
 * ```REDIS_URL``` : set the URL of Redis server to store data for limiter plugin (for example `redis://redis:6379/0` or `unix:///usr/local/searxng-redis/run/redis.sock?db=0`)
 
 * ```LIMITER``` : limit bot traffic; this option also requires Redis to be set up

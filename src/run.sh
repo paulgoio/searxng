@@ -98,6 +98,12 @@ if [ ! -z "${METRICS_PASSWORD}" ]; then
     searx/settings.yml;
 fi
 
+# by default favicon resolver is disabled; set a favicon resolver like google here
+if [ ! -z "${FAVICON_RESOLVER}" ]; then
+    sed -i -e "/favicon_resolver:/s/\"\"/\"${FAVICON_RESOLVER}\"/g" \
+    searx/settings.yml;
+fi
+
 # auto gen random key for every unique container
 sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml

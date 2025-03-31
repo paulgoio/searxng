@@ -42,6 +42,7 @@ services:
       - METRICS_PASSWORD={KEY1}
       - REDIS_URL=redis://redis:6379/0
       - IMAGE_PROXY=true
+      - FAVICON_RESOLVER=google
       - PROXY={URL1}
       - UWSGI_WORKERS=8
       - UWSGI_THREADS=4
