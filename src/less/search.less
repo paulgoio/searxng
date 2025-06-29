@@ -141,7 +141,8 @@ button.category_button {
   border: 1px solid var(--color-search-border);
   box-shadow: var(--color-search-shadow);
   border-radius: 2em;
-  width: @search-width;
+  width: 100%;
+  max-width: @search-width;
   display: inline-flex;
   flex-direction: row;
   white-space: nowrap;
@@ -297,8 +298,7 @@ html.no-js #clear_search.hide_if_nojs {
   }
 
   .search_box {
-    width: 98%;
-    display: flex;
+    width: 100%;
     margin: 0 auto;
   }
 
