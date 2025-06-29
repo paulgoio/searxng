@@ -15,7 +15,7 @@ RUN addgroup -g ${GID} searxng \
 && git clone https://github.com/searxng/searxng.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
-&& su-exec searxng "/usr/bin/python3 -m searx.version freeze"
+&& su-exec searxng /usr/bin/python3 -m searx.version freeze
 
 # copy custom simple theme css, run.sh and limiter, favicons config
 COPY ./src/css/* searx/static/themes/simple/css/
@@ -65,7 +65,7 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: bi/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
-su-exec searxng "/usr/bin/python3 -m compileall -q searx"; \
+su-exec searxng /usr/bin/python3 -m compileall -q searx; \
 find /usr/local/searxng/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
