@@ -10,7 +10,7 @@ WORKDIR /usr/local/searxng
 
 # setup searxng user
 RUN addgroup -g ${GID} searxng \
-&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng
+&& adduser -u ${UID} -D -s /bin/bash -G searxng searxng
 USER searxng
 
 # install build deps and git clone searxng as well as setting the version
