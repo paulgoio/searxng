@@ -8,14 +8,17 @@ GIT_BRANCH=main \
 UPSTREAM_COMMIT=60be0f453e9e4a5fc48aeb4706e75af0a4047b36
 WORKDIR /usr/local/searxng
 
-# install build deps and git clone searxng as well as setting the version
+# setup searxng user
 RUN addgroup -g ${GID} searxng \
-&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng \
-&& git config --global --add safe.directory /usr/local/searxng \
+&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng
+USER searxng
+
+# install build deps and git clone searxng as well as setting the version
+RUN git config --global --add safe.directory /usr/local/searxng \
 && git clone https://github.com/searxng/searxng.git . \
 && git reset --hard ${UPSTREAM_COMMIT} \
 && chown -R searxng:searxng . \
-&& su searxng -c "/usr/bin/python3 -m searx.version freeze"
+&& /usr/bin/python3 -m searx.version freeze
 
 # copy custom simple theme css, run.sh and limiter, favicons config
 COPY ./src/css/* searx/static/themes/simple/css/
@@ -25,7 +28,6 @@ COPY ./src/favicons.toml /etc/searxng/favicons.toml
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
 RUN cp -r -v dockerfiles/uwsgi.ini /etc/uwsgi/; \
-chown -R searxng:searxng /etc/uwsgi/; \
 chmod +x /usr/local/bin/run.sh; \
 sed -i -e "/safe_search:/s/0/1/g" \
 -e "/autocomplete:/s/\"\"/\"google\"/g" \
@@ -65,11 +67,10 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 -e "/shortcut: bi/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
-su searxng -c "/usr/bin/python3 -m compileall -q searx"; \
+/usr/bin/python3 -m compileall -q searx; \
 find /usr/local/searxng/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
-# expose port and set tini as CMD; default user is searxng
-USER searxng
+# expose port and set tini as CMD
 EXPOSE 8080
 CMD ["/sbin/tini","--","run.sh"]
