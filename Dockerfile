@@ -6,11 +6,12 @@ ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
 UPSTREAM_COMMIT=60be0f453e9e4a5fc48aeb4706e75af0a4047b36
-WORKDIR /usr/local/searxng
 
-# setup searxng user
+# setup searxng user and workdir
+WORKDIR /usr/local/searxng
 RUN addgroup -g ${GID} searxng \
-&& adduser -u ${UID} -D -s /bin/bash -G searxng searxng
+&& adduser -u ${UID} -D -s /bin/bash -G searxng searxng \
+&& chown -R searxng:searxng /usr/local/searxng /etc/uwsgi/
 USER searxng
 
 # install build deps and git clone searxng as well as setting the version
