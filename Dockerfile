@@ -5,8 +5,9 @@ COPY ./requirements.txt .
 
 # install build deps and git clone searxng as well as setting the version
 RUN apk -U upgrade \
-&& apk add --no-cache -t build-dependencies build-base py3-setuptools python3-dev libffi-dev libxslt-dev libxml2-dev openssl-dev tar \
-&& apk add --no-cache ca-certificates python3 py3-pip libxml2 libxslt openssl tini uwsgi uwsgi-python3 brotli git bash \
-&& pip3 install --break-system-packages --no-cache -r requirements.txt; \
+&& apk add --no-cache -t build-dependencies alpine-base build-base python3-dev py3-pip libffi-dev tar \
+&& apk add --no-cache alpine-baselayout ca-certificates-bundle busybox python3 wget libxml2 mailcap tini brotli git bash \
+&& pip3 install --no-cache -r requirements.txt \
+&& pip install "uwsgi~=2.0" \
 apk del build-dependencies \
 && rm -rf /var/cache/apk/* /root/.cache
