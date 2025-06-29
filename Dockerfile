@@ -24,7 +24,8 @@ COPY ./src/limiter.toml /etc/searxng/limiter.toml
 COPY ./src/favicons.toml /etc/searxng/favicons.toml
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
-RUN cp -r -v container/config/uwsgi.ini /etc/uwsgi/; \
+RUN mkdir /etc/uwsgi;\
+cp -r -v container/config/uwsgi.ini /etc/uwsgi/; \
 chown -R searxng:searxng /etc/uwsgi/; \
 chmod +x /usr/local/bin/run.sh; \
 sed -i -e "/safe_search:/s/0/1/g" \
