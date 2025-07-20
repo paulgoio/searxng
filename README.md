@@ -70,10 +70,6 @@ Check out the `docker-compose.yml` file in this repo for reference
 
 * ```PROXY``` : set proxy servers that are applied as round robin for all engines; separate multiple proxies with a comma (for example `http://example.org:8080,http://proxy.example.net`)
 
-* ```UWSGI_WORKERS``` : set the amount of uwsgi workers (each worker can handle HTTP requests to the server); defaults to the amount of CORS the server has (for example: `4`)
-
-* ```UWSGI_THREADS``` : set the amount of uwsgi threads per worker; so each worker has the amount of threads defined here; defaults to 4 (for example: `4`)
-
 * ```SEARCH_DEFAULT_LANG``` : Set the default language used for search queries. By default, this is set to auto to autodetect the language from the query string (for example `en-US`)
 
 * ```SEARCH_ENGINE_ACCESS_DENIED``` : Set the suspension timeout in seconds if a search engine throws a SEARCH_ENGINE_ACCESS_DENIED exception, by default this value is set to `86400` (e.g. 1 day)

@@ -109,4 +109,4 @@ sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
 searx/settings.yml
 
 # start uwsgi with SearXNG workload
-exec uwsgi --master --uid searxng --gid searxng --http-socket "0.0.0.0:8080" "/etc/uwsgi/uwsgi.ini"
+exec /usr/local/searxng/venv/bin/granian searx.webapp:app

@@ -44,8 +44,7 @@ services:
       - IMAGE_PROXY=true
       - FAVICON_RESOLVER=google
       - PROXY={URL1}
-      - UWSGI_WORKERS=8
-      - UWSGI_THREADS=4
+      - GRANIAN_BLOCKING_THREADS=8
       - BASE_URL=https://{DOMAIN}/
       - NAME=PaulGO
       - CONTACT=https://mrpaulblack.paulgo.page

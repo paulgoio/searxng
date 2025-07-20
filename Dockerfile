@@ -1,7 +1,8 @@
 # use prebuild alpine image with needed python packages from base branch
 FROM registry.paulgo.dev/infra/paulgoio/searxng:base
-ENV IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= PRIVACYPOLICY= CONTACT= PROXY= SEARCH_DEFAULT_LANG= SEARCH_ENGINE_ACCESS_DENIED= PUBLIC_INSTANCE= \
-UWSGI_WORKERS=2 UWSGI_THREADS=4 GID=991 UID=991 \
+ENV IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= PRIVACYPOLICY= CONTACT= PROXY= SEARCH_DEFAULT_LANG= SEARCH_ENGINE_ACCESS_DENIED= PUBLIC_INSTANCE= GID=991 UID=991 \
+GRANIAN_PROCESS_NAME="searxng" GRANIAN_INTERFACE="wsgi" GRANIAN_HOST="::" GRANIAN_PORT="8080" GRANIAN_WEBSOCKETS="false" GRANIAN_LOOP="uvloop" \
+GRANIAN_BLOCKING_THREADS="4" GRANIAN_WORKERS_KILL_TIMEOUT="30" GRANIAN_BLOCKING_THREADS_IDLE_TIMEOUT="300" \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
@@ -24,10 +25,7 @@ COPY ./src/limiter.toml /etc/searxng/limiter.toml
 COPY ./src/favicons.toml /etc/searxng/favicons.toml
 
 # make run.sh executable, remove css maps (since the builder does not support css maps for now), copy uwsgi server ini, set default settings, precompile static theme files
-RUN mkdir /etc/uwsgi;\
-cp -r -v container/config/uwsgi.ini /etc/uwsgi/; \
-chown -R searxng:searxng /etc/uwsgi/; \
-chmod +x /usr/local/bin/run.sh; \
+RUN chmod +x /usr/local/bin/run.sh; \
 sed -i -e "/safe_search:/s/0/1/g" \
 -e "/autocomplete:/s/\"\"/\"google\"/g" \
 -e "/autocomplete_min:/s/4/0/g" \
