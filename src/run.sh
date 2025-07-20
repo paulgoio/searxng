@@ -105,8 +105,8 @@ if [ ! -z "${FAVICON_RESOLVER}" ]; then
 fi
 
 # auto gen random key for every unique container
-sed -i -e "s/ultrasecretkey/$(openssl rand -hex 16)/g" \
+sed -i -e "s/ultrasecretkey/$(head -c 24 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9')/g" \
 searx/settings.yml
 
-# start uwsgi with SearXNG workload
+# start granian with SearXNG workload
 exec granian searx.webapp:app
