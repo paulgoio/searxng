@@ -49,7 +49,7 @@ services:
       - CONTACT=https://mrpaulblack.paulgo.page
       - SEARCH_DEFAULT_LANG=en-US
       - SEARCH_ENGINE_ACCESS_DENIED=60
-      - GRANIAN_BLOCKING_THREADS=8
+      - GRANIAN_BLOCKING_THREADS=4
     labels:
       - traefik.enable=true
       - traefik.http.routers.{REPO}.rule=Host(`{DOMAIN}`)&&(Method(`GET`)||Method(`POST`)||Method(`HEAD`))
