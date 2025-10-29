@@ -7,15 +7,6 @@ stages:
 
 default:
   image: docker:latest
-  before_script:
-    - apk add --no-cache bash
-    - docker buildx version
-    - docker buildx create --bootstrap --name searxng-buildx --use searxng
-  after_script:
-    - docker image prune -af
-    - docker container prune -f
-    - docker buildx prune -af
-    - docker buildx rm -f searxng-buildx
 
 variables:
   BUILDX_PLATFORMS: inux/amd64,linux/arm64/v8

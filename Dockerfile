@@ -1,5 +1,20 @@
+# use alpine as base for searx and set workdir as well as env vars
+FROM alpine:edge as base
+
+COPY ./requirements.txt .
+
+# install build deps and git clone searxng as well as setting the version
+RUN apk -U upgrade \
+&& apk add --no-cache -t build-dependencies alpine-base build-base python3-dev py3-pip tar \
+&& apk add --no-cache alpine-baselayout ca-certificates-bundle python3 wget tini brotli git bash su-exec \
+&& pip3 install --break-system-packages --no-cache -r requirements.txt \
+&& pip3 install --break-system-packages --no-cache "granian~=2.0" \
+&& apk del build-dependencies \
+&& rm -rf /var/cache/apk/* /root/.cache
+
+
 # use prebuild alpine image with needed python packages from base branch
-FROM registry.paulgo.dev/infra/paulgoio/searxng:base
+FROM base
 ENV IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= PRIVACYPOLICY= CONTACT= PROXY= SEARCH_DEFAULT_LANG= SEARCH_ENGINE_ACCESS_DENIED= PUBLIC_INSTANCE= GID=991 UID=991 \
 GRANIAN_PROCESS_NAME="searxng" GRANIAN_INTERFACE="wsgi" GRANIAN_HOST="::" GRANIAN_PORT="8080" GRANIAN_WEBSOCKETS="false" GRANIAN_LOOP="uvloop" \
 GRANIAN_BLOCKING_THREADS="4" GRANIAN_WORKERS_KILL_TIMEOUT="30" GRANIAN_BLOCKING_THREADS_IDLE_TIMEOUT="300" \
