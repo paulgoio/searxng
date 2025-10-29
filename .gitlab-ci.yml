@@ -29,8 +29,6 @@ build:review:
   script:
     - docker buildx build --pull --push --progress plain --compress --rm --platform $BUILDX_PLATFORMS -f ./Dockerfile -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
     - echo "echo \"docker exec -it $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME sh\"; docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME && docker run -it --rm --name $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" >> run-$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.sh
-  after_script:
-    - docker buildx rm buildx-$CI_REGISTRY_IMAGE-$CI_COMMIT_REF_NAME
   artifacts:
     paths:
      - run-$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.sh
