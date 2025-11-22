@@ -4,46 +4,21 @@ stages:
   - retag
   - deploy-production
 
-default:
-  image: docker:latest
+include:
+  # build and push main branch to dockerhub
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.4.0
+    inputs:
+      docker-user: $DOCKER_USER
+      docker-passwd: $DOCKER_PASSWD
+      docker-registry: docker.io
+      docker-tag: $DOCKER_REPO/$CI_PROJECT_NAME:staging
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-variables:
-  BUILDX_PLATFORMS: linux/amd64,linux/arm64/v8
-
-build:review:
-  stage: build
-  tags:
-    - buildx
-  before_script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-  script:
-    - docker buildx build --pull --push --progress plain --compress --rm --platform $BUILDX_PLATFORMS -f ./Dockerfile -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
-    - echo "echo \"docker exec -it $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME sh\"; docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME && docker run -it --rm --name $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" >> run-$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.sh
-  artifacts:
-    paths:
-     - run-$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.sh
-    expire_in: 1 week
-  only:
-    - branches
-  except:
-    - master
-    - main
-    - develop
-
-build:staging:
-  stage: build
-  tags:
-    - buildx
-  before_script:
-    - docker login -u $DOCKER_USER -p $DOCKER_PASSWD
-  script:
-    - docker buildx build --pull --push --progress plain --compress --rm --platform $BUILDX_PLATFORMS -f ./Dockerfile -t $DOCKER_REPO/$CI_PROJECT_NAME:$CI_ENVIRONMENT_SLUG .
-  environment:
-    name: staging
-    url: https://$STAGING_DOMAIN
-  only:
-    - master
-    - main
+  # build and push feature branches to local gitlab registry
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.4.0
+    rules:
+      - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
 
 deploy:staging:
   stage: deploy-staging
@@ -72,7 +47,7 @@ deploy:staging:
   only:
     - master
     - main
-  needs: ["build:staging"]
+  needs: ["build:all-platforms"]
 
 stop:deploy:staging:
   stage: deploy-staging
@@ -104,10 +79,7 @@ retag:production:
   stage: retag
   tags:
     - docker
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:latest
-  services:
-    - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:dind
-      alias: docker
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:cli
   before_script:
     - docker login -u $DOCKER_USER -p $DOCKER_PASSWD
   script:
@@ -121,7 +93,7 @@ retag:production:
   only:
     - master
     - main
-  needs: ["build:staging"]
+  needs: ["build:all-platforms"]
 
 deploy:production:
   stage: deploy-production
