@@ -8,7 +8,6 @@ RUN apk -U upgrade \
 && apk add --no-cache -t build-dependencies alpine-base build-base python3-dev py3-pip tar \
 && apk add --no-cache alpine-baselayout ca-certificates-bundle python3 wget tini brotli git bash su-exec \
 && pip3 install --break-system-packages --no-cache -r requirements.txt \
-&& pip3 install --break-system-packages --no-cache "granian~=2.0" \
 && apk del build-dependencies \
 && rm -rf /var/cache/apk/* /root/.cache
 
@@ -21,7 +20,7 @@ GRANIAN_BLOCKING_THREADS="4" GRANIAN_WORKERS_KILL_TIMEOUT="30" GRANIAN_BLOCKING_
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=b95a3e905d05695a04c424764b8c58020ca38b5c
+UPSTREAM_COMMIT=c0d69cec4ec4f0edb0e09412b08b1923bd15bd81
 WORKDIR /usr/local/searxng
 
 # setup searxng user; install build deps and git clone searxng as well as setting the version
@@ -80,7 +79,8 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/engine: startpage/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
-su-exec searxng /usr/bin/python3 -m compileall -q searx; \
+
+RUN su-exec searxng /usr/bin/python3 -m compileall -q searx; \
 find /usr/local/searxng/searx/static -a \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.ttf' -o -name '*.eot' \) \
 -type f -exec gzip -9 -k {} \+ -exec brotli --best {} \+
 
