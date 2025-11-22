@@ -1,37 +1,17 @@
 stages:
   - build
   - deploy
-  - retag
+  - retag-production
   - deploy-production
-
-retag:production:
-  stage: retag
-  tags:
-    - docker
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:cli
-  before_script:
-    - docker login -u $DOCKER_USER -p $DOCKER_PASSWD
-  script:
-    - docker pull $DOCKER_REPO/$CI_PROJECT_NAME:staging
-    - docker tag $DOCKER_REPO/$CI_PROJECT_NAME:staging $DOCKER_REPO/$CI_PROJECT_NAME:$CI_ENVIRONMENT_SLUG
-    - docker push $DOCKER_REPO/$CI_PROJECT_NAME:$CI_ENVIRONMENT_SLUG
-  environment:
-    name: production
-    url: https://$DOMAIN
-  when: manual
-  only:
-    - master
-    - main
-  needs: ["build:all-platforms"]
 
 include:
   # build and push feature branches to local gitlab registry
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.1
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.6.1
     rules:
       - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
 
   # build and push staging on main branch
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.1
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.6.1
     inputs:
       docker-user: $DOCKER_USER
       docker-passwd: $DOCKER_PASSWD
@@ -41,7 +21,7 @@ include:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
   # deploy staging with autostop after 24 hours
-  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.1
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.6.1
     inputs:
       needs: build:all-platforms
       env: staging
@@ -50,11 +30,24 @@ include:
       autostop-duration: 24 hours
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    
-  # deploy production after retag of stating
-  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.1
+  
+  # retag production
+  - component: $CI_SERVER_FQDN/infra/templates/docker-manual-retag@0.6.1
     inputs:
-      needs: retag:production
+      needs: build:all-platforms
+      stage: retag-production
+      docker-user: $DOCKER_USER
+      docker-passwd: $DOCKER_PASSWD
+      docker-registry: docker.io
+      docker-image-tag: $DOCKER_REPO/$CI_PROJECT_NAME:staging
+      docker-image-new-tag: $DOCKER_REPO/$CI_PROJECT_NAME:production
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+  # deploy production after retag of stating
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.6.1
+    inputs:
+      needs: retag-production
       env: production
       stage: deploy-production
     rules:
