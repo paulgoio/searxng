@@ -26,12 +26,12 @@ retag:production:
 
 include:
   # build and push feature branches to local gitlab registry
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.1
     rules:
       - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
 
   # build and push staging on main branch
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.1
     inputs:
       docker-user: $DOCKER_USER
       docker-passwd: $DOCKER_PASSWD
@@ -41,7 +41,7 @@ include:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
   # deploy staging with autostop after 24 hours
-  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.1
     inputs:
       needs: build:all-platforms
       env: staging
@@ -52,7 +52,7 @@ include:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     
   # deploy production after retag of stating
-  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.1
     inputs:
       needs: retag:production
       env: production
