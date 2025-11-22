@@ -1,79 +1,8 @@
 stages:
   - build
-  - deploy-staging
+  - deploy
   - retag
   - deploy-production
-
-include:
-  # build and push main branch to dockerhub
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.4.0
-    inputs:
-      docker-user: $DOCKER_USER
-      docker-passwd: $DOCKER_PASSWD
-      docker-registry: docker.io
-      docker-tag: $DOCKER_REPO/$CI_PROJECT_NAME:staging
-    rules:
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-
-  # build and push feature branches to local gitlab registry
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.4.0
-    rules:
-      - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
-
-deploy:staging:
-  stage: deploy-staging
-  tags:
-    - docker
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/paulgoio/toolkit:production
-  before_script:
-    - mkdir -p ~/.ssh
-    - eval $(ssh-agent -s)
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - sed -i -e "s/{REPO}/$CI_ENVIRONMENT_SLUG-$CI_PROJECT_NAME/g" -e "s/{ENV}/$CI_ENVIRONMENT_SLUG/g" docker-compose.yml
-    - sed -i -e "s/{DOMAIN}/$STAGING_DOMAIN/g" -e "s+{CLIENT_DOMAIN}+$CLIENT_STAGING_DOMAIN+g" -e "s|{KEY1}|$KEY1|g" -e "s|{KEY2}|$KEY2|g" -e "s|{KEY3}|$KEY3|g"  -e "s+{IP}+$IP+g" -e "s+{URL1}+$URL1+g" -e "s+{URL2}+$URL2+g" -e "s+{URL3}+$URL3+g" -e "s/{EMAIL}/$EMAIL/g" docker-compose.yml
-  script:
-    - deploy=($(echo ${DEPLOY_TARGETS} | tr ',' ' '))
-    - |
-      for i in "${deploy[@]}"; do key=${i}_PRIVATE_KEY; host=${i}_HOST; user=${i}_USER; port=${i}_PORT;
-      ssh-add <(echo "${!key}" | tr -d '\r');
-      ssh ${!user}@${!host} -p ${!port} -o LogLevel=ERROR "mkdir -p ~/$CI_ENVIRONMENT_SLUG-$CI_PROJECT_NAME";
-      scp -q -P ${!port} ./docker-compose.yml ${!user}@${!host}:~/$CI_ENVIRONMENT_SLUG-$CI_PROJECT_NAME/;
-      ssh ${!user}@${!host} -p ${!port} -o LogLevel=ERROR "source /etc/profile && cd ~/$CI_ENVIRONMENT_SLUG-$CI_PROJECT_NAME && docker compose pull && docker compose up -d --remove-orphans"; done
-  environment:
-    name: staging
-    url: https://$STAGING_DOMAIN
-    on_stop: stop:deploy:staging
-    auto_stop_in: 24 hours
-  only:
-    - master
-    - main
-  needs: ["build:all-platforms"]
-
-stop:deploy:staging:
-  stage: deploy-staging
-  tags:
-    - docker
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/paulgoio/toolkit:production
-  variables:
-    GIT_STRATEGY: none
-  before_script:
-    - mkdir -p ~/.ssh
-    - eval $(ssh-agent -s)
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-  script:
-    - deploy=($(echo ${DEPLOY_TARGETS} | tr ',' ' '))
-    - |
-      for i in "${deploy[@]}"; do key=${i}_PRIVATE_KEY; host=${i}_HOST; user=${i}_USER; port=${i}_PORT;
-      ssh-add <(echo "${!key}" | tr -d '\r');
-      ssh ${!user}@${!host} -p ${!port} -o LogLevel=ERROR "source /etc/profile && cd ~/$CI_ENVIRONMENT_SLUG-$CI_PROJECT_NAME && docker compose down && rm -rf ~/$CI_ENVIRONMENT_SLUG-$CI_PROJECT_NAME"; done
-  environment:
-    name: staging
-    url: https://$STAGING_DOMAIN
-    action: stop
-  when: manual
-  only:
-    - master
-    - main
 
 retag:production:
   stage: retag
@@ -95,29 +24,38 @@ retag:production:
     - main
   needs: ["build:all-platforms"]
 
-deploy:production:
-  stage: deploy-production
-  tags:
-    - docker
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/paulgoio/toolkit:production
-  before_script:
-    - mkdir -p ~/.ssh
-    - eval $(ssh-agent -s)
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - sed -i -e "s/{REPO}/$CI_PROJECT_NAME/g" -e "s/{ENV}/$CI_ENVIRONMENT_SLUG/g" docker-compose.yml
-    - sed -i -e "s/{DOMAIN}/$DOMAIN/g" -e "s+{CLIENT_DOMAIN}+$CLIENT_DOMAIN+g" -e "s|{KEY1}|$KEY1|g" -e "s|{KEY2}|$KEY2|g" -e "s|{KEY3}|$KEY3|g"  -e "s+{IP}+$IP+g" -e "s+{URL1}+$URL1+g" -e "s+{URL2}+$URL2+g" -e "s+{URL3}+$URL3+g" -e "s/{EMAIL}/$EMAIL/g" docker-compose.yml
-  script:
-    - deploy=($(echo ${DEPLOY_TARGETS} | tr ',' ' '))
-    - |
-      for i in "${deploy[@]}"; do key=${i}_PRIVATE_KEY; host=${i}_HOST; user=${i}_USER; port=${i}_PORT;
-      ssh-add <(echo "${!key}" | tr -d '\r');
-      ssh ${!user}@${!host} -p ${!port} -o LogLevel=ERROR "mkdir -p ~/$CI_PROJECT_NAME";
-      scp -q -P ${!port} ./docker-compose.yml ${!user}@${!host}:~/$CI_PROJECT_NAME/;
-      ssh ${!user}@${!host} -p ${!port} -o LogLevel=ERROR "source /etc/profile && cd ~/$CI_PROJECT_NAME && docker compose pull && docker compose up -d --remove-orphans"; done
-  environment:
-    name: production
-    url: https://$DOMAIN
-  only:
-    - master
-    - main
-  needs: ["retag:production"]
+include:
+  # build and push feature branches to local gitlab registry
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.0
+    rules:
+      - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+
+  # build and push staging on main branch
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.5.0
+    inputs:
+      docker-user: $DOCKER_USER
+      docker-passwd: $DOCKER_PASSWD
+      docker-registry: docker.io
+      docker-tag: $DOCKER_REPO/$CI_PROJECT_NAME:staging
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+  # deploy staging with autostop after 24 hours
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.0
+    inputs:
+      needs: build:all-platforms
+      env: staging
+      domain: $STAGING_DOMAIN
+      folder-name: staging-$CI_PROJECT_NAME
+      autostop-duration: 24 hours
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    
+  # deploy production after retag of stating
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.5.0
+    inputs:
+      needs: retag:production
+      env: production
+      stage: deploy-production
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
