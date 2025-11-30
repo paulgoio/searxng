@@ -51,13 +51,11 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/X-Robots-Tag: noindex, nofollow/d" \
 -e "/Referrer-Policy: no-referrer/d" \
 -e "/static_use_hash:/s/false/true/g" \
--e "/name: btdigg/s/$/\n    disabled: true/g" \
 -e "/name: deviantart/s/$/\n    disabled: true/g" \
 -e "/name: vimeo/s/$/\n    disabled: true/g" \
 -e "/name: openairepublications/s/$/\n    disabled: true/g" \
 -e "/name: wikidata/s/$/\n    disabled: true/g" \
 -e "/name: duckduckgo/s/$/\n    disabled: true/g" \
--e "/name: library of congress/s/$/\n    disabled: true/g" \
 -e "/name: dictzone/s/$/\n    disabled: true/g" \
 -e "/name: genius/s/$/\n    disabled: true/g" \
 -e "/name: artic/s/$/\n    disabled: true/g" \
@@ -70,14 +68,14 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: bing news/s/$/\n    disabled: true/g" \
 -e "/name: bing images/s/$/\n    disabled: true/g" \
 -e "/name: bing videos/s/$/\n    disabled: true/g" \
--e "/name: tineye/s/$/\n    disabled: true/g" \
 -e "/name: qwant.*/s/$/\n    disabled: true/g" \
 -e "/- name: brave/s/$/\n    disabled: true/g" \
 -e "/name: lingva/s/$/\n    disabled: true/g" \
--e "/name: wallhaven/s/$/\n    disabled: true/g" \
+-e "/name: devicons/s/$/\n    disabled: true/g" \
 -e "/engine: piped/s/$/\n    disabled: true/g" \
 -e "/engine: startpage/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
+-e "/shortcut: bi$/{n;s/.*/    disabled: false/}" \
 searx/settings.yml; \
 
 RUN su-exec searxng /usr/bin/python3 -m compileall -q searx; \
