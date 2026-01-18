@@ -21,9 +21,9 @@ cp -v src/less/* build/client/simple/src/less/
 
 echo "build themes with upstream scripts"
 cd build
-make themes.all
+./manage vite.simple.build
 cd ..
 
 echo "cp build files back to fork src folder"
 rm -rf src/css/*
-cp -r -v build/searx/static/themes/simple/css/* src/css/
+cp -r -v build/searx/static/themes/simple/*.css src/css/
