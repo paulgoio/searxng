@@ -21,5 +21,5 @@ whitenoise==6.11.0
 typing-extensions==4.15.0
 
 # server dependecies
-granian==2.6.0
-granian[pname]==2.6.0
+granian==2.6.1
+granian[pname]==2.6.1
