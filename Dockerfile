@@ -20,7 +20,7 @@ GRANIAN_BLOCKING_THREADS="4" GRANIAN_WORKERS_KILL_TIMEOUT="30s" GRANIAN_BLOCKING
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=c97d4d9b6c972780ccd23b59b290e932e3c14492
+UPSTREAM_COMMIT=8e824017dc88cebe5a42ee6ca04315ca9545f717
 WORKDIR /usr/local/searxng
 
 # setup searxng user; install build deps and git clone searxng as well as setting the version

@@ -1,5 +1,5 @@
 certifi==2026.1.4
-babel==2.17.0
+babel==2.18.0
 flask-babel==4.0.0
 flask==3.1.2
 jinja2==3.1.6
@@ -15,11 +15,11 @@ markdown-it-py==3.0.0
 fasttext-predict==0.9.2.4
 tomli==2.4.0; python_version < '3.11'
 msgspec==0.20.0
-typer-slim==0.21.1
+typer==0.23.0
 isodate==0.7.2
 whitenoise==6.11.0
 typing-extensions==4.15.0
 
 # server dependecies
-granian==2.6.1
-granian[pname]==2.6.1
+granian==2.7.1
+granian[pname]==2.7.1
