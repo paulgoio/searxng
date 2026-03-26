@@ -74,6 +74,8 @@ sed -i -e "/safe_search:/s/0/1/g" \
 -e "/name: devicons/s/$/\n    disabled: true/g" \
 -e "/engine: piped/s/$/\n    disabled: true/g" \
 -e "/engine: startpage/s/$/\n    disabled: true/g" \
+-e "/engine: aol/s/$/\n    disabled: true/g" \
+-e "/engine: karmasearch/s/$/\n    disabled: true/g" \
 -e "/name: lucide/s/$/\n    disabled: true/g" \
 -e "/shortcut: fd/{n;s/.*/    disabled: false/}" \
 searx/settings.yml
