@@ -82,7 +82,7 @@ fi
 
 # set engine suspension timeout if a SearxEngineAccessDenied exception occours
 if [ ! -z "${SEARCH_ENGINE_ACCESS_DENIED}" ]; then
-    sed -i -e "/    SearxEngineAccessDenied/s/86400/${SEARCH_ENGINE_ACCESS_DENIED}/g" \
+    sed -i -e "/    SearxEngineAccessDenied/s/180/${SEARCH_ENGINE_ACCESS_DENIED}/g" \
     searx/settings.yml;
 fi
 
