@@ -13,10 +13,10 @@ include:
   # build and push staging on main branch
   - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.6.3
     inputs:
-      docker-user: $DOCKER_USER
-      docker-passwd: $DOCKER_PASSWD
-      docker-registry: docker.io
-      docker-tag: $DOCKER_REPO/$CI_PROJECT_NAME:staging
+      docker-user: ${HARBOR_USERNAME}
+      docker-passwd: ${HARBOR_PASSWORD}
+      docker-registry: ${HARBOR_URL}
+      docker-tag: $HARBOR_HOST/${HARBOR_PROJECT}/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:staging
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
@@ -36,11 +36,11 @@ include:
     inputs:
       needs: build:all-platforms
       stage: retag-production
-      docker-user: $DOCKER_USER
-      docker-passwd: $DOCKER_PASSWD
-      docker-registry: docker.io
-      docker-image-tag: $DOCKER_REPO/$CI_PROJECT_NAME:staging
-      docker-image-new-tag: $DOCKER_REPO/$CI_PROJECT_NAME:production
+      docker-user: ${HARBOR_USERNAME}
+      docker-passwd: ${HARBOR_PASSWORD}
+      docker-registry: ${HARBOR_URL}
+      docker-image-tag: $HARBOR_HOST/${HARBOR_PROJECT}/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:staging
+      docker-image-new-tag: $HARBOR_HOST/${HARBOR_PROJECT}/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:production
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
