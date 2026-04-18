@@ -6,19 +6,19 @@ stages:
 
 include:
   # build and push feature branches to local gitlab registry
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.9.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.9.1
     rules:
       - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
 
   # build and push staging on main branch
-  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.9.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-buildx@0.9.1
     inputs:
       docker-tag: $HARBOR_HOST/${HARBOR_PROJECT}/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:staging
     rules:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
   # deploy staging with autostop after 24 hours
-  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.9.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.9.1
     inputs:
       needs:
         - build:create-manifest
@@ -30,7 +30,7 @@ include:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   
   # retag production
-  - component: $CI_SERVER_FQDN/infra/templates/docker-manual-retag@0.9.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-manual-retag@0.9.1
     inputs:
       needs:
         - build:create-manifest
@@ -41,7 +41,7 @@ include:
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
   # deploy production after retag of stating
-  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.9.0
+  - component: $CI_SERVER_FQDN/infra/templates/docker-deploy@0.9.1
     inputs:
       needs:
         - retag-production
