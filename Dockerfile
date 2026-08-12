@@ -20,7 +20,7 @@ GRANIAN_BLOCKING_THREADS="4" GRANIAN_WORKERS_KILL_TIMEOUT="30s" GRANIAN_BLOCKING
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
 GIT_URL=https://github.com/paulgoio/searxng \
 GIT_BRANCH=main \
-UPSTREAM_COMMIT=aa059419ff027cb23be88ffa3b080a41e386fa95
+UPSTREAM_COMMIT=cdfdaa5a88ba7e0b3b4e4d13c9fe448b4321a4dd
 WORKDIR /usr/local/searxng
 
 # setup searxng user; install build deps and git clone searxng as well as setting the version
@@ -42,7 +42,7 @@ COPY ./src/favicons.toml /etc/searxng/favicons.toml
 RUN chmod +x /usr/local/bin/run.sh; \
 sed -i -e "/pool_connections:/s/100/200/g" \
 -e "/safe_search:/s/0/1/g" \
--e "/autocomplete:/s/\"\"/\"google\"/g" \
+-e "/autocomplete:/s/duckduckgo/google/g" \
 -e "/autocomplete_min:/s/4/0/g" \
 -e "/port:/s/8888/8080/g" \
 -e "/bind_address:/s/127.0.0.1/0.0.0.0/g" \
