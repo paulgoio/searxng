@@ -18,7 +18,7 @@ services:
         max-file: "1"
 
   searxng:
-    image: r.paulgo.dev/i/infra/paulgoio/searxng:{ENV}
+    image: r.paulgo.dev/library/infra/paulgoio/searxng:{ENV}
     restart: always
     logging:
       driver: "json-file"
