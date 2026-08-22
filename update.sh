@@ -1,11 +1,10 @@
 #!/bin/sh
+# this file is meant to be run by renovate when updating the git submodule upstream/
 
 echo "building theme from master branch searxng/searxng and update requirements.txt"
 
-echo "init and pulling git submodule for upstream searxng"
-git submodule init upstream/
-git submodule update upstream/
-git pull --recurse-submodules
+echo "init and update submodule for upstream searxng"
+git submodule update --init upstream/
 
 echo "delete upstream simple theme definitions"
 rm -f upstream/client/simple/src/less/definitions.less upstream/client/simple/src/less/search.less

@@ -1,5 +1,5 @@
 # clone searxng/searxng based on commit in upstream/ git submodule
-FROM alpine:latest AS fetcher
+FROM alpine:3.24.1 AS fetcher
 
 RUN apk add --no-cache git bash
 WORKDIR /build
@@ -14,7 +14,7 @@ RUN git config --global --add safe.directory /build \
 
 
 # use alpine as base for searx and set workdir as well as env vars
-FROM alpine:latest AS base
+FROM alpine:3.24.1 AS base
 
 COPY ./requirements.txt .
 

@@ -2,5 +2,18 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["git-submodules"],
+      "postUpgradeTasks": {
+        "commands": ["./update.sh"],
+        "fileFilters": [
+          "src/css/**",
+          "requirements.txt"
+        ],
+        "executionMode": "branch"
+      }
+    }
   ]
 }
