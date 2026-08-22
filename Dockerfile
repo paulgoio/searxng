@@ -1,3 +1,18 @@
+# clone searxng/searxng based on commit in upstream/ git submodule
+FROM alpine:latest AS fetcher
+
+RUN apk add --no-cache git bash
+WORKDIR /build
+COPY . .
+
+RUN git config --global --add safe.directory /build \
+ && REPO_URL=$(git config -f .gitmodules --get submodule.upstream.url) \
+ && COMMIT_HASH=$(git rev-parse HEAD:upstream) \
+ && git clone "$REPO_URL" /upstream \
+ && cd /upstream_src \
+ && git reset --hard "$COMMIT_HASH"
+
+
 # use alpine as base for searx and set workdir as well as env vars
 FROM alpine:latest AS base
 
@@ -18,18 +33,18 @@ ENV IMAGE_PROXY= REDIS_URL= LIMITER= BASE_URL= NAME= PRIVACYPOLICY= CONTACT= PRO
 GRANIAN_PROCESS_NAME="searxng" GRANIAN_INTERFACE="wsgi" GRANIAN_HOST="::" GRANIAN_PORT="8080" GRANIAN_WEBSOCKETS="false" \
 GRANIAN_BLOCKING_THREADS="4" GRANIAN_WORKERS_KILL_TIMEOUT="30s" GRANIAN_BLOCKING_THREADS_IDLE_TIMEOUT="5m" \
 ISSUE_URL=https://github.com/paulgoio/searxng/issues \
-GIT_URL=https://github.com/paulgoio/searxng \
-GIT_BRANCH=main \
-UPSTREAM_COMMIT=9fea41204fdfa7a5cfa15b0ebd12904c520478ce
-WORKDIR /usr/local/searxng
+GIT_URL=https://github.com/paulgoio/searxng
 
-# setup searxng user; install build deps and git clone searxng as well as setting the version
+# create searxng user that runs the actual webserver in the container and owns the server files
 RUN addgroup -g ${GID} searxng \
-&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng \
-&& git config --global --add safe.directory /usr/local/searxng \
-&& git clone https://github.com/searxng/searxng.git . \
-&& git reset --hard ${UPSTREAM_COMMIT} \
-&& chown -R searxng:searxng . \
+&& adduser -u ${UID} -D -h /usr/local/searxng -s /bin/bash -G searxng searxng
+
+# set work directory and copy over upstream git repo from fetcher step
+WORKDIR /usr/local/searxng
+COPY --from=fetcher --chown=searxng:searxng /upstream .
+
+# setting the version as file from git repo
+RUN git config --global --add safe.directory /usr/local/searxng \
 && su-exec searxng /usr/bin/python3 -m searx.version freeze
 
 # copy custom simple theme css, run.sh and limiter, favicons config
