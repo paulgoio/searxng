@@ -3,8 +3,8 @@
 echo "building theme from master branch searxng/searxng and update requirements.txt"
 
 echo "init and pulling git submodule for upstream searxng"
-git submodule init
-git submodule update
+git submodule init upstream/
+git submodule update upstream/
 git pull --recurse-submodules
 
 echo "delete upstream simple theme definitions"
@@ -24,3 +24,6 @@ cp -r -v upstream/searx/static/themes/simple/*.css src/css/
 
 echo "update requirements from upstream searxng" 
 cat upstream/requirements.txt upstream/requirements-server.txt > requirements.txt
+
+echo "cleanup upstream searxng submodule"
+git submodule update --force upstream/
