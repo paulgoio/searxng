@@ -9,7 +9,7 @@ RUN git config --global --add safe.directory /build \
  && REPO_URL=$(git config -f .gitmodules --get submodule.upstream.url) \
  && COMMIT_HASH=$(git rev-parse HEAD:upstream) \
  && git clone "$REPO_URL" /upstream \
- && cd /upstream_src \
+ && cd /upstream \
  && git reset --hard "$COMMIT_HASH"
 
 
