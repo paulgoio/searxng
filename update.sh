@@ -5,7 +5,7 @@ set -e # <-- CRITICAL: Fail immediately if any command fails
 echo "building theme from master branch searxng/searxng and update requirements.txt"
 
 echo "init and update submodule for upstream searxng"
-git submodule update --init upstream/
+git submodule update --init --remote upstream/
 
 echo "delete upstream simple theme definitions"
 rm -f upstream/client/simple/src/less/definitions.less upstream/client/simple/src/less/search.less
@@ -26,4 +26,4 @@ echo "update requirements from upstream searxng"
 cat upstream/requirements.txt upstream/requirements-server.txt > requirements.txt
 
 echo "cleanup upstream searxng submodule"
-git submodule update --force upstream/
+git submodule foreach --recursive 'git reset --hard HEAD && git clean -fd'
