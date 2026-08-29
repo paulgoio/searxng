@@ -10,7 +10,8 @@
         "commands": ["./update.sh"],
         "fileFilters": [
           "src/css/**",
-          "requirements.txt"
+          "requirements.txt",
+          "upstream"
         ],
         "executionMode": "branch"
       }
