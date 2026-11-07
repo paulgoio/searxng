@@ -15,5 +15,5 @@ typer==0.27.3
 isodate==0.7.2
 whitenoise==6.12.0
 typing-extensions==4.16.0
-granian==2.8.5
-granian[pname]==2.8.5
+granian==2.8.7
+granian[pname]==2.8.7
