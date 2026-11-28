@@ -1,6 +1,6 @@
 services:
   redis:
-    image: valkey/valkey:9.2.0
+    image: valkey/valkey:9.2.1
     restart: always
     command: --save 60 1 --loglevel warning
     volumes:
